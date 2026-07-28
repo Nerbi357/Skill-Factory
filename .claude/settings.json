@@ -1,0 +1,17 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 ${CLAUDE_PROJECT_DIR}/.claude/scripts/build_catalogue.py",
+            "statusMessage": "Rebuilding the catalogue",
+            "timeout": 30
+          }
+        ]
+      }
+    ]
+  }
+}

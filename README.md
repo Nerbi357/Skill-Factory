@@ -63,9 +63,19 @@ carries everything it needs.
 ## The catalogue
 
 <!-- CATALOGUE:START — generated from the artifact files; edit the artifacts, not this block -->
+### Skills
 
-*Nothing here yet.* The library is being built; the first skills land in the next
-phase. See **What is next** below.
+| | What it does | Maturity |
+| --- | --- | --- |
+| [`LIVING_PROJECT`](CUSTOM_SKILLS/LIVING_PROJECT/) | Shapes a project as a strong trunk with many well-finished branches, built wide before deep, so new methods, sources and formats attach later without rewriting what exists. | L1 used |
+| [`REPO_FINISHED_LOOK`](CUSTOM_SKILLS/REPO_FINISHED_LOOK/) | Makes a repository read as a finished product rather than someone's working desk. | L0 draft |
+| [`RESEARCH_WITH_CONFIDENCE`](CUSTOM_SKILLS/RESEARCH_WITH_CONFIDENCE/) | Marks every fact with how well it is actually known — verified, seen, recalled, or inferred — and forbids inventing a specific. | L0 draft |
+| [`WORKING_AGREEMENT`](CUSTOM_SKILLS/WORKING_AGREEMENT/) | The order work goes in, who decides what alone, and how risk and disagreement are raised. | L0 draft |
+
+
+### Agents
+
+*No agents yet.*
 
 <!-- CATALOGUE:END -->
 
@@ -80,17 +90,11 @@ turned down with a reason.
 library is run: the skill-or-agent test, the shape every artifact takes, the
 maturity ladder, and the loop that turns observations into changes.
 
-**Phase 2 — the first skills.** Four, extracted from two large instruction files
-the owner had already written:
-
-- `WORKING_AGREEMENT` — the order work goes in, who decides what, how risk and
-  disagreement are raised.
-- `RESEARCH_WITH_CONFIDENCE` — every fact carries how well it is known; never
-  invent a specific; a blocked check is not a negative result.
-- `REPO_FINISHED_LOOK` — what makes a repository read as a product rather than a
-  workbench. Grows a web half later.
-- `LIVING_PROJECT` — build wide before deep, so a new branch attaches without
-  rewriting what exists.
+**Phase 2 — the first skills.** Done. Four of them, in the catalogue above,
+extracted from two large instruction files the owner had already written. All four
+are still `L0 draft` apart from `LIVING_PROJECT`, which shaped a real project
+before this library existed. None has yet passed a cold read — the next thing
+worth doing to them is using them somewhere real.
 
 **Phase 3 — `SKILL_CREATOR`.** The agent that reads accumulated signals, judges
 what should change, runs the review survey, and routes the right skills to a task.
