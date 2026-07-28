@@ -56,6 +56,10 @@ def maturity(text: str) -> str:
 
 
 def collect(folder: str, entrypoint: str) -> list[tuple[str, str, str]]:
+    """Description comes from the entrypoint's frontmatter; maturity from wherever
+    the provenance block lives. For a skill that is the same file. For an agent the
+    provenance sits in README.md, because AGENT.md is a system prompt and its own
+    history is of no use to the worker reading it."""
     directory = ROOT / folder
     if not directory.is_dir():
         return []
@@ -65,7 +69,12 @@ def collect(folder: str, entrypoint: str) -> list[tuple[str, str, str]]:
         if not artifact.is_file():
             continue
         text = artifact.read_text(encoding="utf-8")
-        rows.append((path.name, frontmatter_description(text), maturity(text)))
+        level = maturity(text)
+        if level == "unstated":
+            readme = path / "README.md"
+            if readme.is_file():
+                level = maturity(readme.read_text(encoding="utf-8"))
+        rows.append((path.name, frontmatter_description(text), level))
     return rows
 
 

@@ -1,3 +1,9 @@
+<!-- STAMPED COPY — do not edit.
+     Source:      CUSTOM_SKILLS/RESEARCH_WITH_CONFIDENCE/SKILL.md
+     Taken:       2026-07-28
+     Canonical:   edit the source and rerun .claude/scripts/sync_bundles.py
+-->
+
 ---
 name: RESEARCH_WITH_CONFIDENCE
 description: Marks every fact with how well it is actually known — verified, seen, recalled, or inferred — and forbids inventing a specific. Use whenever gathering facts, reading documentation, checking a source, or stating a URL, price, limit, version, date or coverage figure. Use before describing how any tool, API or platform behaves. Use when a check was blocked rather than answered, and whenever a claim is about to be built on.

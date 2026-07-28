@@ -69,13 +69,16 @@ carries everything it needs.
 | --- | --- | --- |
 | [`LIVING_PROJECT`](CUSTOM_SKILLS/LIVING_PROJECT/) | Shapes a project as a strong trunk with many well-finished branches, built wide before deep, so new methods, sources and formats attach later without rewriting what exists. | L1 used |
 | [`REPO_FINISHED_LOOK`](CUSTOM_SKILLS/REPO_FINISHED_LOOK/) | Makes a repository read as a finished product rather than someone's working desk. | L0 draft |
-| [`RESEARCH_WITH_CONFIDENCE`](CUSTOM_SKILLS/RESEARCH_WITH_CONFIDENCE/) | Marks every fact with how well it is actually known — verified, seen, recalled, or inferred — and forbids inventing a specific. | L0 draft |
+| [`RESEARCH_WITH_CONFIDENCE`](CUSTOM_SKILLS/RESEARCH_WITH_CONFIDENCE/) | Marks every fact with how well it is actually known — verified, seen, recalled, or inferred — and forbids inventing a specific. | L3 measured |
+| [`SIGNAL_CAPTURE`](CUSTOM_SKILLS/SIGNAL_CAPTURE/) | Records observations about how the work is going into a SIGNALS.md file, so they can later improve the skill library instead of being forgotten. | L0 draft |
 | [`WORKING_AGREEMENT`](CUSTOM_SKILLS/WORKING_AGREEMENT/) | The order work goes in, who decides what alone, and how risk and disagreement are raised. | L0 draft |
 
 
 ### Agents
 
-*No agents yet.*
+| | What it does | Maturity |
+| --- | --- | --- |
+| [`SKILL_CREATOR`](CUSTOM_AGENTS/SKILL_CREATOR/) | Maintains the skill library — turns accumulated signals into proposed changes, drafts new skills and agents to the library's standard, audits what exists for overlap and drift, and says which skills a given task should load. | L0 draft |
 
 <!-- CATALOGUE:END -->
 
@@ -96,9 +99,14 @@ are still `L0 draft` apart from `LIVING_PROJECT`, which shaped a real project
 before this library existed. None has yet passed a cold read — the next thing
 worth doing to them is using them somewhere real.
 
-**Phase 3 — `SKILL_CREATOR`.** The agent that reads accumulated signals, judges
-what should change, runs the review survey, and routes the right skills to a task.
-Ships with the companion skill that records signals while other work is happening.
+**Phase 3 — `SKILL_CREATOR`.** Done. The agent that turns accumulated signals into
+proposed changes, drafts new artifacts, audits the library, and routes skills to a
+task. It drafts the review survey but does not conduct it — a subagent returns a
+result rather than holding a conversation. Its companion `SIGNAL_CAPTURE` travels
+into every project and records the observations it later reads.
+
+Neither has been run in anger yet. The first real review is what will show whether
+the signal format survives contact with a working session.
 
 **Phase 4 — `UX_DESIGNER`.** Checks what a person meets first — the repository
 page, the README, a site, an error message, an empty state — against the skills
