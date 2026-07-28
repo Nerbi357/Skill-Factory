@@ -188,6 +188,29 @@ provenance block at the end of `SKILL.md`, where the owner reads them in the sam
 pass as the method, and where no environment can reject them for being unknown
 keys.
 
+### The provenance block
+
+Every skill and agent ends with one, and it carries the whole history of that
+artifact — because §6 puts the history in the file that holds the method, not in
+a store somewhere else.
+
+```markdown
+## Provenance
+
+Maturity: <L0–L4> · Since: <date> · Sources: <where the method came from>
+
+### Changelog
+- **<date> — <what changed>.** Why, and the signal it came from.
+
+### Considered and turned down
+- **<date> — <the proposal>.** The owner's reason, in his terms.
+```
+
+The last section is the one that pays off later. A rejected proposal without its
+reason gets proposed again by the next session that has the same good idea; with
+the reason, it is a boundary marker showing where the skill's edge was drawn
+deliberately.
+
 ### Four properties of the runtime, and what they demand
 
 These hold across models and platforms because they follow from how a context
@@ -352,20 +375,33 @@ drifted and the quote will not.
 
 ### Where they live and how they travel
 
-Signals are generated in the working project, so `SIGNALS.md` lives there, next to
-the work. They reach the factory two ways: the owner brings the file into a
-factory session, or — when a session holds both repositories — the signal is
-committed straight to `.claude/SIGNALS/`. The second is only enabled after the
-first has been in use long enough to show what a good signal looks like;
-automating the capture of noise just produces more noise.
+**`SIGNALS.md` lives in the working project, never in the factory.** Signals are
+born where the work happens, so that is where they are written — alongside the
+project's other agent material, or at its root if it keeps none.
+
+**The factory stores no raw signals.** There is no inbox here, and that is
+deliberate: an inbox would be a load-bearing store outside the four surfaces, and
+the first thing to fail §1's deletion test. Review reads `SIGNALS.md` where it
+lies and writes its outcomes straight into the skills.
+
+**A processed signal leaves its trace in the skill it touched**, in that skill's
+own provenance block — what changed, and what was proposed and turned down, each
+with its reason. The history of a method belongs in the file that holds the
+method; nowhere else does anyone reading that skill have to go looking. Decisions
+about how the factory itself works are recorded in this file's changelog for the
+same reason.
+
+Once a signal has been processed it can be cleared from the project's
+`SIGNALS.md`. Its permanent record already exists in the skill.
 
 ### What triggers a review
 
 Two triggers, split along the same line as everything else in this file:
 
-- **Count** — a hook counts unprocessed signals at session start and says so once
-  the threshold is crossed. Counting is a machine's job and machines do it
-  reliably.
+- **Count** — a hook in the working project counts unprocessed signals at session
+  start and says so once the threshold is crossed. Counting is a machine's job and
+  machines do it reliably. It fires where the signals are, which is also where the
+  owner is when he would want to hear it.
 - **Meaning** — the close of a phase or a project. That is a semantic moment; the
   `phase-discipline` skill declares it because no event can.
 
@@ -385,9 +421,10 @@ Five steps. This is the loop the whole repository exists to run.
    as a fait accompli. This is the survey; it is the point of the review, not a
    formality around it.
 5. **Apply.** Accepted changes go into the skills with a changelog line. Rejected
-   ones are recorded in `.claude/DECISIONS/` **with the owner's reason**, so the
-   same proposal is never made blind twice. A well-argued rejection often says
-   more about what the skill should be than the acceptance would have.
+   ones are written into the same provenance block **with the owner's reason**, so
+   the same proposal is never made blind twice and so anyone opening the skill
+   sees what was already considered. A well-argued rejection often says more about
+   what the skill should be than the acceptance would have.
 
 ### Judging a proposed change
 
@@ -547,6 +584,7 @@ is not.
   without the owner's word.
 - Treating a borrowed skill as a standard.
 - Recording a rejected proposal without its reason — it will be proposed again.
+- Keeping raw signals, decisions or any other store inside the factory.
 - Turning every remark into a rule the moment it is made.
 - Two documents that answer the same question.
 
@@ -557,9 +595,10 @@ is not.
 If this file arrives in an empty repository together with a set of skills, rebuild
 in this order. Everything needed is above; this is the assembly sequence.
 
-1. **Create the shape.** `CUSTOM_SKILLS/`, `CUSTOM_AGENTS/`, `.claude/` with
-   `SIGNALS/`, `DECISIONS/` and `STATE.md`. Root files: `README.md`,
-   `FACTORY_PHILOSOPHY.md`, `COMMANDS.md`. No fourth root file (§1).
+1. **Create the shape.** `CUSTOM_SKILLS/`, `CUSTOM_AGENTS/`, and `.claude/` for
+   settings, hooks and scripts only. Root files: `README.md`,
+   `FACTORY_PHILOSOPHY.md`, `COMMANDS.md`. No fourth root file, and no store of
+   any kind under `.claude/` (§1).
 2. **Normalise the skills** into the anatomy of §3: frontmatter, the difference
    sentence, the scope lines, the two layers, a provenance block with a maturity
    level from §4. Anything failing the gates in §5 is listed for the owner with a
@@ -612,3 +651,11 @@ in this order. Everything needed is above; this is the assembly sequence.
   dropped in favour of a cold-read test at L2 (§4) — with delivery happening by
   repository access and by folder, what needs proving is that a session reading a
   folder cold does the right thing, not that a description auto-fires.
+- **2026-07-28 — the factory stores nothing raw.** The owner asked where the
+  signal file would live, which exposed that the draft's `.claude/SIGNALS/` and
+  `.claude/DECISIONS/` were stores outside the four surfaces and the first things
+  to fail §1's own deletion test. Both are gone. `SIGNALS.md` now lives only in the
+  working project where signals are born, and every processed signal leaves its
+  trace — accepted or rejected — in the provenance block of the skill it touched
+  (§3, §6, §7). `.claude/` is left holding settings, hooks and scripts, which is
+  what makes the deletion test pass literally rather than approximately.
