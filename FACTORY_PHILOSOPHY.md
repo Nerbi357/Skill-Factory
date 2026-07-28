@@ -6,7 +6,7 @@ for a visitor. Introductions live in `README.md`; this file assumes you already
 know what a skill is.
 
 **How to use it.** Read it first, before any skill or agent file, in any session
-that touches this repository. It says *how* the factory is run. `INDEX.md` says
+that touches this repository. It says *how* the factory is run. `README.md` says
 *what* is currently in it.
 
 **The reconstruction clause.** This file must be sufficient on its own. Given an
@@ -27,7 +27,9 @@ profile, or a separate trigger is the actual point. Every artifact folder must
 work alone when sent to another chat. Nothing enters this repository without a
 statement of what changes in behaviour because of it. Observations are captured
 raw and become changes only at review, where the owner rules. Rejected proposals
-are kept with their reason. A rule that never fires gets deleted.
+are kept with their reason. Weak skills are merged into strong ones or rewritten,
+never quietly deleted. Everything needed to understand, use or edit the factory
+lives in `README.md`, `COMMANDS.md` and the two artifact folders — nowhere else.
 
 ---
 
@@ -49,6 +51,35 @@ is starting material, never canon — see §10.
 preference. It means: short files, stable section order, readable diffs, no
 generated walls of text in files meant for human reading, and every change
 explainable in one line.
+
+### The four surfaces
+
+Everything the factory is, does and knows must be reachable from four places:
+
+```
+README.md          what this is, how to use it, and what is currently in it
+COMMANDS.md        every command, what it does, when to reach for it
+CUSTOM_SKILLS/     the methods
+CUSTOM_AGENTS/     the workers
+```
+
+Plus this file, which states the principles those four obey.
+
+No logic, no rule, no computed value and no piece of the mechanism may live
+anywhere else. If understanding how something works requires opening a fifth
+file, the design is wrong — move it into one of the four or into this file.
+
+`.claude/` is the workshop: hooks, scripts, the signal inbox, working state.
+It exists so the maintaining agent works faster, and it holds **nothing the
+factory depends on being understood**. The test is blunt and worth applying
+literally:
+
+> **Delete `.claude/` entirely. The owner, any other project and any fresh
+> session must still be able to read, understand, use and edit every skill and
+> agent. Only automation is lost, never meaning.**
+
+That test is also what keeps the factory portable. A skill that needs a script in
+`.claude/` to make sense cannot be sent to another chat, which contradicts §3.
 
 ---
 
@@ -107,14 +138,17 @@ what exists; the skill files are the implementation.
 ### Skill folder
 
 ```
-<skill-name>/
+<SKILL_NAME>/
 ├── SKILL.md          required — frontmatter + method + provenance
 ├── references/       loaded on demand, not upfront
 ├── scripts/          executable, for anything deterministic and repeated
-├── assets/           templates, files used in output
-└── evals/
-    └── triggers.md   phrases that must fire it, near-misses that must not
+└── assets/           templates, files used in output
 ```
+
+Every `SKILL.md` states its **scope** in two lines: what it covers, and what it
+deliberately leaves to a named neighbour. Boundaries written down are what stop
+two skills from imposing conflicting rules on the same task, and they are the
+first thing to check when a skill starts feeling like it does too much.
 
 ### Agent folder
 
@@ -154,35 +188,49 @@ provenance block at the end of `SKILL.md`, where the owner reads them in the sam
 pass as the method, and where no environment can reject them for being unknown
 keys.
 
-### Hard constraints that shape how skills are written
+### Four properties of the runtime, and what they demand
 
-These are properties of the runtime, verified against the Claude Code
-documentation on 2026-07-28. They are the difference between a skill that works
-in a long session and one that quietly stops working.
+These hold across models and platforms because they follow from how a context
+window works, not from any one product's settings. The exact figures behind them
+move; the shape does not. Figures live in the box below, dated — never inside the
+rules themselves, so a changed limit never invalidates a principle.
 
-- **A skill is read once and stays in context; it is not re-read on later turns.**
-  So write standing rules that hold for the rest of the session, not a one-time
-  procedure. "From here on, mark every fact" survives; "step 1, step 2, step 3"
-  decays.
-- **After compaction only the first ~5,000 tokens of each skill are carried
-  forward, with ~25,000 tokens shared across all of them.** So keep bodies well
-  under that, and push depth into `references/`. A long skill loses its tail
-  silently in exactly the long sessions where it matters most.
-- **The listing of all skill descriptions has a budget of roughly 1% of the
-  context window, and `description` + `when_to_use` is capped at 1,536
-  characters.** When the library grows, descriptions get truncated and the
-  keywords that would have triggered the skill are what gets cut. Front-load the
-  key case. This is also why routing (§8) matters more as the library grows.
-- **`.claude/skills/<name>` may be a symlink** to a folder elsewhere on disk, and
-  Claude Code follows it. That is how the factory gets auto-discovery without
-  duplicating files.
-- **`--add-dir` loads `.claude/skills/` from the added directory**, unlike other
-  configuration.
-- **Cloud and web sessions read `.claude/skills/` from the cloned repository** and
-  do not see a personal skills directory on any machine.
-- **`context: fork` runs a skill in a subagent**, with the skill body as the
-  prompt. It is the bridge between the two forms, useful when a method needs
-  isolation but does not deserve an identity.
+**A skill is read once and stays; it is not re-read on later turns.** Write
+standing rules that hold for the rest of the session, not a procedure to be
+walked through. "From here on, mark every fact with its confidence" survives the
+whole session; "step 1, step 2, step 3" is spent the moment it is read.
+
+**Only the front of a skill is guaranteed to survive a long session.** When
+context fills up it gets compacted, and what is carried forward is bounded. Put
+the rules that must never be lost near the top and push depth into `references/`.
+A long skill loses its tail silently, in exactly the long sessions where it
+matters most.
+
+**Descriptions compete for a shared budget.** Every skill's description sits in
+context so the model knows the skill exists, and that listing is capped. As a
+library grows, descriptions get truncated — and what gets cut is the tail, which
+is where the triggering keywords usually are. Front-load the key case. This is
+also why explicit routing (§8) matters more the larger the library gets.
+
+**Isolation is available without a new identity.** A method that needs its own
+context can be run as a forked subagent while remaining a skill. Reach for that
+before inventing an agent; §2's five tests are about identity, not just about
+isolation.
+
+> **Measured on 2026-07-28, against the Claude Code documentation.** Re-check
+> before relying on any figure; correct the box, not the rules above it.
+> Compaction carries roughly the first 5,000 tokens of each invoked skill, with
+> about 25,000 tokens shared across all of them. The skill listing is budgeted at
+> roughly 1% of the context window, and `description` plus `when_to_use` is
+> capped at 1,536 characters. `.claude/skills/<name>` may be a symlink and is
+> followed. `--add-dir` loads `.claude/skills/` from the added directory. Cloud
+> and web sessions read `.claude/skills/` from the cloned repository and see no
+> personal skills directory. `context: fork` runs a skill in a subagent with the
+> skill body as its prompt.
+
+When a skill exists that governs how skills are written, this box moves into it,
+where a stale number is corrected through the ordinary improvement loop instead of
+by amending the constitution.
 
 ### The two layers
 
@@ -212,12 +260,16 @@ glance separates what is battle-tested from what is an experiment.
 | --- | --- | --- |
 | L0 | `draft` | written, never used in real work |
 | L1 | `used` | applied in real work at least once, the owner confirmed it helped |
-| L2 | `tested` | has `evals/triggers.md`: 3–5 phrases that must fire it, 2–3 near-misses that must not, and both verified |
+| L2 | `tested` | passed a cold read: a session that did not write it was given the folder and a real task, and behaved as intended |
 | L3 | `measured` | one real task run with and without it, the difference described |
 | L4 | `proven` | used across two or more projects and survived at least one revision driven by real feedback |
 
-Nothing is born above L0. Nothing claims a level it cannot evidence. A skill that
-sits at L0 for a long time is a candidate for deletion, not for promotion.
+Nothing is born above L0. Nothing claims a level it cannot evidence.
+
+L2 is the level that matters most here, because it tests the thing that actually
+fails: not whether a skill is well written, but whether a session reading it cold
+— with none of the conversation that produced it — does the right thing. That is
+the real delivery condition (§8), so it is the real test.
 
 ---
 
@@ -236,13 +288,31 @@ union of two methods is not.
 
 **It must be reachable.** A skill nobody and nothing will ever route to is dead on
 arrival. Either the description carries the words the owner would naturally use,
-or `INDEX.md` and routing put it in front of the right task.
+or the catalogue and routing put it in front of the right task.
 
-**It must be able to die.** Every skill is written knowing it can be deleted.
-A rule that has not fired in a long stretch of real work, or that the owner has
-overridden repeatedly, is removed — not softened, not qualified. Removal is
-recorded with the reason, so nobody re-adds it blind. A library nothing is ever
-removed from stops being read.
+**It must be able to change shape.** A skill that stops earning its place is not
+deleted — it is merged, rewritten or, only with the owner's explicit permission,
+retired. Writing a skill speculatively is therefore fine: a rough skill that might
+become useful is far cheaper to reshape later than to invent from nothing, and a
+file that exists is a file the owner can react to.
+
+### When a skill stops earning its place
+
+Three moves, in order of preference. **Deletion is never one of them, and never
+happens without the owner saying so.**
+
+1. **Merge.** Two weak skills covering neighbouring ground become one strong one.
+   This is the default and usually the right answer — the library gets shorter and
+   each remaining file gets better, which is the opposite of what deletion
+   achieves.
+2. **Rewrite.** The job is real but the file is wrong. Keep the name and the
+   place; replace the contents.
+3. **Retire.** Only after the owner has been told, in these terms: why it looks
+   dead, what already does its job, and which of the three moves is recommended.
+
+The moment to raise this is an audit, never mid-task. Report it as a finding with
+the evidence; the decision is the owner's. Silently removing a method he might
+still want is worse than carrying a file that is doing nothing.
 
 ---
 
@@ -326,9 +396,15 @@ skill will run hundreds of times. A rule that fixes exactly the observed case an
 nothing adjacent is overfitting, and it makes the file longer without making it
 better.
 
-Prefer removal to qualification. When a rule misfires, the reflex is to add an
-exception. Two exceptions on one rule means the rule was wrong; rewrite it or
-delete it.
+Prefer rewriting a rule to qualifying it. When a rule inside a skill misfires,
+the reflex is to add an exception. Two exceptions on one rule means the rule was
+wrong: restate it so the exceptions become unnecessary. This is about the lines
+inside a file — whole skills are handled by §5, where merging comes first and the
+owner decides.
+
+Prefer merging to adding. Before writing a new skill, check whether an existing
+one is the same job seen from a different angle. One strong skill beats two that
+each half-cover the ground, and the check costs a minute.
 
 Explain why, not just what. A rule whose reasoning is written is a rule that can
 be applied to a situation nobody anticipated. A bare imperative can only be obeyed
@@ -346,7 +422,7 @@ uses.
 
 | Path | How | When |
 | --- | --- | --- |
-| **Repository access** | the factory is available to the session; the model reads `INDEX.md` and loads what it needs | the default, works everywhere including web sessions |
+| **Repository access** | the factory is available to the session; the model reads `README.md` and loads what the task needs | the default, works everywhere including web sessions |
 | **Folder into a chat** | the folder is pasted or uploaded alone | environments with no repository access |
 | **Copy into a project** | the folder is committed to the project's `.claude/skills/` | when a skill is needed permanently; required for cloud sessions |
 | **`--add-dir`** | the factory's `.claude/skills/` loads automatically | local Claude Code |
@@ -355,14 +431,21 @@ The first two are the ones in use, and both have the same consequence: **nothing
 is auto-discovered**. The model learns the factory exists only because it was
 pointed at it. Two things carry that weight:
 
-**`INDEX.md` is the entry point.** Generated from the artifact files, never
-written by hand — a hand-maintained index goes stale and then lies, which is worse
-than not having one. It lists every skill and agent with its one-line description
-and maturity level, and it stays short enough to read in one pass.
+**`README.md` is the entry point**, and it carries the catalogue. There is no
+separate index file: a fifth root file would break §1, and a catalogue is exactly
+what a reader arriving at the repository needs anyway. The catalogue lists every
+skill and agent with its one-line description and maturity level, and stays short
+enough to read in one pass.
 
-**The bootstrap prompt** is kept ready to paste, in `README.md`. It tells a fresh
-session where the factory is, to read `INDEX.md` first, and to load only what the
-task needs.
+It sits in a marked, generated block inside `README.md`, rebuilt from the artifact
+files themselves and never edited by hand — a hand-maintained catalogue goes stale
+and then lies, which is worse than not having one. The generator touches only what
+is between the markers; everything else in the README is written and reviewed like
+any other prose.
+
+**The bootstrap prompt** is kept ready to paste, also in `README.md`. It tells a
+fresh session where the factory is, to read the README first, and to load only
+what the task needs.
 
 ### Routing
 
@@ -386,17 +469,23 @@ imposing conflicting rules on the same task.
 **A minimal root.** Folders, plus only the files that must be there. A new file
 goes into a folder.
 
-**Names.** Folders a human opens are CAPS (`CUSTOM_SKILLS/`, `CUSTOM_AGENTS/`).
-Service folders are lowercase or dot-prefixed. Skills are lowercase-hyphenated and
-named for the job (`repo-finished-look`), not for a category. Agents are
-CAPS_UNDERSCORED and named for a role (`SKILL_CREATOR`, `UX_DESIGNER`).
+**Names.** Everything a human opens is `CAPS_WITH_UNDERSCORES`: the two artifact
+folders, every skill folder, every agent folder. Service folders stay lowercase or
+dot-prefixed. A skill is named for its job (`REPO_FINISHED_LOOK`), an agent for
+its role (`SKILL_CREATOR`, `UX_DESIGNER`); which is which is told by the folder it
+sits in and by whether it holds `SKILL.md` or `AGENT.md`.
+
+The consequence to know: a skill folder's name is also how it is invoked, so a
+skill copied into a project answers to `/REPO_FINISHED_LOOK`. That is the accepted
+cost of a listing the owner can read at a glance.
 
 **Language.** Everything in the repository is English. Conversation with the owner
 is in the language he is using.
 
-**Generated versus written.** `INDEX.md` is generated. Everything else is written
-and reviewed by hand. A generated file says so in its first line and is never
-edited directly.
+**Generated versus written.** Exactly one thing is generated: the catalogue block
+inside `README.md`, between its markers. Everything else in the repository is
+written and reviewed by hand. Generated regions say so and are never edited
+directly; the fix for a wrong catalogue is a fix to the artifact it was read from.
 
 **Commit subjects are part of the repository's face.** The file listing prints the
 last subject that touched each file, so those lines are read far more often than
@@ -419,10 +508,11 @@ only what is specific to the factory.
 
 **Decide alone:** wording of a method already agreed in substance, file and
 section ordering, splitting an over-long skill into a skill plus references,
-generating the index, fixing an outright error in a skill.
+regenerating the catalogue, fixing an outright error in a skill.
 
-**Always ask:** creating a new skill or agent, deleting one, changing what a skill
-is *for*, promoting a maturity level, anything that changes this file.
+**Always ask:** creating a new skill or agent, merging two, changing what a skill
+is *for*, promoting a maturity level, anything that changes this file — and
+retiring anything, which additionally requires the owner to say so outright (§5).
 
 **External material is starting material, never canon.** Skills written by others
 are read as drafts of an idea — worth studying for what they got right and wrong,
@@ -450,8 +540,11 @@ is not.
 - Fixing the exact observed case instead of the class it belongs to.
 - Softening a misfiring rule with a second exception instead of rewriting it.
 - A skill so long that compaction eats its tail in the sessions that need it most.
-- A hand-maintained index.
-- A library nothing is ever deleted from.
+- A hand-maintained catalogue.
+- Logic, a rule or a computed value that lives outside the four surfaces.
+- A skill that cannot be understood without opening something in `.claude/`.
+- Deleting a skill instead of merging or rewriting it, or deleting one at all
+  without the owner's word.
 - Treating a borrowed skill as a standard.
 - Recording a rejected proposal without its reason — it will be proposed again.
 - Turning every remark into a rule the moment it is made.
@@ -466,13 +559,14 @@ in this order. Everything needed is above; this is the assembly sequence.
 
 1. **Create the shape.** `CUSTOM_SKILLS/`, `CUSTOM_AGENTS/`, `.claude/` with
    `SIGNALS/`, `DECISIONS/` and `STATE.md`. Root files: `README.md`,
-   `FACTORY_PHILOSOPHY.md`, `COMMANDS.md`, `INDEX.md`.
+   `FACTORY_PHILOSOPHY.md`, `COMMANDS.md`. No fourth root file (§1).
 2. **Normalise the skills** into the anatomy of §3: frontmatter, the difference
-   sentence, the two layers, a provenance block with a maturity level from §4.
-   Anything that cannot pass the gates in §5 is quarantined, not silently kept.
-3. **Wire the index.** A script that reads every artifact and writes `INDEX.md`,
-   plus a `PostToolUse` hook on writes under the artifact folders so it stays
-   current without anyone remembering.
+   sentence, the scope lines, the two layers, a provenance block with a maturity
+   level from §4. Anything failing the gates in §5 is listed for the owner with a
+   recommended move — never dropped.
+3. **Wire the catalogue.** A script that reads every artifact and rewrites the
+   marked block in `README.md`, plus a `PostToolUse` hook on writes under the
+   artifact folders so it stays current without anyone remembering.
 4. **Wire the signals.** The companion skill that records them, the record format
    from §6, and a `SessionStart` hook that counts unprocessed signals and says so
    past the threshold.
@@ -496,7 +590,25 @@ in this order. Everything needed is above; this is the assembly sequence.
   layers so they can be handed on (§3); maturity is stated, not assumed (§4);
   signals are captured raw and only become changes at review (§6–7); rejections
   are recorded with reasons (§7); external skills are drafts, never standards
-  (§10). The runtime constraints in §3 were read from the Claude Code
+  (§10). The runtime properties in §3 were read from the Claude Code
   documentation on this date rather than recalled — the same session had already
   produced one wrong architectural claim made from memory, which is the signal
   that rule came from.
+- **2026-07-28 — the four surfaces, and skills are reshaped rather than
+  deleted.** Both from the owner, reviewing the first draft. He required that
+  everything needed to understand, use or edit the factory be reachable from
+  `README.md`, `COMMANDS.md` and the two artifact folders, with `.claude/` holding
+  nothing load-bearing (§1) — which removed the separate index file in favour of a
+  generated block in the README (§8). He also rejected the original "a skill must
+  be able to die": nothing is deleted without his word, merging two weak skills
+  into one strong one is preferred to removing either, and writing a skill
+  speculatively is fine because reshaping a rough file is cheaper than inventing
+  one (§5). He was right on both counts, and the second changes the character of
+  the library — it accumulates and consolidates rather than pruning.
+  Separately, he noticed that §3 stated platform figures inside its rules, where a
+  changed limit would invalidate a principle; the figures now sit in a dated box
+  and the rules are written without them. Skill folders were renamed to
+  `CAPS_WITH_UNDERSCORES` to match agents (§9), and the trigger-test harness was
+  dropped in favour of a cold-read test at L2 (§4) — with delivery happening by
+  repository access and by folder, what needs proving is that a session reading a
+  folder cold does the right thing, not that a description auto-fires.
