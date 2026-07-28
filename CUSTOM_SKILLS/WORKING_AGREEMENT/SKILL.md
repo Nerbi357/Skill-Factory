@@ -150,6 +150,10 @@ assuming.
   only on request.
 - **He works in a browser and in Colab, not in a terminal.** Instructions for
   anything outside the repository are exact clicks and exact text to paste.
+- **Do not attach finished files to the conversation.** He reads them where they
+  live — on the repository page. The message carries what the files cannot: what
+  you decided alone, what deserves a close look, what is missing, and what you
+  need from him. Duplicating the file into the chat only makes him read it twice.
 - **He likes structure**, and says so explicitly. Headings, tables, numbered
   blocks. But calibrate: a small technical question does not need a report.
 - **Look one step wider than the question.** When a task finishes, inspect what
@@ -174,6 +178,13 @@ Maturity: **L0 draft** · Since: 2026-07-28 · Sources: the owner's
 - **2026-07-28 — created.** The foundation skill: the other skills assume the
   order and the decision rights it sets out. Written first among the substantial
   ones for that reason.
+- **2026-07-28 — finished files are not attached to the conversation.** From the
+  owner, in the session that built this library, after four skill files were sent
+  into the chat that he had already been reading on the repository page. The first
+  signal the library processed. It was applied immediately rather than held for a
+  review, because the rule is simple, nothing in it is contestable, and he was
+  present to rule on it — the inbox exists for signals that accumulate away from
+  him, not for ones raised to his face.
 
 ### Considered and turned down
 
