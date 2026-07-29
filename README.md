@@ -96,10 +96,10 @@ carries everything it needs.
 Drafts, borrowed work, and rules evicted from a skill they did not belong in. Nothing here is loaded during real work.
 
 
-**Skills:** [`EVICTED_PRINCIPLES.md`](CUSTOM_SKILLS_TO_REVIEW/EVICTED_PRINCIPLES.md), [`GRILLING`](CUSTOM_SKILLS_TO_REVIEW/GRILLING), [`LIVING_PROJECT`](CUSTOM_SKILLS_TO_REVIEW/LIVING_PROJECT), [`WORKING_AGREEMENT`](CUSTOM_SKILLS_TO_REVIEW/WORKING_AGREEMENT)
+**Skills:** [`EVICTED_PRINCIPLES.md`](CUSTOM_SKILLS_TO_REVIEW/EVICTED_PRINCIPLES.md), [`GRILLING`](CUSTOM_SKILLS_TO_REVIEW/GRILLING), [`LIVING_PROJECT`](CUSTOM_SKILLS_TO_REVIEW/LIVING_PROJECT), [`RESEARCH_CONDUCT`](CUSTOM_SKILLS_TO_REVIEW/RESEARCH_CONDUCT), [`SOURCE_EVALUATION`](CUSTOM_SKILLS_TO_REVIEW/SOURCE_EVALUATION), [`VERIFY_BEFORE_DONE`](CUSTOM_SKILLS_TO_REVIEW/VERIFY_BEFORE_DONE), [`WORKING_AGREEMENT`](CUSTOM_SKILLS_TO_REVIEW/WORKING_AGREEMENT)
 
 
-**Agents:** *Empty.*
+**Agents:** [`SOURCE_SCOUT`](CUSTOM_AGENTS_TO_REVIEW/SOURCE_SCOUT)
 
 <!-- CATALOGUE:END -->
 
@@ -129,8 +129,12 @@ into every project and records the observations it later reads.
 Neither has been run in anger yet. The first real review is what will show whether
 the signal format survives contact with a working session.
 
-**Phase 4 — more skills, then more agents.** Written, reviewed by the owner,
-and where useful seeded from material mined out of the review zone.
+**Phase 4 — more skills, then more agents.** In progress. Three drafts are in the
+review zone awaiting the owner's verdict: `SOURCE_EVALUATION`, `RESEARCH_CONDUCT`
+and `VERIFY_BEFORE_DONE`. Alongside them, a borrowed library of 24 skills, 4 agents
+and 7 checklists has been brought in for mining — triaged, not yet read. The next
+project is YC-Scouter v2: several accelerators instead of one, official data, and
+an interactive site.
 
 **Phase 5 — `UX_DESIGNER`.** Checks what a person meets first — the repository
 page, the README, a site, an error message, an empty state — against the skills
