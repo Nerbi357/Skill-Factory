@@ -29,7 +29,8 @@ statement of what changes in behaviour because of it. Observations are captured
 raw and become changes only at review, where the owner rules. Rejected proposals
 are kept with their reason. Weak skills are merged into strong ones or rewritten,
 never quietly deleted. Everything needed to understand, use or edit the factory
-lives in `README.md`, `COMMANDS.md` and the two artifact folders — nowhere else.
+lives in `README.md`, `COMMANDS.md` and the artifact folders — nowhere else.
+Nothing in a review folder is ever loaded into real work.
 
 ---
 
@@ -63,7 +64,9 @@ CUSTOM_SKILLS/     the methods
 CUSTOM_AGENTS/     the workers
 ```
 
-Plus this file, which states the principles those four obey.
+Plus this file, which states the principles those four obey. Each artifact folder
+also has a review companion holding what is not yet in force — see **The two
+zones** below.
 
 No logic, no rule, no computed value and no piece of the mechanism may live
 anywhere else. If understanding how something works requires opening a fifth
@@ -80,6 +83,44 @@ literally:
 
 That test is also what keeps the factory portable. A skill that needs a script in
 `.claude/` to make sense cannot be sent to another chat, which contradicts §3.
+
+### The two zones
+
+Each artifact folder has a companion holding what is not yet in force:
+
+```
+CUSTOM_SKILLS/              in force — approved, in use, audited, improved
+CUSTOM_SKILLS_TO_REVIEW/    raw material — drafts, borrowed work, evicted rules
+CUSTOM_AGENTS/              in force
+CUSTOM_AGENTS_TO_REVIEW/    raw material
+```
+
+**Nothing in a `_TO_REVIEW` folder is ever loaded into real work.** That is the
+whole distinction, and it is absolute. Routing never returns one. A session
+following the library does not read one unless it was explicitly asked to.
+
+The two zones are not "good" and "bad" — they play different parts in the same
+mechanism:
+
+- **In force is what gets improved.** Signals, the owner's judgement, and material
+  mined from the review zone all land here. The audit watches only these.
+- **The review zone is what we improve *with*.** Skills written by other people,
+  half-formed drafts, principles evicted from a file they did not belong in, ideas
+  worth keeping but not yet placed.
+
+The move from one zone to the other is **the owner's, always**, and it is not a
+file move. Borrowed work is never promoted wholesale: it is taken apart into its
+smallest usable ideas, and those ideas are fitted into what already exists —
+extending a skill, merging two, or seeding a new one where nothing fits. What is
+left behind stays where it is.
+
+That is deliberate. Adopting someone else's file whole imports their assumptions
+along with their good ideas, and the assumptions are invisible precisely because
+they came bundled with something that worked.
+
+An entry in the review zone that nothing ever claims is itself a result: the idea
+was weaker than it looked, and saying so is worth more than keeping it in view
+forever.
 
 ---
 
@@ -310,9 +351,26 @@ skill and without it. If that sentence cannot be written, the skill is decoratio
 This sentence is mandatory in every `SKILL.md` and is the first thing to re-check
 when revising one.
 
-**One skill, one job.** If the description needs "and" to cover two unrelated
-jobs, it is two skills. Overlap between neighbours is normal; a skill that is a
-union of two methods is not.
+**One skill, one task or one principle** — even when the principle is large and
+fundamental. Size is not the test; coherence is. A long skill about one thing is
+healthy. A short one carrying two unrelated rules is not, however tidy it looks.
+
+If the description needs "and" to join two jobs that do not depend on each other,
+it is two skills. Overlap between neighbours is normal; a union of two methods is
+not.
+
+This gate is the one most often failed by accident, because a rule that is *true*
+and *useful* and *happened to come up while writing* feels like it belongs. It
+does not: skills are loaded selectively, and a rule filed under an unrelated
+heading is a rule that will be absent when it is actually needed and present when
+it is noise. The library's first eviction was exactly this — advice on checking
+whether something already exists, sitting inside a skill about how confidently a
+fact is known. Both good; unrelated.
+
+**Evicting is not deleting.** A rule removed for sitting in the wrong file goes to
+`CUSTOM_SKILLS_TO_REVIEW/EVICTED_PRINCIPLES.md` with where it came from, why it
+was moved, and where it might belong. It leaves that file by being folded into a
+skill that genuinely wants it, or by seeding a new one.
 
 **It must be reachable.** A skill nobody and nothing will ever route to is dead on
 arrival. Either the description carries the words the owner would naturally use,
@@ -513,12 +571,12 @@ goes into a folder.
 
 **Names.** Everything a human opens is `CAPS_WITH_UNDERSCORES`: the two artifact
 folders, every skill folder, every agent folder. Service folders stay lowercase or
-dot-prefixed. A skill is named for its job (`REPO_FINISHED_LOOK`), an agent for
+dot-prefixed. A skill is named for its job (`GIT_REPO_STRUCTURE`), an agent for
 its role (`SKILL_CREATOR`, `UX_DESIGNER`); which is which is told by the folder it
 sits in and by whether it holds `SKILL.md` or `AGENT.md`.
 
 The consequence to know: a skill folder's name is also how it is invoked, so a
-skill copied into a project answers to `/REPO_FINISHED_LOOK`. That is the accepted
+skill copied into a project answers to `/GIT_REPO_STRUCTURE`. That is the accepted
 cost of a listing the owner can read at a glance.
 
 **Language.** Everything in the repository is English. Conversation with the owner
@@ -590,6 +648,9 @@ is not.
 - Treating a borrowed skill as a standard.
 - Recording a rejected proposal without its reason — it will be proposed again.
 - Keeping raw signals, decisions or any other store inside the factory.
+- Adopting a borrowed skill whole instead of taking it apart for its usable ideas.
+- Loading anything from a review folder into real work.
+- Leaving a true, useful rule inside a skill it has nothing to do with.
 - Turning every remark into a rule the moment it is made.
 - Two documents that answer the same question.
 
@@ -600,10 +661,11 @@ is not.
 If this file arrives in an empty repository together with a set of skills, rebuild
 in this order. Everything needed is above; this is the assembly sequence.
 
-1. **Create the shape.** `CUSTOM_SKILLS/`, `CUSTOM_AGENTS/`, and `.claude/` for
-   settings, hooks and scripts only. Root files: `README.md`,
-   `FACTORY_PHILOSOPHY.md`, `COMMANDS.md`. No fourth root file, and no store of
-   any kind under `.claude/` (§1).
+1. **Create the shape.** `CUSTOM_SKILLS/` and `CUSTOM_AGENTS/` for what is in
+   force, `CUSTOM_SKILLS_TO_REVIEW/` and `CUSTOM_AGENTS_TO_REVIEW/` for raw
+   material, and `.claude/` for settings, hooks and scripts only. Root files:
+   `README.md`, `FACTORY_PHILOSOPHY.md`, `COMMANDS.md`. No fourth root file, and
+   no store of any kind under `.claude/` (§1).
 2. **Normalise the skills** into the anatomy of §3: frontmatter, the difference
    sentence, the scope lines, the two layers, a provenance block with a maturity
    level from §4. Anything failing the gates in §5 is listed for the owner with a

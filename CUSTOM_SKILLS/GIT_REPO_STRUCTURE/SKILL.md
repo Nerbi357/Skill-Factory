@@ -1,9 +1,9 @@
 ---
-name: REPO_FINISHED_LOOK
-description: Makes a repository read as a finished product rather than someone's working desk. Use continuously while creating or moving files, naming things, or writing commit messages — not only at the end. Use when deciding where a new file belongs, when the root is filling up, before pushing anything, and before calling a project done. Use when writing a README, a folder name, or any text a first-time visitor will meet.
+name: GIT_REPO_STRUCTURE
+description: Keeps a repository structured and named so it reads as a finished product rather than someone's working desk. Use continuously while creating or moving files, naming things, choosing branches, or writing commit messages — not only at the end. Use when deciding where a new file belongs, when the root is filling up, before pushing anything, and before calling a project done. Use when writing a README, a folder name, or any text a first-time visitor will meet.
 ---
 
-# Repository finished look
+# Git repository structure
 
 **What changes because of this skill:** without it, a repository reads as a
 workbench — drafts left lying about, clutter in the root, a commit column full of
@@ -27,8 +27,35 @@ neighbouring surface with its own rules, added later.
 Judge the repository the way a first-time visitor sees it: the landing page, the
 file listing, the README, the commit column beside each file. Whatever reads as
 noise gets fixed. "It is only for me" is never a reason to leave a rough edge —
-the owner treats every project as something that could be attached to a CV or
-become material for an article.
+**every project is built to be a finished, professional product or solution**,
+whoever it turns out to be for.
+
+### Two stages, and the default is final
+
+A repository is in one of two states, and knowing which one you are in settles
+most arguments about whether a file belongs.
+
+**Final** — the repository contains only what the product it delivers actually
+needs. No working files, no scratch branches, no service artefacts, no drafts.
+Anything a visitor could mistake for leftovers is gone, because it is.
+
+**Working** — a temporary state where service files, working branches or
+provisional names are permitted **because they buy something specific**. Each one
+is justified, each one is minimal, and each one has a stated end.
+
+> **Build as though the project were already final.** The working stage is a
+> deliberate, bounded departure — not the normal condition that gets tidied up
+> later.
+
+That ordering matters because the alternative is what actually happens by default:
+clutter accumulates as a byproduct, nobody decides to add it, and by the end
+nobody can tell which files were meant. When a working-stage departure genuinely
+pays — a scratch branch for something risky, a provisional name while the shape is
+unsettled — say so out loud, say what ends it, and end it.
+
+Entering the final stage is a real step, not a mood: working branches deleted,
+service files removed, provisional names replaced, and the file listing read
+straight through as a stranger would read it.
 
 ## 2. A minimal root
 
@@ -98,7 +125,12 @@ step-by-step instructions).
 
 - **Secrets never enter the repository** — not in code, not in notebooks, not in
   examples.
-- **Never delete produced data.** Dated outputs are an archive.
+- **Deleting produced data needs a reason and the owner's word.** Dated outputs
+  are an archive by default, and throwing one away is not reversible. But an
+  archive of something that turned out useless is just clutter, and clutter is
+  what the final stage exists to remove — so deletion is available, either because
+  the owner approved it or because the necessity is plain and stated. What is not
+  available is deleting it quietly.
 - **Atomic commits**, each with tests and linters green, each explaining *why* in
   its body.
 - **No commit mixes a mechanical reformat with a change of meaning** — the second
@@ -117,10 +149,14 @@ file is the reasoning behind it.
 
 ## Owner preferences
 
-- **Every project is polished to a finished, professional state**, regardless of
+- **Every project is a finished, professional product or solution**, regardless of
   who it is for. The universal success criteria: it does not break, it does what
   it was meant to do, it looks good and the repository is polished, and the owner
   has understood how it works and approved it.
+- **He would rather have no working stage at all.** Service files and scratch
+  branches are permitted when they earn their place, but the burden is on them —
+  "it is temporary" is not a justification, it is a promise, and promises about
+  cleaning up later are the ones least often kept.
 - **The commit column is something he actively reads.** This rule entered the
   contract because he pointed out that the per-file commit subject on the
   repository page is part of how the project looks — not metadata.
@@ -140,10 +176,27 @@ Maturity: **L0 draft** · Since: 2026-07-28 · Sources: the owner's
 
 ### Changelog
 
-- **2026-07-28 — created.** The skill the owner named first when the library was
-  being planned. The measurement-versus-description rule was split: the general
-  discipline of stating facts went to `RESEARCH_WITH_CONFIDENCE`, and what remains
-  here is specifically about repository prose going stale.
+- **2026-07-28 — created** as `REPO_FINISHED_LOOK`. The skill the owner named
+  first when the library was being planned. The measurement-versus-description
+  rule was split: the general discipline of stating facts went to
+  `CONFIDENCE_CHECK`, and what remains here is specifically about repository prose
+  going stale.
+- **2026-07-28 — renamed to `GIT_REPO_STRUCTURE`**, and the standard restated.
+  "Something that could be attached to a CV or become material for an article" was
+  the owner's earlier framing and undersold it: every project is built to be a
+  finished professional product or solution, full stop.
+- **2026-07-28 — the two stages (§1).** From the owner. A repository is either
+  final — holding only what the product needs — or in a bounded working stage where
+  service files and scratch branches are permitted because they buy something
+  specific. The default is final, and the working stage is a departure that has to
+  be declared and ended. This inverts what happens otherwise: clutter arrives as a
+  byproduct nobody decided on, and by the end nobody can tell which files were
+  meant.
+- **2026-07-28 — produced data may be deleted (§7).** The previous absolute ban
+  was the owner's own earlier rule and he relaxed it: an archive of something that
+  turned out useless is clutter, and clutter is what the final stage removes.
+  Deletion now needs either his word or a plain, stated necessity. What stays
+  forbidden is deleting quietly.
 
 ### Considered and turned down
 

@@ -17,15 +17,25 @@ useful rather than generic.
 ## What is in here
 
 ```
-README.md               you are here — what this is, how to use it, what it holds
-COMMANDS.md             every command you can run by hand
-FACTORY_PHILOSOPHY.md   the rules the library obeys, for maintaining it
-CUSTOM_SKILLS/          the methods
-CUSTOM_AGENTS/          the workers
+README.md                   you are here — what this is, how to use it, what it holds
+COMMANDS.md                 every command you can run by hand
+FACTORY_PHILOSOPHY.md       the rules the library obeys, for maintaining it
+CUSTOM_SKILLS/              the methods, in force
+CUSTOM_AGENTS/              the workers, in force
+CUSTOM_SKILLS_TO_REVIEW/    raw material — not in force
+CUSTOM_AGENTS_TO_REVIEW/    raw material — not in force
 ```
 
-Those five carry everything. `.claude/` holds settings, hooks and scripts that
-make maintenance faster — delete it and you lose automation, never meaning.
+Those carry everything. `.claude/` holds settings, hooks and scripts that make
+maintenance faster — delete it and you lose automation, never meaning.
+
+**The two zones matter.** What sits in `CUSTOM_SKILLS/` and `CUSTOM_AGENTS/` has
+been approved and is used; it is what gets improved. The `_TO_REVIEW` folders hold
+drafts, work borrowed from elsewhere, and rules evicted from a skill they did not
+belong in — that is what we improve *with*. **Nothing in a review folder is ever
+loaded into real work.** Borrowed material is never promoted whole: it is taken
+apart into its smallest usable ideas, and those ideas extend, merge into, or seed
+what is in force.
 
 **Skills** are methods. A session reads one and works differently because of it.
 **Agents** are workers with their own context, delegated to and reporting back.
@@ -48,12 +58,14 @@ Paste this at the start of a session, with the library available to it:
 >
 > Skills are in `CUSTOM_SKILLS/`, agents in `CUSTOM_AGENTS/`. Each folder is
 > self-contained — read the whole folder, not just `SKILL.md`, before using it.
+> **Ignore anything under `CUSTOM_SKILLS_TO_REVIEW/` or `CUSTOM_AGENTS_TO_REVIEW/`**
+> unless I point you at it: that is raw material, not approved for use.
 >
-> While we work, keep a `SIGNALS.md` in this project. Record anything worth
-> remembering about *how* we worked: a correction I made, friction that cost extra
-> exchanges, something that went unusually well, a task no skill covered, or a
-> claim of yours that turned out wrong. Quote me exactly rather than paraphrasing.
-> I process those later, in the library.
+> While we work, keep a `SIGNALS.md` at the root of this project. Record anything
+> worth remembering about *how* we worked: a correction I made, friction that cost
+> extra exchanges or a rediscovery, something that went unusually well, a task no
+> skill covered, or a claim of yours that turned out wrong. Quote me exactly rather
+> than paraphrasing. I process those later, in the library.
 
 If the session cannot reach the repository, send the skill folder itself — it
 carries everything it needs.
@@ -67,18 +79,27 @@ carries everything it needs.
 
 | | What it does | Maturity |
 | --- | --- | --- |
-| [`LIVING_PROJECT`](CUSTOM_SKILLS/LIVING_PROJECT/) | Shapes a project as a strong trunk with many well-finished branches, built wide before deep, so new methods, sources and formats attach later without rewriting what exists. | L1 used |
-| [`REPO_FINISHED_LOOK`](CUSTOM_SKILLS/REPO_FINISHED_LOOK/) | Makes a repository read as a finished product rather than someone's working desk. | L0 draft |
-| [`RESEARCH_WITH_CONFIDENCE`](CUSTOM_SKILLS/RESEARCH_WITH_CONFIDENCE/) | Marks every fact with how well it is actually known — verified, seen, recalled, or inferred — and forbids inventing a specific. | L3 measured |
+| [`CONFIDENCE_CHECK`](CUSTOM_SKILLS/CONFIDENCE_CHECK/) | Marks every fact with how well it is actually known — verified, seen, recalled, or inferred — and forbids inventing a specific. | L3 measured |
+| [`GIT_REPO_STRUCTURE`](CUSTOM_SKILLS/GIT_REPO_STRUCTURE/) | Keeps a repository structured and named so it reads as a finished product rather than someone's working desk. | L0 draft |
 | [`SIGNAL_CAPTURE`](CUSTOM_SKILLS/SIGNAL_CAPTURE/) | Records observations about how the work is going into a SIGNALS.md file, so they can later improve the skill library instead of being forgotten. | L0 draft |
-| [`WORKING_AGREEMENT`](CUSTOM_SKILLS/WORKING_AGREEMENT/) | The order work goes in, who decides what alone, and how risk and disagreement are raised. | L0 draft |
 
 
 ### Agents
 
 | | What it does | Maturity |
 | --- | --- | --- |
-| [`SKILL_CREATOR`](CUSTOM_AGENTS/SKILL_CREATOR/) | Maintains the skill library — turns accumulated signals into proposed changes, drafts new skills and agents to the library's standard, audits what exists for overlap and drift, and says which skills a given task should load. | L0 draft |
+| [`SKILL_CREATOR`](CUSTOM_AGENTS/SKILL_CREATOR/) | Maintains the skill library — turns accumulated signals into proposed changes, drafts new skills and agents to the library's standard, mines borrowed work for usable parts, audits what exists for overlap and drift, and says which skills a given task should load. | L0 draft |
+
+
+### In the review zone — raw material, not in force
+
+Drafts, borrowed work, and rules evicted from a skill they did not belong in. Nothing here is loaded during real work.
+
+
+**Skills:** [`EVICTED_PRINCIPLES.md`](CUSTOM_SKILLS_TO_REVIEW/EVICTED_PRINCIPLES.md), [`GRILLING`](CUSTOM_SKILLS_TO_REVIEW/GRILLING), [`LIVING_PROJECT`](CUSTOM_SKILLS_TO_REVIEW/LIVING_PROJECT), [`WORKING_AGREEMENT`](CUSTOM_SKILLS_TO_REVIEW/WORKING_AGREEMENT)
+
+
+**Agents:** *Empty.*
 
 <!-- CATALOGUE:END -->
 
@@ -93,11 +114,11 @@ turned down with a reason.
 library is run: the skill-or-agent test, the shape every artifact takes, the
 maturity ladder, and the loop that turns observations into changes.
 
-**Phase 2 — the first skills.** Done. Four of them, in the catalogue above,
-extracted from two large instruction files the owner had already written. All four
-are still `L0 draft` apart from `LIVING_PROJECT`, which shaped a real project
-before this library existed. None has yet passed a cold read — the next thing
-worth doing to them is using them somewhere real.
+**Phase 2 — the first skills.** Done. Extracted from two large instruction files
+the owner had already written. Three were approved into force; `WORKING_AGREEMENT`
+and `LIVING_PROJECT` went to the review zone pending his decision on them.
+`CONFIDENCE_CHECK` reached `L3 measured` after a paired cold-read test and was
+then narrowed to a single job.
 
 **Phase 3 — `SKILL_CREATOR`.** Done. The agent that turns accumulated signals into
 proposed changes, drafts new artifacts, audits the library, and routes skills to a
@@ -108,14 +129,16 @@ into every project and records the observations it later reads.
 Neither has been run in anger yet. The first real review is what will show whether
 the signal format survives contact with a working session.
 
-**Phase 4 — `UX_DESIGNER`.** Checks what a person meets first — the repository
+**Phase 4 — more skills, then more agents.** Written, reviewed by the owner,
+and where useful seeded from material mined out of the review zone.
+
+**Phase 5 — `UX_DESIGNER`.** Checks what a person meets first — the repository
 page, the README, a site, an error message, an empty state — against the skills
 that define what finished looks like. Accumulates the owner's taste rather than
 guessing at it.
 
-**Phase 5 and after.** More skills, and revisions of these driven by real use.
-There is no final state; the measure of health is whether the last month produced
-changes traceable to real work.
+**After that.** Revisions driven by real use. There is no final state; the measure
+of health is whether the last month produced changes traceable to real work.
 
 ---
 

@@ -284,7 +284,7 @@ a real project; it has not yet passed a cold read in this form.
   to the factory's anatomy: difference sentence, scope lines, owner preferences
   separated from the general method, provenance block.
 - **2026-07-28 — deduplicated.** The original §8 (research and verification
-  discipline) was removed entirely; it is now `RESEARCH_WITH_CONFIDENCE`, which
+  discipline) was removed entirely; it is now `CONFIDENCE_CHECK`, which
   says the same things at more length. The original §9 (using agents) was cut from
   a full catalogue of roles and orchestration shapes down to the two points a
   long-lived project specifically needs, because the catalogue duplicated

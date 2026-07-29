@@ -1,25 +1,26 @@
 <!-- STAMPED COPY — do not edit.
-     Source:      CUSTOM_SKILLS/RESEARCH_WITH_CONFIDENCE/SKILL.md
+     Source:      CUSTOM_SKILLS/CONFIDENCE_CHECK/SKILL.md
      Taken:       2026-07-28
      Canonical:   edit the source and rerun .claude/scripts/sync_bundles.py
 -->
 
 ---
-name: RESEARCH_WITH_CONFIDENCE
-description: Marks every fact with how well it is actually known — verified, seen, recalled, or inferred — and forbids inventing a specific. Use whenever gathering facts, reading documentation, checking a source, or stating a URL, price, limit, version, date or coverage figure. Use before describing how any tool, API or platform behaves. Use when a check was blocked rather than answered, and whenever a claim is about to be built on.
+name: CONFIDENCE_CHECK
+description: Marks every fact with how well it is actually known — verified, seen, recalled, or inferred — and forbids inventing a specific. Use whenever stating a URL, price, limit, version, date, field name or coverage figure. Use before describing how any tool, API or platform behaves. Use when a check was blocked rather than answered, and whenever a claim is about to be built on.
 ---
 
-# Research with confidence
+# Confidence check
 
 **What changes because of this skill:** without it, a plausible URL, limit or
 price recalled from memory gets stated as if it were checked — and that fails
 silently, late, after work has been built on it. With it, every claim carries how
 well it is known, and a gap is reported as a gap instead of being filled.
 
-**Covers:** how facts are gathered and how confidently they are stated.
-**Leaves out:** whether finished work actually works — that is verification, a
-different job. Also how numbers are written into repository prose, which belongs
-with the repository's own standards.
+**Covers:** one thing only — how well a stated fact is actually known, and how to
+say so.
+**Leaves out:** how to conduct research, what to conclude from it, and how to
+shape a report. Those are separate jobs. This skill applies to a single claim, one
+claim at a time, wherever claims are made.
 
 ---
 
@@ -71,8 +72,8 @@ feeling is not evidence. If you cannot say where it came from, it is `recalled`,
 and if it matters, go and check it.
 
 **Check before you argue from it.** Building an argument on a recalled specific is
-worse than stating the specific alone, because the reasoning around it makes it
-look examined.
+worse than stating the specific alone, because the reasoning around it makes the
+specific look examined.
 
 ## 3. A blocked check is not a negative result
 
@@ -87,56 +88,29 @@ evidence about the world, the other is evidence about the world.
 ## 4. Report the hole instead of filling it
 
 When something could not be established, say so, say why, and say what it would
-take. A named hole is a task. A filled hole is a bug with a long fuse.
+take to close it. A named hole is a task. A filled hole is a bug with a long fuse.
 
 This includes partial answers. "Three of the five fields are documented; the other
 two I could not find" is a useful result. Quietly describing all five as though
 they were equally established is not.
 
-## 5. Check the free option before the paid one, and check whether it exists
+## 5. A number without its date will go stale
 
-Before building something, look for whether it already exists and is maintained.
-Before paying, look for the free path. Finding a published artefact that already
-does the job is often the single highest-value hour available, and it is
-frequently skipped because building feels more like progress than searching does.
+A measurement is a fact about one moment. It stays true forever **if it carries
+where and when it came from** — "the run of 2026-07-24 cost $7.14" is permanently
+accurate. Strip the date and the same number silently becomes false the next time
+anything changes, without ever being marked as doubtful.
 
-## 6. A measurement keeps its number; a description should not
-
-A number that came from one moment stays true forever **if it carries where and
-when it came from**: "the run of 2026-07-24 cost $7.14 for about four thousand
-companies" is permanently accurate. The same number written into a description of
-what something *is* goes stale silently and starts contradicting its neighbours:
-"the dataset has 4,040 rows" is wrong after the next rebuild.
-
-So: measurements are dated and keep their precision. Descriptions say "several
-thousand" and let the running system report the exact figure.
-
-## 7. End with what you would do
-
-Research exists to support a decision, and marks alone do not make one. A report
-scrupulously honest about every fact and silent about what to do with them hands
-the entire judgement back untouched — which is the failure mode this discipline
-invites, because carefulness feels like completion.
-
-Finish with three lines:
-
-- **What I would do on this evidence** — the recommendation, plainly.
-- **What it rests on** — which of the marked facts it actually depends on.
-- **What would change it** — the single check that would most move the answer.
-
-The third line is the one that pays. It turns an open question into a task with a
-known cost, so the gap stops being a permanent asterisk and becomes something
-someone can go and close.
-
-When the evidence genuinely does not support a recommendation, **that is the
-recommendation** — say it outright rather than leaving it to be inferred from a
-wall of qualified facts.
+So a figure that can drift is stated with its moment attached, or not stated as a
+fact at all. This is a confidence rule, not a formatting one: an undated number is
+a claim whose confidence decays invisibly, which is the one failure this skill
+exists to prevent.
 
 ---
 
 ## Owner preferences
 
-- **Confidence marks are expected, not optional.** They were added to the working
+- **Confidence marks are expected, not optional.** They entered the working
   contract after a source study in which the sandbox silently blocked several
   checks; the marks are what made the resulting report usable.
 - **An admitted gap is never held against you. A fabricated specific is.** Say "I
@@ -145,8 +119,6 @@ wall of qualified facts.
   before arguing from it** — not after the argument has been made. This rule
   exists because the opposite happened: an architecture was proposed on a recalled
   belief about how skills are discovered, and the documentation contradicted it.
-- Depth of explanation by default is the result and what it means for the owner,
-  not the internals. Go deeper when asked.
 
 ---
 
@@ -163,37 +135,42 @@ distributed through the body**; the baseline carried **one**.
 
 The difference was not honesty — the baseline was honest — but its *granularity*.
 The baseline put its caution in one global caveat, which tells a reader the whole
-report is equally shaky and gives no way to tell the solid parts from the
+report is equally shaky and gives no way to separate the solid parts from the
 secondhand ones. The marked report lets a reader build on what was verified and go
 check what was not. Every network route to the source was blocked in both runs, so
-this also exercised the rule that a blocked check is not a negative result: both
-respected it, and the marked run additionally said what it had verified *about* —
-the contents of third-party code, not the behaviour of the API.
+the run also exercised the rule that a blocked check is not a negative result:
+both respected it, and the marked run additionally said what it had verified
+*about* — the contents of third-party code, not the behaviour of the API.
 
 ### Changelog
 
-- **2026-07-28 — created.** Extracted as the first skill in the library because it
-  is small, sharp and applies to almost every task. §6 (measurements versus
-  descriptions) was pulled in from `AI_INSTRUCTIONS` §10, where it sat among
-  repository rules although it is a rule about stating facts.
+- **2026-07-28 — created** as `RESEARCH_WITH_CONFIDENCE`. Extracted first because
+  it is small, sharp and applies to almost every task.
 - **2026-07-28 — what "verified" means when the thing cannot be reached (§1).**
-  From the cold read: the session invented a `verified (file contents)` mark for
-  itself, because in a blocked environment it could only confirm what a
+  From the cold read: the tested session invented a `verified (file contents)` mark
+  for itself, because in a blocked environment it could only confirm what a
   third-party repository contained, never that the API worked. It closed the gap
-  unprompted; the next session might not. Now stated — name the object of the
-  verification, not just its level.
-- **2026-07-28 — end with what you would do (§7).** Also from the cold read, and
-  the more serious of the two. The two sessions reached **opposite** operational
-  conclusions from the same absence of direct evidence — one said the API was down
-  and to build against the bulk file, the other treated the same signal as routine
-  maintenance. Neither could check. Per-fact honesty was excellent and the bottom
-  line was left for the reader to assemble. Research exists to serve a decision,
-  so the skill now requires one, plus the single check that would change it.
+  unprompted; the next session might not.
+- **2026-07-28 — renamed to `CONFIDENCE_CHECK` and narrowed to one job.** The
+  owner's diagnosis, and it was right: the file had drifted into being a research
+  agent wearing a skill's clothes — part confidence discipline, part advice on how
+  to run an investigation. Two sections were evicted to
+  `CUSTOM_SKILLS_TO_REVIEW/EVICTED_PRINCIPLES.md`: checking the free or existing
+  option first, which is a preference about how to approach project work; and
+  ending a report with a recommendation, which is about the shape of a research
+  report rather than about any single claim. The rule that produced both evictions
+  is now a gate in the philosophy: **one skill, one task or one principle.** What
+  remains applies to a single claim, one claim at a time.
 
 ### Considered and turned down
 
-- **2026-07-28 — a formal trigger-test file** (`evals/triggers.md` with phrases
-  that must and must not fire the skill). Dropped before it was written: trigger
-  tests prove a description auto-fires, and this library is delivered by
-  repository access and by sending folders, where routing is explicit. What needs
-  proving instead is that a session reading the folder cold does the right thing.
+- **2026-07-28 — a formal trigger-test file** (phrases that must and must not fire
+  the skill). Trigger tests prove a description auto-fires, and this library is
+  delivered by repository access and by sending folders, where routing is
+  explicit. What needs proving instead is that a session reading the folder cold
+  does the right thing — which is what the cold read above did.
+- **2026-07-28 — keeping "end with what you would do".** It came from a real
+  finding: two sessions reached opposite operational conclusions from the same
+  absence of evidence, both while marking every fact scrupulously. The finding
+  stands and the fix is real, but it belongs to a skill about conducting research,
+  not to this one. Kept in the evicted file so it is not lost.

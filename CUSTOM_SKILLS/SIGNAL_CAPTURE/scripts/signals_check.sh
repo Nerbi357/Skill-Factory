@@ -8,22 +8,15 @@
 # Install: see ../references/INSTALL.md
 set -uo pipefail
 
-THRESHOLD="${SIGNALS_THRESHOLD:-10}"
+THRESHOLD="${SIGNALS_THRESHOLD:-20}"
 
-# Look where a project would plausibly keep it, nearest first.
-for candidate in \
-  "AI_USAGE/SIGNALS.md" \
-  "docs/SIGNALS.md" \
-  "SIGNALS.md"
-do
-  if [ -f "$candidate" ]; then
-    SIGNALS_FILE="$candidate"
-    break
-  fi
-done
+# The log lives at the project root, in plain sight.
+if [ -f "SIGNALS.md" ]; then
+  SIGNALS_FILE="SIGNALS.md"
+fi
 
 if [ -z "${SIGNALS_FILE:-}" ]; then
-  context="This project keeps a signal log of how the work goes. No SIGNALS.md exists yet — create one at the project root the first time something is worth recording, following the SIGNAL_CAPTURE skill."
+  context="This project keeps a signal log of how the work goes. No SIGNALS.md exists yet — create SIGNALS.md at the project root the first time something is worth recording, following the SIGNAL_CAPTURE skill."
 else
   count=$(grep -c '^## [0-9]' "$SIGNALS_FILE" 2>/dev/null || echo 0)
   context="This project keeps a signal log at $SIGNALS_FILE with $count entries. Keep recording per the SIGNAL_CAPTURE skill."

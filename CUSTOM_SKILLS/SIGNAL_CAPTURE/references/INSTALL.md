@@ -57,11 +57,16 @@ Commit both. The hook then travels with the repository, which matters for cloud
 and web sessions — those read the repository's own `.claude/`, never anything on
 a personal machine.
 
-### Tuning the threshold
+### Setting the threshold
 
-Ten entries by default. Set `SIGNALS_THRESHOLD` in the environment to change it.
-Too low and the review offer becomes background noise; too high and observations
-go stale before anyone looks at them.
+Twenty entries by default, set high on purpose: a review earns its cost when there
+is enough material for patterns to show, and three signals produce three opinions
+rather than one finding.
+
+Set `SIGNALS_THRESHOLD` in the environment to change it. Better still, decide it
+once with the owner when the skill is installed — a project doing heavy unfamiliar
+work generates signals fast and may want a lower number; a routine one may want no
+count-based offer at all, leaving only the phase and project boundaries.
 
 ### What the hook deliberately does not do
 

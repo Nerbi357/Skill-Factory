@@ -35,9 +35,8 @@ cannot see yet. Judging on the way in defeats the mechanism.
 | Kind | What it is |
 | --- | --- |
 | `correction` | the owner corrected a behaviour of yours |
-| `friction` | something took more exchanges than it should have |
+| `friction` | something cost more than it should have — extra exchanges, a rediscovery, the same thing explained twice |
 | `worked` | something went unusually well — the kind most often lost |
-| `repeat` | the same thing got explained or worked out twice |
 | `gap` | a task arrived that no available method covered |
 | `caught` | you asserted something and it turned out to be wrong |
 
@@ -48,8 +47,9 @@ as working is a method that gets quietly dropped in the next revision.
 
 ## 3. The record
 
-Append to `SIGNALS.md` — in the project's agent-facing folder if it has one,
-otherwise at the root.
+Append to **`SIGNALS.md` at the root of the project**. It belongs in plain sight,
+not filed away in a service folder — the owner reads it and reviews it directly,
+and a log nobody stumbles over is a log nobody processes.
 
 ```markdown
 ## <date> · <kind> · <target, or "none">
@@ -84,18 +84,31 @@ is a signal.
 
 ## 5. Offering a review
 
-At the close of a phase, when a project ends, or when signals have piled up, offer
-one — briefly, and take no for an answer:
+Three moments, and no others:
+
+- **the close of a phase**
+- **the end of a project**
+- **the count crossing the threshold** — twenty by default
+
+Offer briefly, once, and take no for an answer:
 
 > There are N signals recorded since <date>: mostly about <theme>. Worth a review
 > pass, or keep going?
 
-If yes, the review happens in the skill library, not here. Nothing in this file
-decides what changes.
+**Twenty is a default, not a law.** It is set high on purpose: a review is worth
+running when there is enough material for patterns to show, and three signals
+produce three opinions rather than one finding. When this skill is installed
+somewhere new, ask the owner once at the start what the number should be for that
+project, and use his answer. A project with heavy, unfamiliar work generates
+signals fast and may want a lower one; a routine project may want none at all
+until a phase closes.
+
+If a review is wanted, it happens in the skill library, not here. Nothing in this
+file decides what changes.
 
 **Do not run a survey unprompted, and do not ask after every task.** The value of
-these questions collapses if they arrive often enough to become furniture. A
-phase boundary is a natural moment; the end of a small task is not.
+these questions collapses if they arrive often enough to become furniture. A phase
+boundary is a natural moment; the end of a small task is not.
 
 ## 6. After a review
 
@@ -140,6 +153,17 @@ have failed on contact.
 - **2026-07-28 — created.** Written alongside `SKILL_CREATOR`, from the owner's
   requirement that the library improve from ordinary work rather than from
   dedicated sessions.
+- **2026-07-28 — `repeat` merged into `friction`.** The owner's reading, and it
+  was right: explaining the same thing twice *is* friction, and a separate kind
+  only made the classifier hesitate at the moment it most needs to be fast. Six
+  kinds became five.
+- **2026-07-28 — the log moved to the project root**, out of any service folder.
+  The owner reads it and reviews it himself, and a file nobody stumbles over is a
+  file nobody processes.
+- **2026-07-28 — threshold raised from ten to twenty, and made a question.** Ten
+  fired often enough to become furniture. Twenty is now a default that the skill
+  asks about once when it lands somewhere new, since how fast a project generates
+  signals varies more than any fixed number can absorb.
 
 ### Considered and turned down
 

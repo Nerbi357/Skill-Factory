@@ -87,14 +87,32 @@ def table(rows: list[tuple[str, str, str]], folder: str, empty: str) -> str:
     return "\n".join(lines) + "\n"
 
 
+def names(folder: str, entrypoint: str) -> str:
+    """The review zone gets names only. Nothing there is in force, so a full row
+    with a description would read like an offer to use it."""
+    directory = ROOT / folder
+    if not directory.is_dir():
+        return "*Empty.*\n"
+    found = sorted(
+        p.name for p in directory.iterdir()
+        if (p / entrypoint).is_file() or (p.is_file() and p.suffix == ".md")
+    )
+    if not found:
+        return "*Empty.*\n"
+    return ", ".join(f"[`{n}`]({folder}/{n})" for n in found) + "\n"
+
+
 def build() -> str:
-    skills = collect("CUSTOM_SKILLS", "SKILL.md")
-    agents = collect("CUSTOM_AGENTS", "AGENT.md")
     parts = [
         "### Skills\n",
-        table(skills, "CUSTOM_SKILLS", "No skills yet."),
+        table(collect("CUSTOM_SKILLS", "SKILL.md"), "CUSTOM_SKILLS", "No skills yet."),
         "\n### Agents\n",
-        table(agents, "CUSTOM_AGENTS", "No agents yet."),
+        table(collect("CUSTOM_AGENTS", "AGENT.md"), "CUSTOM_AGENTS", "No agents yet."),
+        "\n### In the review zone — raw material, not in force\n",
+        "Drafts, borrowed work, and rules evicted from a skill they did not belong "
+        "in. Nothing here is loaded during real work.\n",
+        "\n**Skills:** " + names("CUSTOM_SKILLS_TO_REVIEW", "SKILL.md"),
+        "\n**Agents:** " + names("CUSTOM_AGENTS_TO_REVIEW", "AGENT.md"),
     ]
     return "\n" + "\n".join(parts)
 

@@ -19,6 +19,7 @@ design is written first so you can argue with it before it is built.
 | --- | --- | --- |
 | `/FACTORY_NEW` | the factory | planned |
 | `/FACTORY_REVIEW` | the factory | planned |
+| `/FACTORY_MINE` | the factory | planned |
 | `/SIGNAL` | any project | planned |
 | `/SKILLS_FOR` | any project | planned |
 
@@ -73,6 +74,29 @@ been climbing and you want the pile turned into something.
 
 ---
 
+## `/FACTORY_MINE`
+
+**Gets the value out of borrowed work and into what is actually in force.**
+
+Point it at something in `CUSTOM_SKILLS_TO_REVIEW/` or
+`CUSTOM_AGENTS_TO_REVIEW/` — a skill written by someone else, a draft, a rule
+evicted from a file it did not belong in.
+
+It never promotes a file whole. Adopting someone else's artifact entire imports
+their assumptions along with their good ideas, and the assumptions are invisible
+precisely because they arrived bundled with something that works. Instead it takes
+the thing apart into its smallest usable pieces, checks each against what is
+already in force, and proposes only what survives — extending a named skill,
+merging two, or seeding a new one where nothing fits.
+
+It also reports what it left behind and why. A piece nobody ever claims is itself
+a result: the idea was weaker than it looked.
+
+**Reach for it when:** you have dropped something into a review folder and want to
+know what in it is worth having.
+
+---
+
 ## `/SIGNAL`
 
 **Records an observation of yours, in your words, right now.**
@@ -87,7 +111,7 @@ report.
 /SIGNAL you started implementing before asking what it was for
 ```
 
-Writes a dated entry into the project's `SIGNALS.md` with your words quoted
+Writes a dated entry into `SIGNALS.md` at the project root, with your words quoted
 exactly, plus the surrounding context. The verbatim quote is not decoration: a
 month later a paraphrase will have drifted and the quote will not.
 
