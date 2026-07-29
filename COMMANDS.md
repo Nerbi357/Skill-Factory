@@ -8,9 +8,9 @@ point: regenerating a catalogue, rewriting a skill or opening a review are all
 things whose timing should be yours, not a model's guess that the moment looks
 right.
 
-Two of these live in the factory. Two travel with the skills into whatever project
-you are working in, which is why they are listed here rather than only in that
-project's own documentation.
+Three of these live in the factory. Two travel with the skills into whatever
+project you are working in, which is why they are listed here rather than only in
+that project's own documentation.
 
 **Status** says whether the command exists yet. Nothing below is implemented; the
 design is written first so you can argue with it before it is built.
