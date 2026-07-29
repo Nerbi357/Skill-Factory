@@ -35,7 +35,8 @@ statement of what changes in behaviour because of it. Observations are captured
 raw and become changes only at review, where the owner rules. Rejected proposals
 are kept with their reason. Weak skills are merged into strong ones or rewritten,
 never quietly deleted. Everything needed to understand, use or edit the factory
-lives in `README.md`, `COMMANDS.md` and the two artifact folders — nowhere else.
+lives in `README.md`, `COMMANDS.md` and the artifact folders — nowhere else.
+Nothing in a review folder is ever loaded into real work.
 
 ---
 
@@ -69,7 +70,25 @@ CUSTOM_SKILLS/     the methods
 CUSTOM_AGENTS/     the workers
 ```
 
-Plus this file, which states the principles those four obey.
+Plus this file, which states the principles those four obey. Each artifact folder
+also has a review companion holding what is not yet in force — see **The two
+zones** below.
+
+No logic, no rule, no computed value and no piece of the mechanism may live
+anywhere else. If understanding how something works requires opening a fifth
+file, the design is wrong — move it into one of the four or into this file.
+
+`.claude/` is the workshop: hooks, scripts, the signal inbox, working state.
+It exists so the maintaining agent works faster, and it holds **nothing the
+factory depends on being understood**. The test is blunt and worth applying
+literally:
+
+> **Delete `.claude/` entirely. The owner, any other project and any fresh
+> session must still be able to read, understand, use and edit every skill and
+> agent. Only automation is lost, never meaning.**
+
+That test is also what keeps the factory portable. A skill that needs a script in
+`.claude/` to make sense cannot be sent to another chat, which contradicts §3.
 
 ### The two zones
 
@@ -108,22 +127,6 @@ they came bundled with something that worked.
 An entry in the review zone that nothing ever claims is itself a result: the idea
 was weaker than it looked, and saying so is worth more than keeping it in view
 forever.
-
-No logic, no rule, no computed value and no piece of the mechanism may live
-anywhere else. If understanding how something works requires opening a fifth
-file, the design is wrong — move it into one of the four or into this file.
-
-`.claude/` is the workshop: hooks, scripts, the signal inbox, working state.
-It exists so the maintaining agent works faster, and it holds **nothing the
-factory depends on being understood**. The test is blunt and worth applying
-literally:
-
-> **Delete `.claude/` entirely. The owner, any other project and any fresh
-> session must still be able to read, understand, use and edit every skill and
-> agent. Only automation is lost, never meaning.**
-
-That test is also what keeps the factory portable. A skill that needs a script in
-`.claude/` to make sense cannot be sent to another chat, which contradicts §3.
 
 ---
 
