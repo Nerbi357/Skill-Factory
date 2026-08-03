@@ -18,7 +18,10 @@ fi
 if [ -z "${SIGNALS_FILE:-}" ]; then
   context="This project keeps a signal log of how the work goes. No SIGNALS.md exists yet — create SIGNALS.md at the project root the first time something is worth recording, following the signal-capture skill."
 else
-  count=$(grep -c '^## [0-9]' "$SIGNALS_FILE" 2>/dev/null || echo 0)
+  # grep -c prints the count even when it is zero, but exits non-zero on no
+  # match — so the fallback must not echo a second number into the capture.
+  count=$(grep -c '^## [0-9]' "$SIGNALS_FILE" 2>/dev/null || true)
+  count=${count:-0}
   context="This project keeps a signal log at $SIGNALS_FILE with $count entries. Keep recording per the signal-capture skill."
   if [ "$count" -ge "$THRESHOLD" ]; then
     context="$context There are $count unprocessed signals, at or past the threshold of $THRESHOLD — offer the owner a review pass at the next natural boundary, once, and take no for an answer."

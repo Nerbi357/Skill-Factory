@@ -1,0 +1,10 @@
+# Python bytecode from the maintenance scripts
+__pycache__/
+*.pyc
+
+# Editor and OS leftovers
+.DS_Store
+Thumbs.db
+
+# Local-only Claude Code settings
+.claude/settings.local.json
