@@ -8,7 +8,7 @@ point: regenerating a catalogue, rewriting a skill or opening a review are all
 things whose timing should be yours, not a model's guess that the moment looks
 right.
 
-Three of these live in the factory. Two travel with the skills into whatever
+Five of these live in the factory. Two travel with the skills into whatever
 project you are working in, which is why they are listed here rather than only in
 that project's own documentation.
 
@@ -20,6 +20,8 @@ design is written first so you can argue with it before it is built.
 | `/factory-new` | the factory | planned |
 | `/factory-review` | the factory | planned |
 | `/factory-mine` | the factory | planned |
+| `/factory-test` | the factory | planned |
+| `/factory-loop` | the factory | planned |
 | `/signal` | any project | planned |
 | `/skills-for` | any project | planned |
 
@@ -95,6 +97,57 @@ a result: the idea was weaker than it looked.
 
 **Reach for it when:** you have dropped something into a review folder and want to
 know what in it is worth having.
+
+---
+
+## `/factory-test`
+
+**Checks that a skill actually changes behaviour, using contexts that cannot
+cheat.**
+
+Two clean subagents. The **candidate** receives only the skill folder and a task
+— none of the conversation that produced the skill, none of the rest of the
+library. The **judge** receives the candidate's output and the skill's own
+difference sentence, and rules on one question: did the behaviour the skill
+promises actually appear? When the difference needs demonstrating rather than
+asserting, the run is paired — the same task once with the folder and once
+without — and the comparison metric is declared before the run, not after.
+
+Tasks come from two places, and are generated fresh at run time — nothing is
+stored in the skill folder:
+
+- **a real task** from a working project, past or pending — the strongest
+  evidence, because the task was not shaped to fit the skill;
+- **a task rebuilt from signals** — a recorded `gap`, `friction` or `caught`
+  moment replayed as a scenario the skill should now handle.
+
+The result is a verdict report — what fired, what was ignored, what the paired
+run showed — and it rides in the pull request that proposes whatever follows
+from it.
+
+**Reach for it when:** a skill is freshly drafted, was heavily revised, or you
+doubt it is earning its place.
+
+---
+
+## `/factory-loop`
+
+**Runs one full maintenance iteration of the factory — only when you start it.**
+
+One pass over the channels the factory is fed by, in priority order: unprocessed
+signals from the projects listed in `PROJECT_MEMORY.md` → mining the review zone
+→ the audit, freshness included → tests worth running → building what the plan
+promises next. It picks the single most valuable piece of work it finds, does it,
+and opens **at most one pull request**, with the survey in the description.
+
+Three rules keep it honest. It never runs on a schedule — you invoke it, from a
+session or a prompt, and that is the only trigger. It respects the open-PR cap
+in `PROJECT_MEMORY.md`: at the cap it improves what is already open instead of
+adding to the pile. And an empty iteration is a valid result — finding nothing
+worth changing is a finding, not a failure to be papered over.
+
+**Reach for it when:** you have time to review one pull request and want the
+factory to have spent the interval well.
 
 ---
 
