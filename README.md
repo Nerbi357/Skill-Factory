@@ -20,16 +20,16 @@ useful rather than generic.
 README.md                   you are here — what this is, how to use it, what it holds
 COMMANDS.md                 every command you can run by hand
 FACTORY_PHILOSOPHY.md       the rules the library obeys, for maintaining it
-CUSTOM_SKILLS/              the methods, in force
-CUSTOM_AGENTS/              the workers, in force
-CUSTOM_SKILLS_TO_REVIEW/    raw material — not in force
-CUSTOM_AGENTS_TO_REVIEW/    raw material — not in force
+skills/              the methods, in force
+agents/              the workers, in force
+to_review/skills/    raw material — not in force
+to_review/agents/    raw material — not in force
 ```
 
 Those carry everything. `.claude/` holds settings, hooks and scripts that make
 maintenance faster — delete it and you lose automation, never meaning.
 
-**The two zones matter.** What sits in `CUSTOM_SKILLS/` and `CUSTOM_AGENTS/` has
+**The two zones matter.** What sits in `skills/` and `agents/` has
 been approved and is used; it is what gets improved. The `_TO_REVIEW` folders hold
 drafts, work borrowed from elsewhere, and rules evicted from a skill they did not
 belong in — that is what we improve *with*. **Nothing in a review folder is ever
@@ -56,9 +56,9 @@ Paste this at the start of a session, with the library available to it:
 > what you loaded. If you are unsure which apply, describe the task back to me and
 > ask.
 >
-> Skills are in `CUSTOM_SKILLS/`, agents in `CUSTOM_AGENTS/`. Each folder is
+> Skills are in `skills/`, agents in `agents/`. Each folder is
 > self-contained — read the whole folder, not just `SKILL.md`, before using it.
-> **Ignore anything under `CUSTOM_SKILLS_TO_REVIEW/` or `CUSTOM_AGENTS_TO_REVIEW/`**
+> **Ignore anything under `to_review/skills/` or `to_review/agents/`**
 > unless I point you at it: that is raw material, not approved for use.
 >
 > While we work, keep a `SIGNALS.md` at the root of this project. Record anything
@@ -79,16 +79,16 @@ carries everything it needs.
 
 | | What it does | Maturity |
 | --- | --- | --- |
-| [`CONFIDENCE_CHECK`](CUSTOM_SKILLS/CONFIDENCE_CHECK/) | Marks every fact with how well it is actually known — verified, seen, recalled, or inferred — and forbids inventing a specific. | L3 measured |
-| [`GIT_REPO_STRUCTURE`](CUSTOM_SKILLS/GIT_REPO_STRUCTURE/) | Keeps a repository structured and named so it reads as a finished product rather than someone's working desk. | L0 draft |
-| [`SIGNAL_CAPTURE`](CUSTOM_SKILLS/SIGNAL_CAPTURE/) | Records observations about how the work is going into a SIGNALS.md file, so they can later improve the skill library instead of being forgotten. | L0 draft |
+| [`confidence-check`](skills/confidence-check/) | Marks every fact with how well it is actually known — verified, seen, recalled, or inferred — and forbids inventing a specific. | L3 measured |
+| [`git-repo-structure`](skills/git-repo-structure/) | Keeps a repository structured and named so it reads as a finished product rather than someone's working desk. | L0 draft |
+| [`signal-capture`](skills/signal-capture/) | Records observations about how the work is going into a SIGNALS.md file, so they can later improve the skill library instead of being forgotten. | L0 draft |
 
 
 ### Agents
 
 | | What it does | Maturity |
 | --- | --- | --- |
-| [`SKILL_CREATOR`](CUSTOM_AGENTS/SKILL_CREATOR/) | Maintains the skill library — turns accumulated signals into proposed changes, drafts new skills and agents to the library's standard, mines borrowed work for usable parts, audits what exists for overlap and drift, and says which skills a given task should load. | L0 draft |
+| [`skill-creator`](agents/skill-creator/) | Maintains the skill library — turns accumulated signals into proposed changes, drafts new skills and agents to the library's standard, mines borrowed work for usable parts, audits what exists for overlap and drift, and says which skills a given task should load. | L0 draft |
 
 
 ### In the review zone — raw material, not in force
@@ -96,10 +96,10 @@ carries everything it needs.
 Drafts, borrowed work, and rules evicted from a skill they did not belong in. Nothing here is loaded during real work.
 
 
-**Skills:** [`EVICTED_PRINCIPLES.md`](CUSTOM_SKILLS_TO_REVIEW/EVICTED_PRINCIPLES.md), [`GRILLING`](CUSTOM_SKILLS_TO_REVIEW/GRILLING), [`LIVING_PROJECT`](CUSTOM_SKILLS_TO_REVIEW/LIVING_PROJECT), [`RESEARCH_CONDUCT`](CUSTOM_SKILLS_TO_REVIEW/RESEARCH_CONDUCT), [`SOURCE_EVALUATION`](CUSTOM_SKILLS_TO_REVIEW/SOURCE_EVALUATION), [`VERIFY_BEFORE_DONE`](CUSTOM_SKILLS_TO_REVIEW/VERIFY_BEFORE_DONE), [`WORKING_AGREEMENT`](CUSTOM_SKILLS_TO_REVIEW/WORKING_AGREEMENT)
+**Skills:** [`evicted-principles.md`](to_review/skills/evicted-principles.md), [`grilling`](to_review/skills/grilling), [`living-project`](to_review/skills/living-project), [`research-conduct`](to_review/skills/research-conduct), [`source-evaluation`](to_review/skills/source-evaluation), [`verify-before-done`](to_review/skills/verify-before-done), [`working-agreement`](to_review/skills/working-agreement)
 
 
-**Agents:** [`SOURCE_SCOUT`](CUSTOM_AGENTS_TO_REVIEW/SOURCE_SCOUT)
+**Agents:** [`source-scout`](to_review/agents/source-scout)
 
 <!-- CATALOGUE:END -->
 
@@ -115,28 +115,28 @@ library is run: the skill-or-agent test, the shape every artifact takes, the
 maturity ladder, and the loop that turns observations into changes.
 
 **Phase 2 — the first skills.** Done. Extracted from two large instruction files
-the owner had already written. Three were approved into force; `WORKING_AGREEMENT`
-and `LIVING_PROJECT` went to the review zone pending his decision on them.
-`CONFIDENCE_CHECK` reached `L3 measured` after a paired cold-read test and was
+the owner had already written. Three were approved into force; `working-agreement`
+and `living-project` went to the review zone pending his decision on them.
+`confidence-check` reached `L3 measured` after a paired cold-read test and was
 then narrowed to a single job.
 
-**Phase 3 — `SKILL_CREATOR`.** Done. The agent that turns accumulated signals into
+**Phase 3 — `skill-creator`.** Done. The agent that turns accumulated signals into
 proposed changes, drafts new artifacts, audits the library, and routes skills to a
 task. It drafts the review survey but does not conduct it — a subagent returns a
-result rather than holding a conversation. Its companion `SIGNAL_CAPTURE` travels
+result rather than holding a conversation. Its companion `signal-capture` travels
 into every project and records the observations it later reads.
 
 Neither has been run in anger yet. The first real review is what will show whether
 the signal format survives contact with a working session.
 
 **Phase 4 — more skills, then more agents.** In progress. Three drafts are in the
-review zone awaiting the owner's verdict: `SOURCE_EVALUATION`, `RESEARCH_CONDUCT`
-and `VERIFY_BEFORE_DONE`. Alongside them, a borrowed library of 24 skills, 4 agents
+review zone awaiting the owner's verdict: `source-evaluation`, `research-conduct`
+and `verify-before-done`. Alongside them, a borrowed library of 24 skills, 4 agents
 and 7 checklists has been brought in for mining — triaged, not yet read. The next
 project is YC-Scouter v2: several accelerators instead of one, official data, and
 an interactive site.
 
-**Phase 5 — `UX_DESIGNER`.** Checks what a person meets first — the repository
+**Phase 5 — `ux-designer`.** Checks what a person meets first — the repository
 page, the README, a site, an error message, an empty state — against the skills
 that define what finished looks like. Accumulates the owner's taste rather than
 guessing at it.

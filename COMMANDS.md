@@ -17,15 +17,15 @@ design is written first so you can argue with it before it is built.
 
 | Command | Where it runs | Status |
 | --- | --- | --- |
-| `/FACTORY_NEW` | the factory | planned |
-| `/FACTORY_REVIEW` | the factory | planned |
-| `/FACTORY_MINE` | the factory | planned |
-| `/SIGNAL` | any project | planned |
-| `/SKILLS_FOR` | any project | planned |
+| `/factory-new` | the factory | planned |
+| `/factory-review` | the factory | planned |
+| `/factory-mine` | the factory | planned |
+| `/signal` | any project | planned |
+| `/skills-for` | any project | planned |
 
 ---
 
-## `/FACTORY_NEW`
+## `/factory-new`
 
 **Creates a new skill or agent.**
 
@@ -52,7 +52,7 @@ later.
 
 ---
 
-## `/FACTORY_REVIEW`
+## `/factory-review`
 
 **Turns accumulated observations into changes to the skills.**
 
@@ -74,12 +74,12 @@ been climbing and you want the pile turned into something.
 
 ---
 
-## `/FACTORY_MINE`
+## `/factory-mine`
 
 **Gets the value out of borrowed work and into what is actually in force.**
 
-Point it at something in `CUSTOM_SKILLS_TO_REVIEW/` or
-`CUSTOM_AGENTS_TO_REVIEW/` — a skill written by someone else, a draft, a rule
+Point it at something in `to_review/skills/` or
+`to_review/agents/` — a skill written by someone else, a draft, a rule
 evicted from a file it did not belong in.
 
 It never promotes a file whole. Adopting someone else's artifact entire imports
@@ -97,7 +97,7 @@ know what in it is worth having.
 
 ---
 
-## `/SIGNAL`
+## `/signal`
 
 **Records an observation of yours, in your words, right now.**
 
@@ -108,7 +108,7 @@ before asking again", "that table was exactly right" are all things only you can
 report.
 
 ```
-/SIGNAL you started implementing before asking what it was for
+/signal you started implementing before asking what it was for
 ```
 
 Writes a dated entry into `SIGNALS.md` at the project root, with your words quoted
@@ -120,12 +120,12 @@ and discuss it. One line, then carry on.
 
 ---
 
-## `/SKILLS_FOR`
+## `/skills-for`
 
 **Says which skills to load for the task in front of you.**
 
 ```
-/SKILLS_FOR building a scraper for a source that keeps changing shape
+/skills-for building a scraper for a source that keeps changing shape
 ```
 
 Returns a prescription, not a list:

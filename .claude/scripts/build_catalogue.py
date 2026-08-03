@@ -105,14 +105,14 @@ def names(folder: str, entrypoint: str) -> str:
 def build() -> str:
     parts = [
         "### Skills\n",
-        table(collect("CUSTOM_SKILLS", "SKILL.md"), "CUSTOM_SKILLS", "No skills yet."),
+        table(collect("skills", "SKILL.md"), "skills", "No skills yet."),
         "\n### Agents\n",
-        table(collect("CUSTOM_AGENTS", "AGENT.md"), "CUSTOM_AGENTS", "No agents yet."),
+        table(collect("agents", "AGENT.md"), "agents", "No agents yet."),
         "\n### In the review zone — raw material, not in force\n",
         "Drafts, borrowed work, and rules evicted from a skill they did not belong "
         "in. Nothing here is loaded during real work.\n",
-        "\n**Skills:** " + names("CUSTOM_SKILLS_TO_REVIEW", "SKILL.md"),
-        "\n**Agents:** " + names("CUSTOM_AGENTS_TO_REVIEW", "AGENT.md"),
+        "\n**Skills:** " + names("to_review/skills", "SKILL.md"),
+        "\n**Agents:** " + names("to_review/agents", "AGENT.md"),
     ]
     return "\n" + "\n".join(parts)
 

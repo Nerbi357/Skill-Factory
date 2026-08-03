@@ -1,3 +1,9 @@
+<!-- STAMPED COPY — do not edit.
+     Source:      FACTORY_PHILOSOPHY.md
+     Taken:       2026-07-28
+     Canonical:   edit the source and rerun .claude/scripts/sync_bundles.py
+-->
+
 # FACTORY PHILOSOPHY
 
 **What this file is.** The operating contract for this repository. It is written
