@@ -24,7 +24,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-AGENTS = ROOT / "CUSTOM_AGENTS"
+AGENTS = ROOT / "agents"
 
 ENTRY = re.compile(r"^\s*-\s+`([^`]+)`\s*<-\s*`([^`]+)`\s*$", re.M)
 
@@ -43,7 +43,7 @@ def stamped(source: str, date: str, body: str) -> str:
 
 def sync(date: str, check: bool) -> int:
     if not AGENTS.is_dir():
-        print("no CUSTOM_AGENTS directory; nothing to do")
+        print("no agents directory; nothing to do")
         return 0
 
     stale: list[str] = []

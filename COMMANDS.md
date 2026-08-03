@@ -8,7 +8,7 @@ point: regenerating a catalogue, rewriting a skill or opening a review are all
 things whose timing should be yours, not a model's guess that the moment looks
 right.
 
-Three of these live in the factory. Two travel with the skills into whatever
+Five of these live in the factory. Two travel with the skills into whatever
 project you are working in, which is why they are listed here rather than only in
 that project's own documentation.
 
@@ -17,15 +17,17 @@ design is written first so you can argue with it before it is built.
 
 | Command | Where it runs | Status |
 | --- | --- | --- |
-| `/FACTORY_NEW` | the factory | planned |
-| `/FACTORY_REVIEW` | the factory | planned |
-| `/FACTORY_MINE` | the factory | planned |
-| `/SIGNAL` | any project | planned |
-| `/SKILLS_FOR` | any project | planned |
+| `/factory-new` | the factory | planned |
+| `/factory-review` | the factory | planned |
+| `/factory-mine` | the factory | planned |
+| `/factory-test` | the factory | planned |
+| `/factory-loop` | the factory | planned |
+| `/signal` | any project | planned |
+| `/skills-for` | any project | planned |
 
 ---
 
-## `/FACTORY_NEW`
+## `/factory-new`
 
 **Creates a new skill or agent.**
 
@@ -52,7 +54,7 @@ later.
 
 ---
 
-## `/FACTORY_REVIEW`
+## `/factory-review`
 
 **Turns accumulated observations into changes to the skills.**
 
@@ -66,20 +68,21 @@ This is the loop the whole repository exists to run. Five steps:
    opinion rather than dressed up as evidence.
 4. **Asks you.** Each proposal comes as options with a recommendation. This is the
    survey — the point of the review, not a formality wrapped around it.
-5. Applies what you accepted, and writes what you turned down into the same
-   skill's provenance block with your reason, so nobody proposes it again blind.
+5. Applies what you accepted. What you turned down is simply not applied — the
+   closed pull request keeps the discussion, and if the same idea ever returns
+   you say no again.
 
 **Reach for it when:** a phase or a project closes, or when the signal count has
 been climbing and you want the pile turned into something.
 
 ---
 
-## `/FACTORY_MINE`
+## `/factory-mine`
 
 **Gets the value out of borrowed work and into what is actually in force.**
 
-Point it at something in `CUSTOM_SKILLS_TO_REVIEW/` or
-`CUSTOM_AGENTS_TO_REVIEW/` — a skill written by someone else, a draft, a rule
+Point it at something in `to_review/skills/` or
+`to_review/agents/` — a skill written by someone else, a draft, a rule
 evicted from a file it did not belong in.
 
 It never promotes a file whole. Adopting someone else's artifact entire imports
@@ -97,7 +100,58 @@ know what in it is worth having.
 
 ---
 
-## `/SIGNAL`
+## `/factory-test`
+
+**Checks that a skill actually changes behaviour, using contexts that cannot
+cheat.**
+
+Two clean subagents. The **candidate** receives only the skill folder and a task
+— none of the conversation that produced the skill, none of the rest of the
+library. The **judge** receives the candidate's output and the skill's own
+difference sentence, and rules on one question: did the behaviour the skill
+promises actually appear? When the difference needs demonstrating rather than
+asserting, the run is paired — the same task once with the folder and once
+without — and the comparison metric is declared before the run, not after.
+
+Tasks come from two places, and are generated fresh at run time — nothing is
+stored in the skill folder:
+
+- **a real task** from a working project, past or pending — the strongest
+  evidence, because the task was not shaped to fit the skill;
+- **a task rebuilt from signals** — a recorded `gap`, `friction` or `caught`
+  moment replayed as a scenario the skill should now handle.
+
+The result is a verdict report — what fired, what was ignored, what the paired
+run showed — and it rides in the pull request that proposes whatever follows
+from it.
+
+**Reach for it when:** a skill is freshly drafted, was heavily revised, or you
+doubt it is earning its place.
+
+---
+
+## `/factory-loop`
+
+**Runs one full maintenance iteration of the factory — only when you start it.**
+
+One pass over the channels the factory is fed by, in priority order: unprocessed
+signals from the projects listed in `PROJECT_MEMORY.md` → mining the review zone
+→ the audit, freshness included → tests worth running → building what the plan
+promises next. It picks the single most valuable piece of work it finds, does it,
+and opens **at most one pull request**, with the survey in the description.
+
+Three rules keep it honest. It never runs on a schedule — you invoke it, from a
+session or a prompt, and that is the only trigger. It respects the open-PR cap
+in `PROJECT_MEMORY.md`: at the cap it improves what is already open instead of
+adding to the pile. And an empty iteration is a valid result — finding nothing
+worth changing is a finding, not a failure to be papered over.
+
+**Reach for it when:** you have time to review one pull request and want the
+factory to have spent the interval well.
+
+---
+
+## `/signal`
 
 **Records an observation of yours, in your words, right now.**
 
@@ -108,7 +162,7 @@ before asking again", "that table was exactly right" are all things only you can
 report.
 
 ```
-/SIGNAL you started implementing before asking what it was for
+/signal you started implementing before asking what it was for
 ```
 
 Writes a dated entry into `SIGNALS.md` at the project root, with your words quoted
@@ -120,12 +174,12 @@ and discuss it. One line, then carry on.
 
 ---
 
-## `/SKILLS_FOR`
+## `/skills-for`
 
 **Says which skills to load for the task in front of you.**
 
 ```
-/SKILLS_FOR building a scraper for a source that keeps changing shape
+/skills-for building a scraper for a source that keeps changing shape
 ```
 
 Returns a prescription, not a list:
@@ -149,6 +203,6 @@ routing takes over.
 
 ## Naming
 
-Commands are `CAPS_WITH_UNDERSCORES`, like everything else you open. A command is
-a skill, and a skill folder's name is also how it is invoked, so the two match by
-construction.
+Commands are lowercase-with-hyphens, like every artifact: a command is a skill,
+and a skill's folder, frontmatter `name` and invocation are the same string, so
+the register and the invocations match by construction.
