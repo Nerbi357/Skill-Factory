@@ -6,7 +6,8 @@ finished.**
 Every skill here started as something that had to be explained twice. Rather than
 explain it a third time, it was written down, given a boundary, and put where any
 session can read it. The library grows from actual work: observations are captured
-while a project runs, and turned into changes to these files at review.
+while a project runs, and turned into changes to these files at review — every one
+of them through a pull request the owner rules on.
 
 Nothing in here is borrowed as a standard. Where an outside method and the owner's
 own preference disagree, the preference wins — that is what makes these files
@@ -17,25 +18,26 @@ useful rather than generic.
 ## What is in here
 
 ```
-README.md                   you are here — what this is, how to use it, what it holds
-COMMANDS.md                 every command you can run by hand
-FACTORY_PHILOSOPHY.md       the rules the library obeys, for maintaining it
-skills/              the methods, in force
-agents/              the workers, in force
-to_review/skills/    raw material — not in force
-to_review/agents/    raw material — not in force
+README.md               you are here — what this is, how to use it, the catalogue
+COMMANDS.md             every command you can run by hand
+FACTORY_PHILOSOPHY.md   the rules the library obeys, for maintaining it
+PROJECT_MEMORY.md       where the work stands — the plan, decisions, technical notes
+IDEAS.md                ideas for future skills and agents
+skills/                 the methods, in force
+agents/                 the workers, in force
+to_review/              raw material — not in force
 ```
 
 Those carry everything. `.claude/` holds settings, hooks and scripts that make
 maintenance faster — delete it and you lose automation, never meaning.
 
-**The two zones matter.** What sits in `skills/` and `agents/` has
-been approved and is used; it is what gets improved. The `_TO_REVIEW` folders hold
-drafts, work borrowed from elsewhere, and rules evicted from a skill they did not
-belong in — that is what we improve *with*. **Nothing in a review folder is ever
-loaded into real work.** Borrowed material is never promoted whole: it is taken
-apart into its smallest usable ideas, and those ideas extend, merge into, or seed
-what is in force.
+**The two zones matter.** What sits in `skills/` and `agents/` has been approved
+and is used; it is what gets improved. `to_review/` holds drafts, work borrowed
+from elsewhere, and rules evicted from a skill they did not belong in — that is
+what we improve *with*. **Nothing in `to_review/` is ever loaded into real
+work.** Borrowed material is never promoted whole: it is taken apart into its
+smallest usable ideas, and those ideas extend, merge into, or seed what is in
+force.
 
 **Skills** are methods. A session reads one and works differently because of it.
 **Agents** are workers with their own context, delegated to and reporting back.
@@ -51,15 +53,14 @@ works.
 Paste this at the start of a session, with the library available to it:
 
 > My skill library is at `Nerbi357/Skill-Factory`. Read its `README.md` first —
-> the catalogue lists every skill and agent with a one-line description and how
-> well tested each one is. Load only what this task actually needs, and tell me
-> what you loaded. If you are unsure which apply, describe the task back to me and
-> ask.
+> the catalogue lists every skill and agent with a one-line description. Load
+> only what this task actually needs, and tell me what you loaded. If you are
+> unsure which apply, describe the task back to me and ask.
 >
-> Skills are in `skills/`, agents in `agents/`. Each folder is
-> self-contained — read the whole folder, not just `SKILL.md`, before using it.
-> **Ignore anything under `to_review/skills/` or `to_review/agents/`**
-> unless I point you at it: that is raw material, not approved for use.
+> Skills are in `skills/`, agents in `agents/`. Each folder is self-contained —
+> read the whole folder, not just `SKILL.md`, before using it. **Ignore anything
+> under `to_review/`** unless I point you at it: that is raw material, not
+> approved for use.
 >
 > While we work, keep a `SIGNALS.md` at the root of this project. Record anything
 > worth remembering about *how* we worked: a correction I made, friction that cost
@@ -105,57 +106,9 @@ Drafts, borrowed work, and rules evicted from a skill they did not belong in. No
 
 ---
 
-## What is next
-
-The visible roadmap. Entries leave this list only by being built or by being
-turned down with a reason.
-
-**Phase 1 — the constitution.** Done. `FACTORY_PHILOSOPHY.md` states how the
-library is run: the skill-or-agent test, the shape every artifact takes, the
-maturity ladder, and the loop that turns observations into changes.
-
-**Phase 2 — the first skills.** Done. Extracted from two large instruction files
-the owner had already written. Three were approved into force; `working-agreement`
-and `living-project` went to the review zone pending his decision on them.
-`confidence-check` reached `L3 measured` after a paired cold-read test and was
-then narrowed to a single job.
-
-**Phase 3 — `skill-creator`.** Done. The agent that turns accumulated signals into
-proposed changes, drafts new artifacts, audits the library, and routes skills to a
-task. It drafts the review survey but does not conduct it — a subagent returns a
-result rather than holding a conversation. Its companion `signal-capture` travels
-into every project and records the observations it later reads.
-
-Neither has been run in anger yet. The first real review is what will show whether
-the signal format survives contact with a working session.
-
-**Phase 4 — more skills, then more agents.** In progress. Three drafts are in the
-review zone awaiting the owner's verdict: `source-evaluation`, `research-conduct`
-and `verify-before-done`. Alongside them, a borrowed library of 24 skills, 4 agents
-and 7 checklists has been brought in for mining — triaged, not yet read. The next
-project is YC-Scouter v2: several accelerators instead of one, official data, and
-an interactive site.
-
-**Phase 5 — `ux-designer`.** Checks what a person meets first — the repository
-page, the README, a site, an error message, an empty state — against the skills
-that define what finished looks like. Accumulates the owner's taste rather than
-guessing at it.
-
-**After that.** Revisions driven by real use. There is no final state; the measure
-of health is whether the last month produced changes traceable to real work.
-
----
-
-## Still being mined
-
-`AI_INSTRUCTIONS (1).md` and `SKILL (1).md` are the owner's originals, kept
-deliberately. They are the source material the first skills are extracted from and
-are consulted while that work continues. They leave when the owner says they are
-redundant, not before.
-
----
-
 ## For whoever maintains this
 
-Read `FACTORY_PHILOSOPHY.md` before touching anything. It is written for that job
-and assumes you already know what a skill is; this README does not.
+Read `FACTORY_PHILOSOPHY.md` before touching anything — it is the operating
+contract, and it assumes you already know what a skill is. `PROJECT_MEMORY.md`
+says where the work currently stands and what has been decided; this README does
+not.
