@@ -112,18 +112,9 @@ the test has cost more time than any other habit on this list.
 
 ---
 
-## Provenance
+## Open questions for the owner
 
-Maturity: **draft, not in force** · Since: 2026-07-28 · Sources: the owner's
-`AI_INSTRUCTIONS` §7 and §14.
-
-Named for the first wave and deliberately held back: it overlaps `confidence-check`
-at the edges and a future phase-discipline skill in §2's last bullet, and the
-boundary is easier to draw once the neighbours exist than by guessing at them.
-
-### Open questions for the owner
-
-**Where does the phase boundary belong?** §6's last preference — the full technical
+**Where does the phase boundary belong?** The last owner preference — the full technical
 pass at every phase boundary — is about phases, not about verification. It is here
 because there is nowhere else yet. When a phase skill exists it should move, and
 this skill should say only what "done" requires for one piece of work.

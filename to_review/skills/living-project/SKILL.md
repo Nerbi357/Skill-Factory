@@ -267,33 +267,3 @@ than abandoned.
   educational-professional project that could be attached to a CV or become
   material for an article. Ask at the start anyway — why this project, who besides
   him will see it, what "this went well" would look like.
-
----
-
-## Provenance
-
-Maturity: **L1 used** · Since: 2026-07-28 · Sources: the owner's own
-`living-project` skill, written during his YC-Scouter project and used there.
-
-Maturity is L1 rather than L0 because the method predates this library and shaped
-a real project; it has not yet passed a cold read in this form.
-
-### Changelog
-
-- **2026-07-28 — adopted into the library.** Content is the owner's, restructured
-  to the factory's anatomy: difference sentence, scope lines, owner preferences
-  separated from the general method, provenance block.
-- **2026-07-28 — deduplicated.** The original §8 (research and verification
-  discipline) was removed entirely; it is now `confidence-check`, which
-  says the same things at more length. The original §9 (using agents) was cut from
-  a full catalogue of roles and orchestration shapes down to the two points a
-  long-lived project specifically needs, because the catalogue duplicated
-  `AI_INSTRUCTIONS` §8 almost line for line and deserves to be its own skill.
-
-### Considered and turned down
-
-- **2026-07-28 — splitting this into four skills** (architecture, sequencing,
-  reproducibility, product layer). Each section is substantial enough to stand
-  alone. Kept as one because the sections only make sense together: the
-  architecture exists to serve the sequencing, and both exist to make the product
-  layer cheap. Split it if the file becomes hard to load, not because it is long.

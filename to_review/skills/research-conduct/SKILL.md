@@ -97,25 +97,7 @@ third line, which names the one check that *would* matter.
 
 ---
 
-## Provenance
-
-Maturity: **draft, not in force** · Since: 2026-07-28
-
-§2 is the only part with evidence behind it, and the evidence is strong. Two
-sessions given the same blocked research task reached **opposite** operational
-conclusions — one that a service was down and to build against a bulk file, the
-other that the same signal was routine maintenance. Both marked every individual
-fact scrupulously. Per-claim honesty was excellent and the bottom line was left for
-the reader to assemble. It was written into `confidence-check`, then evicted from
-it as belonging to research conduct rather than to any single claim, and parked in
-`evicted-principles.md` awaiting exactly this file.
-
-§§1, 3, 4 and 5 have no such evidence. They are assembled from what the eviction
-implied a research skill would need. **Treat them as proposals rather than as
-findings** — the honest split is that one section here was earned and four were
-reasoned.
-
-### Open questions for the owner
+## Open questions for the owner
 
 **Does §1 belong here or in a skill about starting any piece of work?** "Name the
 decision before spending the hours" is not specific to research. If a broader

@@ -27,7 +27,8 @@ Open the repository page and stop. Before reading anything you already know:
 - [ ] Every other file lives in a block.
 - [ ] Nothing was moved that the platform pins in place (CI directories, host
       configuration, the dependency file).
-- [ ] Human-facing folders are CAPS; machinery is lowercase or dot-prefixed.
+- [ ] Names are consistent — one lowercase-with-hyphens name per thing;
+      machinery stays lowercase or dot-prefixed.
 
 ## Prose
 

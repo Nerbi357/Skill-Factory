@@ -63,12 +63,3 @@ On that reading it stays a separate skill, invoked on purpose, and only the
 question-shape ideas migrate into the working agreement.
 
 That choice is the owner's and has not been made.
-
----
-
-## Provenance
-
-Maturity: **not applicable — review zone.** Added 2026-07-28.
-
-Source: supplied by the owner as raw material. Original author unattributed; the
-text above the divider is reproduced as given, unedited.

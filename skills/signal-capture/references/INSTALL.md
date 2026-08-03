@@ -97,8 +97,8 @@ session must never break because of a bookkeeping hook.
 
 When a review is due, bring `SIGNALS.md` to a session that has the skill library
 available, and ask for a review pass. Processed entries can then be cleared from
-the project's file — their permanent record lives in the library, in the changelog
-of whatever they changed.
+the project's file — the change each one produced is in the skill it touched, and
+the discussion is in the pull request that applied it.
 
 Nothing in the project decides what changes. That judgement is the owner's, and it
 happens where the skills live.

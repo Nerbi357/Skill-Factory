@@ -72,9 +72,10 @@ silently breaks deployment.
 
 ## 3. Names
 
-Folders a human is meant to open are in CAPS (`DOCS/`, `AI_USAGE/`). Service
-folders stay lowercase or dot-prefixed. Names say what the thing is for, not what
-category it belongs to.
+Names say what the thing is for, not what category it belongs to, and one thing
+keeps one name everywhere it appears — folder, configuration, invocation. Human
+names are lowercase-with-hyphens unless the platform pins a form (`README.md`,
+`LICENSE`); service folders stay lowercase or dot-prefixed.
 
 ## 4. Commit subjects are part of the finished look
 
@@ -160,48 +161,10 @@ file is the reasoning behind it.
 - **The commit column is something he actively reads.** This rule entered the
   contract because he pointed out that the per-file commit subject on the
   repository page is part of how the project looks — not metadata.
-- **CAPS for human-facing folders** is his convention and it is deliberate; it
-  makes the file listing sort into "things to open" and "machinery".
+- **One name everywhere** is his convention: a thing's folder, its configured
+  name and the way it is invoked are the same lowercase-with-hyphens string, so
+  nothing has an alias.
 - **Ask where a file belongs** rather than guessing. He would rather answer a
   one-line question than find a stray file later.
 - The finished state includes the platform surface — he considers an empty wiki
   tab or a blank About panel part of the product.
-
----
-
-## Provenance
-
-Maturity: **L0 draft** · Since: 2026-07-28 · Sources: the owner's
-`AI_INSTRUCTIONS` §10, plus the observed conventions of his YC-Scouter repository.
-
-### Changelog
-
-- **2026-07-28 — created** as `REPO_FINISHED_LOOK`. The skill the owner named
-  first when the library was being planned. The measurement-versus-description
-  rule was split: the general discipline of stating facts went to
-  `confidence-check`, and what remains here is specifically about repository prose
-  going stale.
-- **2026-07-28 — renamed to `git-repo-structure`**, and the standard restated.
-  "Something that could be attached to a CV or become material for an article" was
-  the owner's earlier framing and undersold it: every project is built to be a
-  finished professional product or solution, full stop.
-- **2026-07-28 — the two stages (§1).** From the owner. A repository is either
-  final — holding only what the product needs — or in a bounded working stage where
-  service files and scratch branches are permitted because they buy something
-  specific. The default is final, and the working stage is a departure that has to
-  be declared and ended. This inverts what happens otherwise: clutter arrives as a
-  byproduct nobody decided on, and by the end nobody can tell which files were
-  meant.
-- **2026-07-28 — produced data may be deleted (§7).** The previous absolute ban
-  was the owner's own earlier rule and he relaxed it: an archive of something that
-  turned out useless is clutter, and clutter is what the final stage removes.
-  Deletion now needs either his word or a plain, stated necessity. What stays
-  forbidden is deleting quietly.
-
-### Considered and turned down
-
-- **2026-07-28 — covering websites and product interfaces in the same file.** The
-  owner intends this skill to grow a web half. Kept out for now: the repository
-  rules are concrete and testable today, the web rules are not yet written, and
-  merging an unwritten half into a working file would weaken both. It arrives as
-  its own reference section when there is a real interface to judge.

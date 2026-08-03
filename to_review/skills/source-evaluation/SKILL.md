@@ -99,20 +99,7 @@ its confidence mark. No preamble, no restatement of the brief.
 
 ---
 
-## Provenance
-
-Maturity: **draft, not in force** · Since: 2026-07-28
-
-Written after a gap appeared while working through how the factory updates: a
-project needed to decide whether a data source was worth building on, and nothing
-covered it.
-
-**It substantially already exists.** The owner's `source-scout` agent, written for
-the YC-Scouter v2 reopening, answers the same question in the same shape — the
-seven-point structure and the confidence marks here are his. That agent is now in
-`to_review/agents/source-scout/` for the same verdict.
-
-### Open questions for the owner
+## Open questions for the owner
 
 **Is this a skill at all, or only an agent?** Evaluating a source generates a lot
 of noise for one conclusion and can run in parallel across several sources — two of

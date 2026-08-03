@@ -66,8 +66,9 @@ This is the loop the whole repository exists to run. Five steps:
    opinion rather than dressed up as evidence.
 4. **Asks you.** Each proposal comes as options with a recommendation. This is the
    survey — the point of the review, not a formality wrapped around it.
-5. Applies what you accepted, and writes what you turned down into the same
-   skill's provenance block with your reason, so nobody proposes it again blind.
+5. Applies what you accepted. What you turned down is simply not applied — the
+   closed pull request keeps the discussion, and if the same idea ever returns
+   you say no again.
 
 **Reach for it when:** a phase or a project closes, or when the signal count has
 been climbing and you want the pile turned into something.
@@ -149,6 +150,6 @@ routing takes over.
 
 ## Naming
 
-Commands are `CAPS_WITH_UNDERSCORES`, like everything else you open. A command is
-a skill, and a skill folder's name is also how it is invoked, so the two match by
-construction.
+Commands are lowercase-with-hyphens, like every artifact: a command is a skill,
+and a skill's folder, frontmatter `name` and invocation are the same string, so
+the register and the invocations match by construction.

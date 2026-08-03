@@ -77,18 +77,18 @@ carries everything it needs.
 <!-- CATALOGUE:START — generated from the artifact files; edit the artifacts, not this block -->
 ### Skills
 
-| | What it does | Maturity |
-| --- | --- | --- |
-| [`confidence-check`](skills/confidence-check/) | Marks every fact with how well it is actually known — verified, seen, recalled, or inferred — and forbids inventing a specific. | L3 measured |
-| [`git-repo-structure`](skills/git-repo-structure/) | Keeps a repository structured and named so it reads as a finished product rather than someone's working desk. | L0 draft |
-| [`signal-capture`](skills/signal-capture/) | Records observations about how the work is going into a SIGNALS.md file, so they can later improve the skill library instead of being forgotten. | L0 draft |
+| | What it does |
+| --- | --- |
+| [`confidence-check`](skills/confidence-check/) | Marks every fact with how well it is actually known — verified, seen, recalled, or inferred — and forbids inventing a specific. |
+| [`git-repo-structure`](skills/git-repo-structure/) | Keeps a repository structured and named so it reads as a finished product rather than someone's working desk. |
+| [`signal-capture`](skills/signal-capture/) | Records observations about how the work is going into a SIGNALS.md file, so they can later improve the skill library instead of being forgotten. |
 
 
 ### Agents
 
-| | What it does | Maturity |
-| --- | --- | --- |
-| [`skill-creator`](agents/skill-creator/) | Maintains the skill library — turns accumulated signals into proposed changes, drafts new skills and agents to the library's standard, mines borrowed work for usable parts, audits what exists for overlap and drift, and says which skills a given task should load. | L0 draft |
+| | What it does |
+| --- | --- |
+| [`skill-creator`](agents/skill-creator/) | Maintains the skill library — turns accumulated signals into proposed changes, drafts new skills and agents to the library's standard, mines borrowed work for usable parts, audits what exists for overlap and drift, and says which skills a given task should load. |
 
 
 ### In the review zone — raw material, not in force
@@ -96,10 +96,10 @@ carries everything it needs.
 Drafts, borrowed work, and rules evicted from a skill they did not belong in. Nothing here is loaded during real work.
 
 
-**Skills:** [`evicted-principles.md`](to_review/skills/evicted-principles.md), [`grilling`](to_review/skills/grilling), [`living-project`](to_review/skills/living-project), [`research-conduct`](to_review/skills/research-conduct), [`source-evaluation`](to_review/skills/source-evaluation), [`verify-before-done`](to_review/skills/verify-before-done), [`working-agreement`](to_review/skills/working-agreement)
+**Methods:** [`evicted-principles.md`](to_review/skills/evicted-principles.md), [`grilling`](to_review/skills/grilling), [`living-project`](to_review/skills/living-project), [`research-conduct`](to_review/skills/research-conduct), [`source-evaluation`](to_review/skills/source-evaluation), [`verify-before-done`](to_review/skills/verify-before-done), [`working-agreement`](to_review/skills/working-agreement)
 
 
-**Agents:** [`source-scout`](to_review/agents/source-scout)
+**Workers:** [`source-scout`](to_review/agents/source-scout)
 
 <!-- CATALOGUE:END -->
 

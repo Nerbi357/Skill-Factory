@@ -1,6 +1,6 @@
 <!-- STAMPED COPY — do not edit.
      Source:      skills/confidence-check/SKILL.md
-     Taken:       2026-07-28
+     Taken:       2026-08-03
      Canonical:   edit the source and rerun .claude/scripts/sync_bundles.py
 -->
 
@@ -119,58 +119,3 @@ exists to prevent.
   before arguing from it** — not after the argument has been made. This rule
   exists because the opposite happened: an architecture was proposed on a recalled
   belief about how skills are discovered, and the documentation contradicted it.
-
----
-
-## Provenance
-
-Maturity: **L3 measured** · Since: 2026-07-28 · Sources: the owner's
-`AI_INSTRUCTIONS` §7a, and §8 of his `living-project` skill.
-
-The only artifact in the library carrying evidence rather than an assertion. Two
-sessions that had not written it were given the same real research task — one with
-this folder and told only to follow it, one with nothing. Both reports ran to
-roughly 350 lines. The one with the skill carried **sixty-odd confidence marks
-distributed through the body**; the baseline carried **one**.
-
-The difference was not honesty — the baseline was honest — but its *granularity*.
-The baseline put its caution in one global caveat, which tells a reader the whole
-report is equally shaky and gives no way to separate the solid parts from the
-secondhand ones. The marked report lets a reader build on what was verified and go
-check what was not. Every network route to the source was blocked in both runs, so
-the run also exercised the rule that a blocked check is not a negative result:
-both respected it, and the marked run additionally said what it had verified
-*about* — the contents of third-party code, not the behaviour of the API.
-
-### Changelog
-
-- **2026-07-28 — created** as `RESEARCH_WITH_CONFIDENCE`. Extracted first because
-  it is small, sharp and applies to almost every task.
-- **2026-07-28 — what "verified" means when the thing cannot be reached (§1).**
-  From the cold read: the tested session invented a `verified (file contents)` mark
-  for itself, because in a blocked environment it could only confirm what a
-  third-party repository contained, never that the API worked. It closed the gap
-  unprompted; the next session might not.
-- **2026-07-28 — renamed to `confidence-check` and narrowed to one job.** The
-  owner's diagnosis, and it was right: the file had drifted into being a research
-  agent wearing a skill's clothes — part confidence discipline, part advice on how
-  to run an investigation. Two sections were evicted to
-  `to_review/skills/evicted-principles.md`: checking the free or existing
-  option first, which is a preference about how to approach project work; and
-  ending a report with a recommendation, which is about the shape of a research
-  report rather than about any single claim. The rule that produced both evictions
-  is now a gate in the philosophy: **one skill, one task or one principle.** What
-  remains applies to a single claim, one claim at a time.
-
-### Considered and turned down
-
-- **2026-07-28 — a formal trigger-test file** (phrases that must and must not fire
-  the skill). Trigger tests prove a description auto-fires, and this library is
-  delivered by repository access and by sending folders, where routing is
-  explicit. What needs proving instead is that a session reading the folder cold
-  does the right thing — which is what the cold read above did.
-- **2026-07-28 — keeping "end with what you would do".** It came from a real
-  finding: two sessions reached opposite operational conclusions from the same
-  absence of evidence, both while marking every fact scrupulously. The finding
-  stands and the fix is real, but it belongs to a skill about conducting research,
-  not to this one. Kept in the evicted file so it is not lost.

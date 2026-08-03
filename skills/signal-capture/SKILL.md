@@ -30,7 +30,7 @@ change later, if the owner says so.
 This means you record things you disagree with, and things whose implication you
 cannot see yet. Judging on the way in defeats the mechanism.
 
-## 2. The six kinds
+## 2. The five kinds
 
 | Kind | What it is |
 | --- | --- |
@@ -112,9 +112,9 @@ boundary is a natural moment; the end of a small task is not.
 
 ## 6. After a review
 
-Signals that have been processed can be cleared from `SIGNALS.md` — their
-permanent record lives in the library, in the changelog of whatever they changed.
-Leave anything not yet processed exactly as it is.
+Signals that have been processed can be cleared from `SIGNALS.md` — the change
+they produced is in the skill it touched, and the discussion that produced it is
+in the pull request. Leave anything not yet processed exactly as it is.
 
 ---
 
@@ -132,43 +132,3 @@ Leave anything not yet processed exactly as it is.
   well, that is the highest-quality signal available — record it verbatim and
   immediately.
 - **Do not attach the file to the conversation.** He reads it where it lives.
-
----
-
-## Provenance
-
-Maturity: **L0 draft** · Since: 2026-07-28 · Sources: designed with the owner
-while building the skill library; the six kinds and the record format come from
-`FACTORY_PHILOSOPHY.md` §6, which this skill implements in the field.
-
-This is the companion half of `skill-creator`. This skill is the ears and travels
-into every project; the agent is the judgement and stays in the library. They were
-split because an agent cannot observe a conversation it is not part of — a
-subagent is invoked, does its work in its own context, and returns. There is no
-mechanism by which one watches you work, and a design that assumed otherwise would
-have failed on contact.
-
-### Changelog
-
-- **2026-07-28 — created.** Written alongside `skill-creator`, from the owner's
-  requirement that the library improve from ordinary work rather than from
-  dedicated sessions.
-- **2026-07-28 — `repeat` merged into `friction`.** The owner's reading, and it
-  was right: explaining the same thing twice *is* friction, and a separate kind
-  only made the classifier hesitate at the moment it most needs to be fast. Six
-  kinds became five.
-- **2026-07-28 — the log moved to the project root**, out of any service folder.
-  The owner reads it and reviews it himself, and a file nobody stumbles over is a
-  file nobody processes.
-- **2026-07-28 — threshold raised from ten to twenty, and made a question.** Ten
-  fired often enough to become furniture. Twenty is now a default that the skill
-  asks about once when it lands somewhere new, since how fast a project generates
-  signals varies more than any fixed number can absorb.
-
-### Considered and turned down
-
-- **2026-07-28 — a `Stop` hook prompting for a signal after every turn.**
-  Maximum capture, and rejected: it would fire after "fix that typo" as readily as
-  after a real correction, and a prompt that cries wolf gets ignored within a day.
-  A `SessionStart` hook that counts unprocessed signals is installed instead — see
-  `references/INSTALL.md`. Revisit if signals turn out to be getting missed.

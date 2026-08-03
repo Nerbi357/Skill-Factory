@@ -23,15 +23,6 @@ README = ROOT / "README.md"
 START = "<!-- CATALOGUE:START"
 END = "<!-- CATALOGUE:END -->"
 
-MATURITY = {
-    "L0": "draft",
-    "L1": "used",
-    "L2": "tested",
-    "L3": "measured",
-    "L4": "proven",
-}
-
-
 def frontmatter_description(text: str) -> str:
     """First sentence of the description field, or '' if there is none."""
     if not text.startswith("---"):
@@ -46,20 +37,9 @@ def frontmatter_description(text: str) -> str:
     return sentence.rstrip(".") + "."
 
 
-def maturity(text: str) -> str:
-    """The level from the provenance block, as 'L1 used'."""
-    match = re.search(r"^Maturity:\s*\**\s*(L[0-4])", text, re.M)
-    if not match:
-        return "unstated"
-    level = match.group(1)
-    return f"{level} {MATURITY[level]}"
-
-
-def collect(folder: str, entrypoint: str) -> list[tuple[str, str, str]]:
-    """Description comes from the entrypoint's frontmatter; maturity from wherever
-    the provenance block lives. For a skill that is the same file. For an agent the
-    provenance sits in README.md, because AGENT.md is a system prompt and its own
-    history is of no use to the worker reading it."""
+def collect(folder: str, entrypoint: str) -> list[tuple[str, str]]:
+    """One row per artifact folder: its name and the first sentence of its
+    description, read from the entrypoint's frontmatter."""
     directory = ROOT / folder
     if not directory.is_dir():
         return []
@@ -69,21 +49,16 @@ def collect(folder: str, entrypoint: str) -> list[tuple[str, str, str]]:
         if not artifact.is_file():
             continue
         text = artifact.read_text(encoding="utf-8")
-        level = maturity(text)
-        if level == "unstated":
-            readme = path / "README.md"
-            if readme.is_file():
-                level = maturity(readme.read_text(encoding="utf-8"))
-        rows.append((path.name, frontmatter_description(text), level))
+        rows.append((path.name, frontmatter_description(text)))
     return rows
 
 
-def table(rows: list[tuple[str, str, str]], folder: str, empty: str) -> str:
+def table(rows: list[tuple[str, str]], folder: str, empty: str) -> str:
     if not rows:
         return f"*{empty}*\n"
-    lines = ["| | What it does | Maturity |", "| --- | --- | --- |"]
-    for name, description, level in rows:
-        lines.append(f"| [`{name}`]({folder}/{name}/) | {description} | {level} |")
+    lines = ["| | What it does |", "| --- | --- |"]
+    for name, description in rows:
+        lines.append(f"| [`{name}`]({folder}/{name}/) | {description} |")
     return "\n".join(lines) + "\n"
 
 
@@ -111,8 +86,8 @@ def build() -> str:
         "\n### In the review zone — raw material, not in force\n",
         "Drafts, borrowed work, and rules evicted from a skill they did not belong "
         "in. Nothing here is loaded during real work.\n",
-        "\n**Skills:** " + names("to_review/skills", "SKILL.md"),
-        "\n**Agents:** " + names("to_review/agents", "AGENT.md"),
+        "\n**Methods:** " + names("to_review/skills", "SKILL.md"),
+        "\n**Workers:** " + names("to_review/agents", "AGENT.md"),
     ]
     return "\n" + "\n".join(parts)
 
