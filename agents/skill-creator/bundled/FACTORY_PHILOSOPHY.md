@@ -1,6 +1,6 @@
 <!-- STAMPED COPY — do not edit.
      Source:      FACTORY_PHILOSOPHY.md
-     Taken:       2026-07-28
+     Taken:       2026-08-03
      Canonical:   edit the source and rerun .claude/scripts/sync_bundles.py
 -->
 
@@ -13,12 +13,12 @@ know what a skill is.
 
 **How to use it.** Read it first, before any skill or agent file, in any session
 that touches this repository. It says *how* the factory is run. `README.md` says
-*what* is currently in it.
+*what* is currently in it; `PROJECT_MEMORY.md` says where the work stands.
 
 **The reconstruction clause.** This file must be sufficient on its own. Given an
 empty repository, a pile of skill folders and this file, an agent has to be able
 to rebuild the entire operating logic — structure, mechanisms, review loop,
-delivery — without asking. §12 is the checklist that keeps that promise honest.
+delivery — without asking. §11 is the checklist that keeps that promise honest.
 Any change to how the factory works that is not written here is a change that
 will be lost.
 
@@ -32,11 +32,13 @@ justified when isolation, parallelism, independence, a different permission
 profile, or a separate trigger is the actual point. Every artifact folder must
 work alone when sent to another chat. Nothing enters this repository without a
 statement of what changes in behaviour because of it. Observations are captured
-raw and become changes only at review, where the owner rules. Rejected proposals
-are kept with their reason. Weak skills are merged into strong ones or rewritten,
-never quietly deleted. Everything needed to understand, use or edit the factory
-lives in `README.md`, `COMMANDS.md` and the artifact folders — nowhere else.
-Nothing in a review folder is ever loaded into real work.
+raw and become changes only at review, where the owner rules — in practice, by
+merging or closing a pull request. Files carry no history: what a thing *is*
+lives in the file, what *happened to it* lives in git and the pull-request
+archive. Weak skills are merged into strong ones or rewritten, never quietly
+deleted. Everything needed to understand, use or edit the factory lives in the
+root files and the artifact folders — nowhere else. Nothing in `to_review/` is
+ever loaded into real work.
 
 ---
 
@@ -52,36 +54,43 @@ produced changes traceable to real work.
 
 **It is the only place to look.** The long-term goal is that nothing needed has
 to be fetched from another repository or a third-party author. External material
-is starting material, never canon — see §10.
+is starting material, never canon — see §9.
 
 **The owner reviews it by hand.** This is a hard constraint on form, not a
 preference. It means: short files, stable section order, readable diffs, no
 generated walls of text in files meant for human reading, and every change
-explainable in one line.
+explainable in one line. Nothing reaches the in-force zones except through a
+change the owner has seen — which is what pull requests are for.
 
-### The four surfaces
+### The surfaces
 
-Everything the factory is, does and knows must be reachable from four places:
+Everything the factory is, does and knows must be reachable from these places,
+and nowhere else:
 
 ```
-README.md          what this is, how to use it, and what is currently in it
-COMMANDS.md        every command, what it does, when to reach for it
-skills/     the methods
-agents/     the workers
+README.md            the showcase — what this is, how to use it, the catalogue
+COMMANDS.md          every command, what it does, when to reach for it
+PROJECT_MEMORY.md    the working memory — the plan, standing decisions, technical notes
+IDEAS.md             ideas for future skills, agents, and how they would connect
+skills/              the methods, in force
+agents/              the workers, in force
+to_review/           raw material — not in force
 ```
 
-Plus this file, which states the principles those four obey. Each artifact folder
-also has a review companion holding what is not yet in force — see **The two
-zones** below.
+Plus this file, which states the principles the rest obey. The split among the
+root files is deliberate: `README.md` stays a clean showcase with no roadmap and
+no technical notes; everything about where the project is going and how it is
+run day to day lives in `PROJECT_MEMORY.md`; a thought that might one day become
+an artifact lives in `IDEAS.md`, so it is never lost and never mistaken for a
+plan.
 
 No logic, no rule, no computed value and no piece of the mechanism may live
-anywhere else. If understanding how something works requires opening a fifth
-file, the design is wrong — move it into one of the four or into this file.
+anywhere else. If understanding how something works requires opening a file not
+listed above, the design is wrong — move it into one of these or into this file.
 
-`.claude/` is the workshop: hooks, scripts, the signal inbox, working state.
-It exists so the maintaining agent works faster, and it holds **nothing the
-factory depends on being understood**. The test is blunt and worth applying
-literally:
+`.claude/` is the workshop: hooks, scripts, working state. It exists so the
+maintaining agent works faster, and it holds **nothing the factory depends on
+being understood**. The test is blunt and worth applying literally:
 
 > **Delete `.claude/` entirely. The owner, any other project and any fresh
 > session must still be able to read, understand, use and edit every skill and
@@ -92,18 +101,23 @@ That test is also what keeps the factory portable. A skill that needs a script i
 
 ### The two zones
 
-Each artifact folder has a companion holding what is not yet in force:
+What is in force lives in `skills/` and `agents/`. What is not lives in one
+place:
 
 ```
 skills/              in force — approved, in use, audited, improved
-to_review/skills/    raw material — drafts, borrowed work, evicted rules
 agents/              in force
-to_review/agents/    raw material
+to_review/skills/    raw material — drafts and borrowed methods
+to_review/agents/    raw material — drafts and borrowed workers
 ```
 
-**Nothing in a `_TO_REVIEW` folder is ever loaded into real work.** That is the
-whole distinction, and it is absolute. Routing never returns one. A session
-following the library does not read one unless it was explicitly asked to.
+`to_review/` also holds parked files that belong to no single artifact, such as
+`evicted-principles.md` — rules removed from a skill they did not belong in,
+waiting to be claimed.
+
+**Nothing in `to_review/` is ever loaded into real work.** That is the whole
+distinction, and it is absolute. Routing never returns one. A session following
+the library does not read one unless it was explicitly asked to.
 
 The two zones are not "good" and "bad" — they play different parts in the same
 mechanism:
@@ -111,8 +125,8 @@ mechanism:
 - **In force is what gets improved.** Signals, the owner's judgement, and material
   mined from the review zone all land here. The audit watches only these.
 - **The review zone is what we improve *with*.** Skills written by other people,
-  half-formed drafts, principles evicted from a file they did not belong in, ideas
-  worth keeping but not yet placed.
+  half-formed drafts, principles evicted from a file they did not belong in,
+  ideas worth keeping but not yet placed.
 
 The move from one zone to the other is **the owner's, always**, and it is not a
 file move. Borrowed work is never promoted wholesale: it is taken apart into its
@@ -185,8 +199,8 @@ what exists; the skill files are the implementation.
 ### Skill folder
 
 ```
-<SKILL_NAME>/
-├── SKILL.md          required — frontmatter + method + provenance
+<skill-name>/
+├── SKILL.md          required — frontmatter + method
 ├── references/       loaded on demand, not upfront
 ├── scripts/          executable, for anything deterministic and repeated
 └── assets/           templates, files used in output
@@ -200,7 +214,7 @@ first thing to check when a skill starts feeling like it does too much.
 ### Agent folder
 
 ```
-<AGENT-NAME>/
+<agent-name>/
 ├── AGENT.md          a valid agent file: copy it and it works
 ├── README.md         how to install it into a project or another chat
 ├── bundled/          stamped copies of the skills it needs
@@ -209,8 +223,8 @@ first thing to check when a skill starts feeling like it does too much.
 
 `bundled/` exists because §3's self-containment rule outranks avoiding
 duplication. Every copy carries a stamp naming its source and the date it was
-taken. The canonical file lives in `skills/`; the copy is derived and is
-never edited in place. If a copy needs a change, change the canon and re-stamp.
+taken. The canonical file lives in `skills/`; the copy is derived and is never
+edited in place. If a copy needs a change, change the canon and re-stamp.
 
 ### Frontmatter
 
@@ -223,45 +237,26 @@ until then. Write it as *what it does plus when to reach for it*, key case first
 
 | Field | Use |
 | --- | --- |
-| `name` | defaults to the folder name |
+| `name` | equals the folder name |
 | `description` | what it does **and when to use it** |
 | `when_to_use` | extra trigger phrases |
 | `disable-model-invocation: true` | makes it a command |
 | `user-invocable: false` | background knowledge, not an action |
 | `allowed-tools` | pre-approved tools for the invoking turn |
 
-Status, version and origin do **not** go in frontmatter. They go in the
-provenance block at the end of `SKILL.md`, where the owner reads them in the same
-pass as the method, and where no environment can reject them for being unknown
-keys.
+### Files carry no history
 
-### The provenance block
+A skill or agent file holds the method and nothing else about itself: no
+changelog, no status, no version, no record of what was once proposed and turned
+down. Changes are applied directly. What a thing *is* lives in the file; what
+*happened to it* lives in git and the pull-request archive, which record every
+change and every rejection without costing the files a line.
 
-Every skill and agent ends with one, and it carries the whole history of that
-artifact — because §6 puts the history in the file that holds the method, not in
-a store somewhere else.
-
-For a skill it goes at the end of `SKILL.md`. For an agent it goes in `README.md`
-rather than `AGENT.md`: the agent file is a system prompt, read by the worker,
-and its own history is of no use to it while it works. The history is for whoever
-is deciding whether to trust it.
-
-```markdown
-## Provenance
-
-Maturity: <L0–L4> · Since: <date> · Sources: <where the method came from>
-
-### Changelog
-- **<date> — <what changed>.** Why, and the signal it came from.
-
-### Considered and turned down
-- **<date> — <the proposal>.** The owner's reason, in his terms.
-```
-
-The last section is the one that pays off later. A rejected proposal without its
-reason gets proposed again by the next session that has the same good idea; with
-the reason, it is a boundary marker showing where the skill's edge was drawn
-deliberately.
+The one exception is a draft in `to_review/`, which may end with an
+**`## Open questions for the owner`** section: the unresolved boundary questions
+its author had no right to settle. That section is the agenda for the interview
+that decides the draft's fate, and it is removed at promotion — by then the
+questions have answers.
 
 ### Four properties of the runtime, and what they demand
 
@@ -285,7 +280,7 @@ matters most.
 context so the model knows the skill exists, and that listing is capped. As a
 library grows, descriptions get truncated — and what gets cut is the tail, which
 is where the triggering keywords usually are. Front-load the key case. This is
-also why explicit routing (§8) matters more the larger the library gets.
+also why explicit routing (§7) matters more the larger the library gets.
 
 **Isolation is available without a new identity.** A method that needs its own
 context can be run as a forked subagent while remaining a skill. Reach for that
@@ -326,29 +321,7 @@ dependencies.
 
 ---
 
-## 4. The maturity ladder
-
-Stated in the provenance block of every skill and agent. Its purpose is that a
-glance separates what is battle-tested from what is an experiment.
-
-| Level | Name | What proves it |
-| --- | --- | --- |
-| L0 | `draft` | written, never used in real work |
-| L1 | `used` | applied in real work at least once, the owner confirmed it helped |
-| L2 | `tested` | passed a cold read: a session that did not write it was given the folder and a real task, and behaved as intended |
-| L3 | `measured` | one real task run with and without it, the difference described |
-| L4 | `proven` | used across two or more projects and survived at least one revision driven by real feedback |
-
-Nothing is born above L0. Nothing claims a level it cannot evidence.
-
-L2 is the level that matters most here, because it tests the thing that actually
-fails: not whether a skill is well written, but whether a session reading it cold
-— with none of the conversation that produced it — does the right thing. That is
-the real delivery condition (§8), so it is the real test.
-
----
-
-## 5. When a skill is allowed to exist
+## 4. When a skill is allowed to exist
 
 Four gates. A candidate that fails any of them is not written.
 
@@ -374,8 +347,8 @@ whether something already exists, sitting inside a skill about how confidently a
 fact is known. Both good; unrelated.
 
 **Evicting is not deleting.** A rule removed for sitting in the wrong file goes to
-`to_review/skills/evicted-principles.md` with where it came from, why it
-was moved, and where it might belong. It leaves that file by being folded into a
+`to_review/skills/evicted-principles.md` with where it came from, why it was
+moved, and where it might belong. It leaves that file by being folded into a
 skill that genuinely wants it, or by seeding a new one.
 
 **It must be reachable.** A skill nobody and nothing will ever route to is dead on
@@ -408,7 +381,7 @@ still want is worse than carrying a file that is doing nothing.
 
 ---
 
-## 6. Signals
+## 5. Signals
 
 A **signal** is a raw observation about how the work went, recorded when it
 happened. It is not a decision and not a fix.
@@ -417,21 +390,20 @@ The rawness is the point. If every remark became a rule immediately, the skills
 would fill with noise and contradict each other within a month. A signal is
 material; it becomes a change only at review, where the owner rules.
 
-### The six types
+### The five kinds
 
-| Type | What it is |
+| Kind | What it is |
 | --- | --- |
 | `correction` | the owner corrected a behaviour |
-| `friction` | something took more exchanges than it should have |
-| `worked` | something went unusually well — the type most often lost |
-| `repeat` | the same thing was explained or figured out twice |
+| `friction` | something cost more than it should have — extra exchanges, a rediscovery, the same thing explained twice |
+| `worked` | something went unusually well — the kind most often lost |
 | `gap` | a task arrived with no skill covering it |
 | `caught` | a claim was asserted and turned out to be wrong |
 
 ### The record
 
 ```markdown
-## <date> · <type> · <target skill or "none">
+## <date> · <kind> · <target skill or "none">
 What happened: one or two sentences.
 Verbatim: "<the owner's own words, quoted exactly>"
 Candidate: the rule this might become.
@@ -449,19 +421,14 @@ born where the work happens, so that is where they are written — alongside the
 project's other agent material, or at its root if it keeps none.
 
 **The factory stores no raw signals.** There is no inbox here, and that is
-deliberate: an inbox would be a load-bearing store outside the four surfaces, and
-the first thing to fail §1's deletion test. Review reads `SIGNALS.md` where it
-lies and writes its outcomes straight into the skills.
-
-**A processed signal leaves its trace in the skill it touched**, in that skill's
-own provenance block — what changed, and what was proposed and turned down, each
-with its reason. The history of a method belongs in the file that holds the
-method; nowhere else does anyone reading that skill have to go looking. Decisions
-about how the factory itself works are recorded in this file's changelog for the
-same reason.
+deliberate: an inbox would be a load-bearing store outside the surfaces, and the
+first thing to fail §1's deletion test. Review reads `SIGNALS.md` where it lies
+and writes its outcomes straight into the skills. Which projects to read is
+configuration, and it lives in `PROJECT_MEMORY.md`.
 
 Once a signal has been processed it can be cleared from the project's
-`SIGNALS.md`. Its permanent record already exists in the skill.
+`SIGNALS.md`. The change it produced is in the skill; the discussion that
+produced it is in the pull request.
 
 ### What triggers a review
 
@@ -471,12 +438,13 @@ Two triggers, split along the same line as everything else in this file:
   start and says so once the threshold is crossed. Counting is a machine's job and
   machines do it reliably. It fires where the signals are, which is also where the
   owner is when he would want to hear it.
-- **Meaning** — the close of a phase or a project. That is a semantic moment; the
-  `phase-discipline` skill declares it because no event can.
+- **Meaning** — the close of a phase or a project. That is a semantic moment, and
+  it is the owner's to declare: he says the phase is over, or agrees it is when
+  the session suggests so. No mechanism fires it for him.
 
 ---
 
-## 7. Review — turning signals into changes
+## 6. Review — turning signals into changes
 
 Five steps. This is the loop the whole repository exists to run.
 
@@ -489,11 +457,15 @@ Five steps. This is the loop the whole repository exists to run.
 4. **Ask.** Put the proposals to the owner as options with a recommendation, not
    as a fait accompli. This is the survey; it is the point of the review, not a
    formality around it.
-5. **Apply.** Accepted changes go into the skills with a changelog line. Rejected
-   ones are written into the same provenance block **with the owner's reason**, so
-   the same proposal is never made blind twice and so anyone opening the skill
-   sees what was already considered. A well-argued rejection often says more about
-   what the skill should be than the acceptance would have.
+5. **Apply** what he accepted, directly — the diff is the record. What he turned
+   down is simply not applied: the closed pull request keeps the discussion, and
+   the files keep nothing. If the same idea returns one day, the owner says no
+   again; that cost is accepted.
+
+In practice the survey rides in a pull request. The diff is the proposal, the
+description carries the options and the recommendation, the merge is the ruling,
+and a close without merge is a rejection. Nothing reaches the in-force zones
+except through that gate.
 
 ### Judging a proposed change
 
@@ -505,7 +477,7 @@ better.
 Prefer rewriting a rule to qualifying it. When a rule inside a skill misfires,
 the reflex is to add an exception. Two exceptions on one rule means the rule was
 wrong: restate it so the exceptions become unnecessary. This is about the lines
-inside a file — whole skills are handled by §5, where merging comes first and the
+inside a file — whole skills are handled by §4, where merging comes first and the
 owner decides.
 
 Prefer merging to adding. Before writing a new skill, check whether an existing
@@ -521,7 +493,7 @@ compaction budget from §3. Adding a rule means being able to say what it is wor
 
 ---
 
-## 8. Delivery
+## 7. Delivery
 
 How a skill gets from the factory into work. Ranked by what the owner actually
 uses.
@@ -538,10 +510,9 @@ is auto-discovered**. The model learns the factory exists only because it was
 pointed at it. Two things carry that weight:
 
 **`README.md` is the entry point**, and it carries the catalogue. There is no
-separate index file: a fifth root file would break §1, and a catalogue is exactly
-what a reader arriving at the repository needs anyway. The catalogue lists every
-skill and agent with its one-line description and maturity level, and stays short
-enough to read in one pass.
+separate index file: the catalogue is exactly what a reader arriving at the
+repository needs anyway. It lists every skill and agent with its one-line
+description, and stays short enough to read in one pass.
 
 It sits in a marked, generated block inside `README.md`, rebuilt from the artifact
 files themselves and never edited by hand — a hand-maintained catalogue goes stale
@@ -570,20 +541,22 @@ imposing conflicting rules on the same task.
 
 ---
 
-## 9. Repository standards
+## 8. Repository standards
 
-**A minimal root.** Folders, plus only the files that must be there. A new file
-goes into a folder.
+**A minimal root.** Folders, plus only the files that must be there: `README.md`,
+`COMMANDS.md`, `FACTORY_PHILOSOPHY.md`, `PROJECT_MEMORY.md`, `IDEAS.md`, and
+`LICENSE`. A new file goes into a folder. A temporary departure from this is
+declared in `PROJECT_MEMORY.md` together with what ends it.
 
-**Names.** Everything a human opens is `CAPS_WITH_UNDERSCORES`: the two artifact
-folders, every skill folder, every agent folder. Service folders stay lowercase or
-dot-prefixed. A skill is named for its job (`git-repo-structure`), an agent for
-its role (`skill-creator`, `ux-designer`); which is which is told by the folder it
-sits in and by whether it holds `SKILL.md` or `AGENT.md`.
-
-The consequence to know: a skill folder's name is also how it is invoked, so a
-skill copied into a project answers to `/git-repo-structure`. That is the accepted
-cost of a listing the owner can read at a glance.
+**Names.** One name everywhere: a folder, its frontmatter `name`, and the way it
+is invoked are the same lowercase-with-hyphens string — `git-repo-structure` is
+the folder, the `name`, and `/git-repo-structure`. This is the ecosystem's own
+convention, so an artifact copied into any project's `.claude/skills/` looks
+native there. A skill is named for its job (`git-repo-structure`), an agent for
+its role (`skill-creator`); which is which is told by the folder it sits in and
+by whether it holds `SKILL.md` or `AGENT.md`. Root files and platform-pinned
+names (`README.md`, `LICENSE`, `SKILL.md`, `AGENT.md`) keep their conventional
+forms.
 
 **Language.** Everything in the repository is English. Conversation with the owner
 is in the language he is using.
@@ -607,7 +580,7 @@ first.
 
 ---
 
-## 10. Working with the owner inside this repository
+## 9. Working with the owner inside this repository
 
 The owner's own working contract governs the conversation. This section covers
 only what is specific to the factory.
@@ -617,8 +590,13 @@ section ordering, splitting an over-long skill into a skill plus references,
 regenerating the catalogue, fixing an outright error in a skill.
 
 **Always ask:** creating a new skill or agent, merging two, changing what a skill
-is *for*, promoting a maturity level, anything that changes this file — and
-retiring anything, which additionally requires the owner to say so outright (§5).
+is *for*, anything that changes this file — and retiring anything, which
+additionally requires the owner to say so outright (§4).
+
+**Each phase of work opens with its decisions.** Before a phase starts, every
+decision it will implement is put to the owner in one pass — options with a
+recommendation — and nothing is built until he has ruled. This is the same shape
+as the review survey, applied to the plan.
 
 **External material is starting material, never canon.** Skills written by others
 are read as drafts of an idea — worth studying for what they got right and wrong,
@@ -638,7 +616,7 @@ is not.
 
 ---
 
-## 11. Anti-patterns
+## 10. Anti-patterns
 
 - An agent that carries its method inline instead of reading a skill.
 - A skill that cannot state what changes in behaviour because of it.
@@ -647,88 +625,47 @@ is not.
 - Softening a misfiring rule with a second exception instead of rewriting it.
 - A skill so long that compaction eats its tail in the sessions that need it most.
 - A hand-maintained catalogue.
-- Logic, a rule or a computed value that lives outside the four surfaces.
+- Logic, a rule or a computed value that lives outside the surfaces.
 - A skill that cannot be understood without opening something in `.claude/`.
 - Deleting a skill instead of merging or rewriting it, or deleting one at all
   without the owner's word.
 - Treating a borrowed skill as a standard.
-- Recording a rejected proposal without its reason — it will be proposed again.
-- Keeping raw signals, decisions or any other store inside the factory.
+- Keeping raw signals, or any store the surfaces do not name, inside the factory.
+- History creeping back into the files — a changelog line, a status field, a
+  version number. Git already holds all of it.
+- A change reaching `skills/` or `agents/` without passing through the owner.
 - Adopting a borrowed skill whole instead of taking it apart for its usable ideas.
-- Loading anything from a review folder into real work.
+- Loading anything from `to_review/` into real work.
 - Leaving a true, useful rule inside a skill it has nothing to do with.
 - Turning every remark into a rule the moment it is made.
 - Two documents that answer the same question.
+- Losing an idea because there was no place to put it — `IDEAS.md` is the place.
 
 ---
 
-## 12. Reconstruction
+## 11. Reconstruction
 
 If this file arrives in an empty repository together with a set of skills, rebuild
 in this order. Everything needed is above; this is the assembly sequence.
 
-1. **Create the shape.** `skills/` and `agents/` for what is in
-   force, `to_review/skills/` and `to_review/agents/` for raw
-   material, and `.claude/` for settings, hooks and scripts only. Root files:
-   `README.md`, `FACTORY_PHILOSOPHY.md`, `COMMANDS.md`. No fourth root file, and
-   no store of any kind under `.claude/` (§1).
+1. **Create the shape.** `skills/` and `agents/` for what is in force,
+   `to_review/` with `skills/` and `agents/` inside for raw material, and
+   `.claude/` for settings, hooks and scripts only. Root files: `README.md`,
+   `COMMANDS.md`, `FACTORY_PHILOSOPHY.md`, `PROJECT_MEMORY.md`, `IDEAS.md`. No
+   other root file, and no store of any kind under `.claude/` (§1).
 2. **Normalise the skills** into the anatomy of §3: frontmatter, the difference
-   sentence, the scope lines, the two layers, a provenance block with a maturity
-   level from §4. Anything failing the gates in §5 is listed for the owner with a
-   recommended move — never dropped.
+   sentence, the scope lines, the two layers, no history in the files. Anything
+   failing the gates in §4 is listed for the owner with a recommended move —
+   never dropped.
 3. **Wire the catalogue.** A script that reads every artifact and rewrites the
-   marked block in `README.md`, plus a `PostToolUse` hook on writes under the
-   artifact folders so it stays current without anyone remembering.
+   marked block in `README.md`, plus a `PostToolUse` hook on writes so it stays
+   current without anyone remembering.
 4. **Wire the signals.** The companion skill that records them, the record format
-   from §6, and a `SessionStart` hook that counts unprocessed signals and says so
+   from §5, and a `SessionStart` hook that counts unprocessed signals and says so
    past the threshold.
 5. **Restore the commands** listed in `COMMANDS.md` as skills with
    `disable-model-invocation: true`.
-6. **Write the bootstrap prompt** into `README.md` per §8.
+6. **Write the bootstrap prompt** into `README.md` per §7.
 7. **Ask the owner what is missing.** Reconstruction from a file is reconstruction
    of the mechanism, not of the judgement that shaped it. State plainly what was
    rebuilt and what was inferred.
-
----
-
-## 13. Changelog
-
-- **2026-07-28 — created.** Written with the owner from two sources: his portable
-  `AI_INSTRUCTIONS` and his `living-project` skill, both kept in the repository as
-  material still being mined. Decisions made in the founding conversation and
-  encoded here: skills are the default and agents need one of five tests (§2);
-  agent folders carry stamped copies rather than pointers, because
-  self-containment outranks avoiding duplication (§3); skills are written in two
-  layers so they can be handed on (§3); maturity is stated, not assumed (§4);
-  signals are captured raw and only become changes at review (§6–7); rejections
-  are recorded with reasons (§7); external skills are drafts, never standards
-  (§10). The runtime properties in §3 were read from the Claude Code
-  documentation on this date rather than recalled — the same session had already
-  produced one wrong architectural claim made from memory, which is the signal
-  that rule came from.
-- **2026-07-28 — the four surfaces, and skills are reshaped rather than
-  deleted.** Both from the owner, reviewing the first draft. He required that
-  everything needed to understand, use or edit the factory be reachable from
-  `README.md`, `COMMANDS.md` and the two artifact folders, with `.claude/` holding
-  nothing load-bearing (§1) — which removed the separate index file in favour of a
-  generated block in the README (§8). He also rejected the original "a skill must
-  be able to die": nothing is deleted without his word, merging two weak skills
-  into one strong one is preferred to removing either, and writing a skill
-  speculatively is fine because reshaping a rough file is cheaper than inventing
-  one (§5). He was right on both counts, and the second changes the character of
-  the library — it accumulates and consolidates rather than pruning.
-  Separately, he noticed that §3 stated platform figures inside its rules, where a
-  changed limit would invalidate a principle; the figures now sit in a dated box
-  and the rules are written without them. Skill folders were renamed to
-  `CAPS_WITH_UNDERSCORES` to match agents (§9), and the trigger-test harness was
-  dropped in favour of a cold-read test at L2 (§4) — with delivery happening by
-  repository access and by folder, what needs proving is that a session reading a
-  folder cold does the right thing, not that a description auto-fires.
-- **2026-07-28 — the factory stores nothing raw.** The owner asked where the
-  signal file would live, which exposed that the draft's `.claude/SIGNALS/` and
-  `.claude/DECISIONS/` were stores outside the four surfaces and the first things
-  to fail §1's own deletion test. Both are gone. `SIGNALS.md` now lives only in the
-  working project where signals are born, and every processed signal leaves its
-  trace — accepted or rejected — in the provenance block of the skill it touched
-  (§3, §6, §7). `.claude/` is left holding settings, hooks and scripts, which is
-  what makes the deletion test pass literally rather than approximately.
