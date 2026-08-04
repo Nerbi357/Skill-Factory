@@ -59,10 +59,16 @@ Candidate: the rule this might become.
 Confidence: how strongly this is evidenced.
 ```
 
-**Quote exactly, never paraphrase.** A month later your paraphrase will have
-drifted toward what you think he meant; the quote will still be what he said. This
-is the single most important line in the record, and it is the one most tempting
-to smooth over.
+**Quote, never paraphrase.** A month later your paraphrase will have drifted
+toward what you think he meant; the quote will still be what he said. This is the
+single most important line in the record, and the one most tempting to smooth
+over.
+
+**The log is kept in the language of the library, not of the conversation.** When
+the owner speaks another one, translate his sentence as closely as it allows and
+keep his structure — translating is not paraphrasing, and a log nobody can skim is
+a log nobody reviews. Where one word carries the ruling and does not survive the
+crossing, keep his word beside yours.
 
 Where the signal came from you rather than him — friction you noticed, a gap you
 hit — say so in place of the quote.

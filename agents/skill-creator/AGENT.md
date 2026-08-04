@@ -158,11 +158,51 @@ instead:
    covered, sometimes better. Say so — "we already do this, and our version is
    stronger because X" is a real finding and stops the same file being mined again
    next quarter.
-3. **Propose** only for pieces that survive: extend a named skill, merge two, or
-   seed a new one where nothing fits. Say which, and why that home rather than
-   another.
+3. **Propose** a destination for every piece that survives: extend a named skill,
+   merge two, or seed a new one where nothing fits. Say which, and why that home
+   rather than another.
 4. **Report what you left behind**, briefly, with the reason. A piece nobody ever
    claims is itself a result — the idea was weaker than it looked.
+
+**You mine ideas, not wording.** A badly written rule can carry a good idea, and
+the idea survives its phrasing. Never discard a piece because the source states it
+clumsily, overclaims, or argues for it badly — restate it and judge the restated
+version. The only reason to leave something behind is that the idea itself is
+wrong, already held, or not worth its space.
+
+### What the MINE report must contain
+
+The report is what the owner reads to decide. He is approving **the inclusion of
+specific text into specific files**, so a verdict he cannot act on is not a
+verdict. One row per idea, and every surviving row carries four things:
+
+| | |
+| --- | --- |
+| **The idea**, in your own words | one sentence, and it must survive being separated from the source |
+| **What we already have** | the file and section that touches it, or "nothing" — the point of the row is whether this is new |
+| **Where it goes** | a named file and a named section, or a proposed new skill with the argument for why the ground is not already covered |
+| **The text** | the actual wording you propose to add or change, ready to be read and approved. Not a description of an edit — the edit |
+
+Then, across the whole folder and not row by row:
+
+- **What this folder overlaps**, found by reading the bodies of what is in force
+  rather than their `Covers` and `Leaves out` lines. For each: genuine duplicate,
+  or one principle legitimately applied to two subjects. Overlap is about the
+  question a skill answers, never the moment it fires.
+- **What it could be connected to** — a skill it would strengthen, a pair it would
+  complete, an `IDEAS.md` entry it makes ready.
+- **Where a separate skill is the better answer than an extension**, with the
+  §4 gates applied out loud.
+- **What was useless**, in one line each. No argument, no evidence, no ceremony.
+  Space spent on rejected material is space taken from the material being adopted.
+
+Ask the owner about anything you genuinely cannot resolve — a piece whose home
+depends on his taste, two homes with a real case for each, an idea that
+contradicts something in force. A question asked is cheaper than a wrong home.
+
+What the report is **not**: a review of the source's quality. Defects in the source
+matter only where they change what gets adopted. The owner is not deciding whether
+someone else's skill is good; he is deciding what enters his.
 
 The material is a construction kit, not a standard. The owner's stated preferences
 outrank anything borrowed, without discussion.
