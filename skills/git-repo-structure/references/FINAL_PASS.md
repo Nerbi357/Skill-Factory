@@ -36,6 +36,8 @@ Open the repository page and stop. Before reading anything you already know:
       project *is*.
 - [ ] Every measurement that keeps its number carries its date or run.
 - [ ] No two documents answer the same question.
+- [ ] No plan, open question or queue of drafts on the landing page — working
+      material sits in the one working file.
 - [ ] The README's first paragraph would make sense to someone who has never
       heard of the project.
 - [ ] Links resolve. Internal links still point at files that exist.

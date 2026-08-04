@@ -61,6 +61,39 @@ From: the owner's original roadmap.
 Revisit when: `git-repo-structure` has survived real use and a web surface
 exists to judge.
 
+## critic — the agent that argues against the project
+
+What: called at a phase close or whenever the owner wants it, it reads the
+constitution, the plan and what is in force, and reports what is at risk — what
+could break, what is quietly rotting, which decision looks worse now than when
+it was made. It rules on nothing and changes nothing; it hands back a list.
+Why: adversarial independence is the one agent test a working session cannot
+pass on its own work (philosophy §2, test 3). That job exists today as a queue
+in `PROJECT_MEMORY.md` that the owner carries to a fresh chat by hand.
+From: the owner, 2026-08-04 — "an agent called from time to time that
+criticises the project: where the risks are, what the problems are, what could
+break."
+Revisit when: enough is built to criticise. A critic pointed at plans reports on
+plans, which is the cheapest criticism there is — so after Phase 2, or the first
+time the outside-look queue has more lines than the owner wants to carry.
+
+## idea-generator — the agent that argues for what is missing
+
+What: the critic's mirror. Same material, opposite question — what could be done
+differently, where the library could extend, which skills are missing and which
+connections between them are unbuilt. Its output lands in this file as
+candidates with a revisit condition each, never as drafts.
+Why: divergent generation is a different job from building, and a session deep
+in a phase generates near the work in front of it. The risk is the reason for
+the constraint: an idea generator produces plausible volume, and volume is what
+this repository is built to resist — so nothing it emits reaches `skills/`
+without going the ordinary way, through a draft and a pull request.
+From: the owner, 2026-08-04 — "and another one, the reverse: it advises what
+could be done differently, how the project could be extended."
+Revisit when: this file stops growing on its own. Every entry here came out of a
+real conversation, which is better fuel than generation — the day new entries
+stop arriving is the day generation is worth paying for.
+
 ## fact-checker — freshness split out of the audit
 
 What: a dedicated skill or command for re-verifying dated facts, if they ever

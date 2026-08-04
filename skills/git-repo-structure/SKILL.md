@@ -109,6 +109,24 @@ from: that is a fact about one moment and stays true forever.
 second document that re-answers an existing question is worse than no document,
 because now they can disagree.
 
+### The showcase and the working file
+
+**The landing page shows the finished thing; working material lives in one
+separate file.** The plan, the open questions, the rulings already made, drafts
+waiting on a verdict, a queue of raw material — none of that belongs on the page
+a first-time visitor reads. Describing a pile of unapproved drafts on the
+showcase tells that visitor the project is unfinished, whatever the rest of the
+page claims.
+
+It is also the most reliable source of stale prose there is. A plan changes
+weekly and a landing page is edited monthly, so a roadmap on the README is wrong
+most of the time it is being read.
+
+Keep it to **one** working file at the root, named for what it holds. It carries
+what a person or a fresh session needs to resume the project — where things
+stand, the plan, what has been decided — and the README points at it once,
+for whoever maintains the project, rather than reproducing any of it.
+
 ## 6. The platform's own surface
 
 A hosting platform adds tabs and panels the project never asked for — an empty
@@ -166,5 +184,8 @@ file is the reasoning behind it.
   nothing has an alias.
 - **Ask where a file belongs** rather than guessing. He would rather answer a
   one-line question than find a stray file later.
+- **Draft material never appears on the showcase.** This rule entered the skill
+  when he found the review zone described on the README: raw material is working
+  material, and working material has its own file.
 - The finished state includes the platform surface — he considers an empty wiki
   tab or a blank About panel part of the product.

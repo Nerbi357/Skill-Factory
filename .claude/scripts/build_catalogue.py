@@ -62,34 +62,16 @@ def table(rows: list[tuple[str, str]], folder: str, empty: str) -> str:
     return "\n".join(lines) + "\n"
 
 
-def names(folder: str, entrypoint: str) -> str:
-    """The review zone gets names only. Nothing there is in force, so a full row
-    with a description would read like an offer to use it."""
-    directory = ROOT / folder
-    if not directory.is_dir():
-        return "*Empty.*\n"
-    found = sorted(
-        p.name for p in directory.iterdir()
-        if (p / entrypoint).is_file() or (p.is_file() and p.suffix == ".md")
-    )
-    if not found:
-        return "*Empty.*\n"
-    return ", ".join(f"[`{n}`]({folder}/{n})" for n in found) + "\n"
-
-
 def build() -> str:
-    parts = [
+    """Only what is in force. The review zone is working material and belongs in
+    PROJECT_MEMORY.md, not on the landing page — a queue of unapproved drafts on a
+    showcase tells a visitor the work is unfinished."""
+    return "\n" + "\n".join([
         "### Skills\n",
         table(collect("skills", "SKILL.md"), "skills", "No skills yet."),
         "\n### Agents\n",
         table(collect("agents", "AGENT.md"), "agents", "No agents yet."),
-        "\n### In the review zone — raw material, not in force\n",
-        "Drafts, borrowed work, and rules evicted from a skill they did not belong "
-        "in. Nothing here is loaded during real work.\n",
-        "\n**Methods:** " + names("to_review/skills", "SKILL.md"),
-        "\n**Workers:** " + names("to_review/agents", "AGENT.md"),
-    ]
-    return "\n" + "\n".join(parts)
+    ])
 
 
 def splice(readme: str, catalogue: str) -> str:
