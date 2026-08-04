@@ -1,29 +1,30 @@
 # COMMANDS
 
-Everything you can run by hand, what it does, and when it is worth reaching for.
+A command is an ordinary skill carrying `disable-model-invocation: true` — you can
+invoke it, the model cannot invoke it on its own. That restriction is the point:
+regenerating a catalogue, rewriting a skill or opening a review are all things
+whose timing should be yours, not a model's guess that the moment looks right.
 
-A command here is an ordinary skill carrying `disable-model-invocation: true` —
-you can invoke it, the model cannot invoke it on its own. That restriction is the
-point: regenerating a catalogue, rewriting a skill or opening a review are all
-things whose timing should be yours, not a model's guess that the moment looks
-right.
+**The factory has none, and is building none.** What follows is design, not work in
+progress. A command adds a deterministic handle; it never adds a capability, and
+every job described below is already reachable — a session reads
+`PROJECT_MEMORY.md`, delegates to `agents/skill-creator`, and opens a pull
+request. That is how this repository has actually been run. The question returns
+in the last phase of the plan, once the library maintains itself and the handle
+starts being worth its file; the reasoning is in `PROJECT_MEMORY.md` under the
+ruling of 2026-08-04.
 
-Five of these live in the factory. Two travel with the skills into whatever
-project you are working in, which is why they are listed here rather than only in
-that project's own documentation.
+Read the rest as the specification each one would be built to.
 
-**Status** says whether the command exists yet. Nothing below is implemented; the
-design is written first so you can argue with it before it is built.
-
-| Command | Where it runs | Status |
-| --- | --- | --- |
-| `/factory-new` | the factory | planned |
-| `/factory-review` | the factory | planned |
-| `/factory-mine` | the factory | planned |
-| `/factory-test` | the factory | planned |
-| `/factory-loop` | the factory | planned |
-| `/signal` | any project | planned |
-| `/skills-for` | any project | planned |
+| Command | Where it would run |
+| --- | --- |
+| `/factory-new` | the factory |
+| `/factory-review` | the factory |
+| `/factory-mine` | the factory |
+| `/factory-test` | the factory |
+| `/factory-loop` | the factory |
+| `/signal` | any project |
+| `/skills-for` | any project |
 
 ---
 
