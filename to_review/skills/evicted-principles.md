@@ -21,7 +21,7 @@ Before paying, look for the free path. Finding a published artefact that already
 does the job is often the single highest-value hour available, and it is
 frequently skipped because building feels more like progress than searching does.
 
-- **From:** `confidence-check` §5, originally `AI_INSTRUCTIONS` §7a.
+- **From:** `confidence-check` §5, originally `ai-instructions` §7a.
 - **Evicted 2026-07-28** by the owner: this is a preference about how to approach
   project work, not a rule about how well a fact is known. A skill covering both
   reliability of information and frugality of sourcing is covering two unrelated
