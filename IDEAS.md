@@ -115,6 +115,22 @@ From: the owner, 2026-08-03 — "let's leave synthetic runs to think about."
 Revisit when: `factory-test` exists and real-task supply becomes the
 bottleneck.
 
+## the commands — deterministic handles for what already works
+
+What: the seven designs in `COMMANDS.md` built as skills carrying
+`disable-model-invocation: true` — five factory jobs, plus `/signal` and
+`/skills-for`, which travel into working projects.
+Why: a command buys a trigger nobody can forget and nobody can fire by accident.
+`/signal` in particular has to be manual by nature — its whole job is recording
+the owner's words at the moment he chooses. What a command does not buy is
+capability: every job below is already reachable through `agents/skill-creator`
+and a sentence, which is how this repository has actually been run.
+From: the owner, 2026-08-04 — "let's not write commands for now; mark it as a
+development point and we will come back to it."
+Revisit when: the base is built and the library begins maintaining itself — or
+earlier, if the same job gets described in words three times and the description
+drifts on each telling.
+
 ## scheduled loop — automation of the maintenance iteration
 
 What: the loop on a schedule (a cloud routine or cron) instead of by hand, with

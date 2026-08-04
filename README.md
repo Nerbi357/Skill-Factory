@@ -19,7 +19,7 @@ useful rather than generic.
 
 ```
 README.md               you are here — what this is, how to use it, the catalogue
-COMMANDS.md             every command you can run by hand
+COMMANDS.md             the manual entry points, designed but not built
 FACTORY_PHILOSOPHY.md   the rules the library obeys, for maintaining it
 PROJECT_MEMORY.md       where the work stands — the plan, decisions, technical notes
 IDEAS.md                ideas for future skills and agents

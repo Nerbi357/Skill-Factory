@@ -1,6 +1,6 @@
 <!-- STAMPED COPY — do not edit.
      Source:      FACTORY_PHILOSOPHY.md
-     Taken:       2026-08-03
+     Taken:       2026-08-04
      Canonical:   edit the source and rerun .claude/scripts/sync_bundles.py
 -->
 
@@ -189,8 +189,14 @@ the skills, where everything else can reach it.
 
 A command is a skill with `disable-model-invocation: true` — invocable by the
 owner, never by the model on its own. Use it for anything with side effects or
-where timing is the owner's call. `COMMANDS.md` is the human-facing register of
-what exists; the skill files are the implementation.
+where timing is the owner's call. `COMMANDS.md` is the human-facing register;
+the skill files are the implementation.
+
+A command buys a trigger, never a capability. Anything it would do is reachable
+by asking for it, so the form earns its file only where the trigger itself
+matters — where the model must not fire it, or where nothing in the session
+shares the context needed to ask well. Where that is not true, the command is a
+second name for something that already exists.
 
 ---
 
@@ -663,8 +669,9 @@ in this order. Everything needed is above; this is the assembly sequence.
 4. **Wire the signals.** The companion skill that records them, the record format
    from §5, and a `SessionStart` hook that counts unprocessed signals and says so
    past the threshold.
-5. **Restore the commands** listed in `COMMANDS.md` as skills with
-   `disable-model-invocation: true`.
+5. **Restore whatever `COMMANDS.md` marks as built** — as skills with
+   `disable-model-invocation: true`. A design in that file that was never built
+   is not rebuilt here; it stays a design.
 6. **Write the bootstrap prompt** into `README.md` per §7.
 7. **Ask the owner what is missing.** Reconstruction from a file is reconstruction
    of the mechanism, not of the judgement that shaped it. State plainly what was
