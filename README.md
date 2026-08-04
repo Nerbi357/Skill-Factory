@@ -23,9 +23,11 @@ COMMANDS.md             the manual entry points, designed but not built
 FACTORY_PHILOSOPHY.md   the rules the library obeys, for maintaining it
 PROJECT_MEMORY.md       where the work stands — the plan, decisions, technical notes
 IDEAS.md                ideas for future skills and agents
+SIGNALS.md              observations about the work here, waiting to be processed
 skills/                 the methods, in force
 agents/                 the workers, in force
 to_review/              raw material — not in force, never loaded into work
+archive/                spent material — reference only, never loaded into work
 ```
 
 Those carry everything. `.claude/` holds settings, hooks and scripts that make
