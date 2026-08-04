@@ -66,9 +66,11 @@ README.md            the showcase — what this is, how to use it, the catalogue
 COMMANDS.md          every command, what it does, when to reach for it
 PROJECT_MEMORY.md    the working memory — the plan, standing decisions, technical notes
 IDEAS.md             ideas for future skills, agents, and how they would connect
+SIGNALS.md           raw observations about how the work here goes, awaiting review
 skills/              the methods, in force
 agents/              the workers, in force
 to_review/           raw material — not in force
+archive/             spent material — processed, kept for reference only
 ```
 
 Plus this file, which states the principles the rest obey. The split among the
@@ -103,11 +105,18 @@ skills/              in force — approved, in use, audited, improved
 agents/              in force
 to_review/skills/    raw material — drafts and borrowed methods
 to_review/agents/    raw material — drafts and borrowed workers
+archive/             spent material — read, judged, and finished with
 ```
 
 `to_review/` also holds parked files that belong to no single artifact, such as
 `evicted-principles.md` — rules removed from a skill they did not belong in,
 waiting to be claimed.
+
+`archive/` is where a review folder goes once its verdict is delivered, whether
+everything in it was taken or nothing was. It is reference only: nothing reads it,
+nothing routes to it, and a question it could answer is answered by the pull
+request that emptied it. It exists so that judging a folder is never the same act
+as destroying it — the queue shrinks, the material stays.
 
 **Nothing in `to_review/` is ever loaded into real work.** That is the whole
 distinction, and it is absolute. Routing never returns one. A session following
@@ -416,15 +425,20 @@ drifted and the quote will not.
 
 ### Where they live and how they travel
 
-**`SIGNALS.md` lives in the working project, never in the factory.** Signals are
-born where the work happens, so that is where they are written — alongside the
-project's other agent material, or at its root if it keeps none.
+**`SIGNALS.md` lives at the root of the project the work happened in.** Signals
+are born where the work happens, so that is where they are written.
 
-**The factory stores no raw signals.** There is no inbox here, and that is
-deliberate: an inbox would be a load-bearing store outside the surfaces, and the
-first thing to fail §1's deletion test. Review reads `SIGNALS.md` where it lies
-and writes its outcomes straight into the skills. Which projects to read is
-configuration, and it lives in `PROJECT_MEMORY.md`.
+**The factory is one of those projects.** Building the library is work like any
+other, and the owner correcting the session that builds it is the highest-quality
+signal available — his corrections are the one thing the session cannot observe
+about itself. So the factory keeps a `SIGNALS.md` at its own root, under the same
+rules as any other project.
+
+That is a store, but not a hidden one: it sits on the root surface where the owner
+reads it, and §1's deletion test still passes, because nothing under `.claude/`
+holds it. Review reads each `SIGNALS.md` where it lies and writes its outcomes
+straight into the skills. Which projects to read is configuration, and it lives in
+`PROJECT_MEMORY.md`.
 
 Once a signal has been processed it can be cleared from the project's
 `SIGNALS.md`. The change it produced is in the skill; the discussion that
