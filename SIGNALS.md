@@ -148,3 +148,72 @@ grammar stated, not just its subject. The agent's other findings were checked
 against line numbers; this one was inferred from a paraphrase.
 Confidence: strong — the first false positive from the agent, and it survived my
 own reading of the report before the owner stopped it.
+
+## 2026-08-04 · correction · the working session
+
+What happened: a question was put to the owner as "should §7 reference
+FINAL_PASS.md" without naming which file §7 belonged to or where that checklist
+lives.
+Verbatim: "when you write §7 referencing FINAL_PASS.md, say section 7 of which
+file and which final_pass."
+Candidate: a cross-reference names its file, every time, in reports as much as in
+the artifacts. A bare section number is readable only by someone already holding
+both texts — and the reader who needs the pointer is the one who is not.
+Confidence: strong — it cost an exchange, which is the cheapest possible
+demonstration of the cost.
+
+## 2026-08-04 · correction · the overlap rule
+
+What happened: one checklist item appearing in `git-repo-structure`'s final pass
+and again in the new skill's boundary section was reported as the one genuine
+textual duplicate, with a pointer offered as the alternative.
+Verbatim: "no link, we keep the repeated item. each checklist is unique if it is
+attached to a separate skill, so these are not repeats but different
+manifestations of one logic."
+Candidate: repetition across checklists belonging to different skills is not
+duplication — each checklist is complete for its own skill's question, and a
+pointer would invite exactly the merge the overlap rule refuses.
+Confidence: strong — it extends the earlier overlap ruling to a case that ruling
+did not obviously cover.
+
+## 2026-08-04 · gap · skill-creator
+
+What happened: nothing in the library re-checks which skills an agent should read
+when a skill enters, changes, merges or splits. The agent proposed destinations
+for every idea and never asked whether any agent in force should now consume the
+result.
+Verbatim: "I also want that when the agent adds a new skill, substantially changes
+a current one, merges two, splits one into two, or does mining, it does not only
+say which idea goes into which skill and section — but also checks whether a new
+skill can be added to or removed from some existing agent (asking my opinion), or
+if a new agent is being added, which skills to give it."
+Candidate: agents consume skills, so every change to the library's shape leaves
+some reading list possibly wrong, and nobody looks by default.
+Confidence: strong — the gap is structural, and the first mining run walked
+straight past it.
+
+## 2026-08-04 · correction · skill-creator
+
+What happened: the MINE report was accurate and complete but written as prose
+blocks, so the owner had to reassemble the decision from it.
+Verbatim: "I also do not like the form the mine report is presented in now: I want
+it presented more structurally, and the questions about changes too."
+Candidate: the report's shape is fixed rather than left to the agent — numbered
+sections, ideas in one table, proposed text keyed to it, and questions carrying
+options and a recommendation instead of being asked bare.
+Confidence: strong — the second correction of this report in two runs, both about
+usability rather than accuracy.
+
+## 2026-08-04 · correction · the mining method
+
+What happened: moving two rules out of a draft's owner-preferences section into
+its method body was raised as a flag at the end of the report, on the reading that
+the standing rule forbids mining from touching preferences.
+Verbatim: "about the transfer between layers: this is the section on correcting a
+working skill and skill-creator has that option, but it must explain them on equal
+terms with the other ideas in the mine run."
+Candidate: relocating a rule between layers is a correction, and the rule
+protecting preferences protects their content, not their address. Every move is a
+numbered row like any other idea — a change explained in a footnote is one the
+owner did not review.
+Confidence: strong.

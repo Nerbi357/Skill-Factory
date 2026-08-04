@@ -325,8 +325,25 @@ Decided by the owner on 2026-08-04, second pass:
   preferences demotes it from reasoning to taste.
 - **The signal log is kept in English**, translating rather than paraphrasing.
 - **A MINE report is a list of inclusions to approve**, not a review of the
-  source's quality. Every surviving idea carries the wording proposed, the file
-  and section it goes to, and what already in force touches it.
+  source's quality. Its shape is fixed in `agents/skill-creator/AGENT.md`: nine
+  numbered sections, ideas in one table, the proposed text in blocks keyed to it,
+  and questions carrying options and a recommendation rather than being asked bare.
+- **Every change to the library runs the wiring check.** A new or changed skill
+  asks which agents in force should now read it; a merge or split asks whether the
+  lists naming it are still right; a new agent names the skills it consumes, in
+  reading order. The agent recommends and the owner decides — a wrong reading list
+  is paid for silently, in every run afterwards.
+- **A checklist attached to its own skill is not a duplicate.** The same rule
+  appearing in two checklists that serve different questions is one logic showing
+  itself twice, and each checklist is complete for its own skill. Repetition is
+  preferred to a pointer, which would invite exactly the merge the overlap rule
+  refuses.
+- **A cross-reference names its file**, in the artifacts and in reports alike. A
+  bare section number is readable only by someone already holding both texts.
+- **Moving a rule between the two layers is a correction, not a violation** of the
+  rule that mining never touches owner preferences — that rule protects their
+  content, and a relocation changes only which layer owns the text. Each move is
+  reported as its own numbered row, never as a footnote.
 - **Overlap is about the question a skill answers, not the moment it fires.**
   `git-repo-structure` owns the repository's presentation and contents; the
   process skills own the work itself. Two skills triggered by the same event —
