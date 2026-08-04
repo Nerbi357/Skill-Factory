@@ -347,6 +347,14 @@ skill" without saying what that skill contains. Cross-references are allowed as
 *recommendations* ("if the task also involves X, `<skill>` covers it"), never as
 dependencies.
 
+**A cross-reference names its file, every time.** A bare section number is
+readable only by someone already holding both texts — and the reader who most
+needs the pointer is the one who is not. Write "§7 of `verify-before-done`", not
+"§7"; write "`git-repo-structure`'s `references/FINAL_PASS.md`", not "the final
+pass". This holds in reports and proposals as much as in the files themselves,
+because a reference the owner has to resolve by guessing is one he has to stop and
+ask about.
+
 ---
 
 ## 4. When a skill is allowed to exist

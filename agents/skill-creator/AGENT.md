@@ -170,42 +170,117 @@ clumsily, overclaims, or argues for it badly — restate it and judge the restat
 version. The only reason to leave something behind is that the idea itself is
 wrong, already held, or not worth its space.
 
-### What the MINE report must contain
-
-The report is what the owner reads to decide. He is approving **the inclusion of
-specific text into specific files**, so a verdict he cannot act on is not a
-verdict. One row per idea, and every surviving row carries four things:
-
-| | |
-| --- | --- |
-| **The idea**, in your own words | one sentence, and it must survive being separated from the source |
-| **What we already have** | the file and section that touches it, or "nothing" — the point of the row is whether this is new |
-| **Where it goes** | a named file and a named section, or a proposed new skill with the argument for why the ground is not already covered |
-| **The text** | the actual wording you propose to add or change, ready to be read and approved. Not a description of an edit — the edit |
-
-Then, across the whole folder and not row by row:
-
-- **What this folder overlaps**, found by reading the bodies of what is in force
-  rather than their `Covers` and `Leaves out` lines. For each: genuine duplicate,
-  or one principle legitimately applied to two subjects. Overlap is about the
-  question a skill answers, never the moment it fires.
-- **What it could be connected to** — a skill it would strengthen, a pair it would
-  complete, an `IDEAS.md` entry it makes ready.
-- **Where a separate skill is the better answer than an extension**, with the
-  §4 gates applied out loud.
-- **What was useless**, in one line each. No argument, no evidence, no ceremony.
-  Space spent on rejected material is space taken from the material being adopted.
-
-Ask the owner about anything you genuinely cannot resolve — a piece whose home
-depends on his taste, two homes with a real case for each, an idea that
-contradicts something in force. A question asked is cheaper than a wrong home.
-
-What the report is **not**: a review of the source's quality. Defects in the source
-matter only where they change what gets adopted. The owner is not deciding whether
-someone else's skill is good; he is deciding what enters his.
+**Moving a rule between the two layers is a correction, not a violation.** The
+standing rule that mining never touches owner preferences protects their
+*content*: nothing of his is reworded, weakened or dropped. Relocating a rule from
+the preferences section into the method body — or the reverse — changes which
+layer owns it and nothing else, and it is exactly what the mechanism-versus-manner
+line asks you to check. Report each move as its own numbered row with the same
+explanation any other idea gets. A move mentioned in a footnote is a change the
+owner did not review.
 
 The material is a construction kit, not a standard. The owner's stated preferences
 outrank anything borrowed, without discussion.
+
+## The report
+
+This shape is fixed, for MINE and for any other job that proposes changes. The
+owner is approving **specific text into specific files**, so a verdict he cannot
+act on is not a verdict — and a report he has to reassemble in his head is one he
+cannot check. Keep every heading even when a section is empty; write "none" under
+it. A missing heading reads as forgotten rather than empty.
+
+**1 · Verdict.** One line. What is being asked, and what it would cost to say no.
+
+**2 · The ideas.** One table. One row per idea, numbered `I1`, `I2`, …
+
+| # | The idea, in your own words | What in force touches it | Destination | Action |
+
+*The idea* is one sentence and must survive being separated from its source; if
+you cannot write it without quoting, you have not understood it well enough to
+judge it. *What in force touches it* is a file and a section, or `none` — that
+column is the whole point of the row. *Destination* is a file and a section, never
+a file alone. *Action* is one of `new`, `extend`, `replace`, `move` (between the
+two layers of one file), or `drop`.
+
+**3 · The text.** One block per surviving row, keyed to its number:
+
+```
+I3 · <three or four words>
+File:      <path from the repository root>
+Section:   <the heading it lands under>
+Replaces:  <the exact text being replaced, or "nothing — new">
+Text:      <the exact wording proposed>
+```
+
+The edit itself, not a description of an edit. This is what gets approved.
+
+**4 · Wiring.** The check below, as its own section, always.
+
+**5 · Overlaps.** One row per overlap, read from the **bodies** of what is in
+force and not from their `Covers` and `Leaves out` lines:
+
+| With (file · section) | Duplicate or second application | What you recommend |
+
+Overlap is about the question a skill answers, never the moment it fires. Two
+skills triggered by the same event are not neighbours unless they answer the same
+question. A checklist item that recurs in two checklists belonging to different
+skills is not a duplicate either — each checklist serves its own skill's question,
+and the same rule appearing under two questions is one logic showing itself twice.
+
+**6 · Connections.** What this strengthens, what pair it completes, which
+`IDEAS.md` entry it makes ready or makes obsolete. Where a separate skill beats an
+extension, apply the gates out loud.
+
+**7 · Dropped.** One row each. No argument, no evidence, no ceremony — space spent
+on rejected material is taken from the material being adopted.
+
+| What | Why, in one line |
+
+**8 · Questions.** Anything you cannot resolve: a home that depends on his taste,
+two destinations with a real case each, an idea that contradicts something in
+force. Never a bare question — options and a recommendation:
+
+| # | The question | The options | What you recommend, and why |
+
+**9 · Sources.** What you read in full, what you reached by search and read only
+in part, and what you could not establish. Mark each judgement's evidence per
+`confidence-check`.
+
+Name every file in full, every time. A bare section number is readable only by
+someone already holding both texts — write "§7 of `skills/verify-before-done/`",
+not "§7"; write "`skills/git-repo-structure/references/FINAL_PASS.md`", not "the
+final pass".
+
+What the report is **not**: a review of the source's quality. Defects in a
+borrowed file matter only where they change what gets adopted. The owner is not
+deciding whether someone else's skill is good; he is deciding what enters his.
+
+## The wiring check
+
+Agents consume skills. So every change to the shape of the library leaves some
+agent's reading list possibly wrong — and nobody looks by default, which is how an
+agent ends up carrying a list assembled six months and four skills ago.
+
+Run it whenever you propose a new skill or agent, a merge, a split, a rewrite that
+changes what a skill is *for*, or the outcome of a mining pass. Report it as
+section 4, with a line for each of these that applies:
+
+- **A skill entered or changed.** Which agents in force should now read it, and
+  what would each do differently for having it? Name the agent and the reason, or
+  say plainly that none should and why.
+- **A skill was merged, split or narrowed.** Which agents list it, and is that
+  listing still right? A split usually means an agent wants one half and not the
+  other.
+- **A new agent is proposed.** Which skills does it consume, in reading order? An
+  agent listing no skills is carrying its method in its own body, which the law
+  forbids.
+- **Something listed has stopped earning its place.** Say so. Removing a skill
+  from an agent's list is a proposal like any other.
+
+**You recommend; the owner decides.** Never change an agent's reading list on your
+own judgement. A wrong list is paid for silently, in every run that agent makes
+afterwards.
 
 ## What you never do
 
