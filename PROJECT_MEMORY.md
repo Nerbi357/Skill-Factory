@@ -70,8 +70,10 @@ mark states; there is no release ceremony before v1.0.
 - **Commands: parked, 2026-08-04.** The gate for the old Phase 1 was held and
   then answered by dropping the phase: no commands are built, the seven designs
   stay in `COMMANDS.md` as specification, and the question returns in the last
-  phase. The plan below is renumbered accordingly — **Phase 1 is now the base**,
-  and it is the current work.
+  phase. The plan below is renumbered accordingly — **Phase 1 is now the base**.
+- **Phase 1 is broken into thirteen steps**, one pull request each, listed under
+  the phase. Step 1 — `working-agreement` — is next; nothing in force currently
+  states how the work is run, and every other artifact assumes it.
 
 ---
 
@@ -127,6 +129,41 @@ overturned by closing the pull request that carries it.
   judge given the output and the skill's difference sentence, paired when the
   difference needs showing and with the metric declared first — are run when a
   skill is new, heavily revised or doubted. Not for a wording fix.
+
+**The steps.** Each row is one pull request, and each is a *theme* rather than a
+folder — several review folders feed one artifact, which is the whole point.
+Forty folders are not forty skills.
+
+| # | What lands in force | Fed by |
+| --- | --- | --- |
+| 1 | `working-agreement` — the order of work and the decision rights | `4-working-agreement`; the six operating behaviours in `3-using-agent-skills`; `3-karpathy-guidelines` |
+| 2 | `verify-before-done`; `confidence-check` sharpened or confirmed | `4-verify-before-done`, `4-doubt-driven-development`, `2-code-review-and-quality`, `3-source-driven-development` |
+| 3 | a testing skill; verdict on the `test-engineer` worker | `4-test-driven-development`, `2-test-engineer` |
+| 4 | `agent-orchestration` | `4-sp-dispatching-parallel-agents`, `4-sp-subagent-driven-development`, `3-understand-anything`, `SKILL (1).md` §9 |
+| — | **checkpoint — install what exists into a real project before mining on** | |
+| 5 | philosophy §3–§4 and `skill-creator`, tested against a rival method | `4-sp-writing-skills`, `3-using-agent-skills`, `2-context-engineering` |
+| 6 | one interview skill, not three | `3-interview-me`, `2-grilling`, `2-idea-refine` |
+| 7 | planning and the phase boundary | `3-planning-and-task-breakdown`, `2-incremental-implementation`, `2-spec-driven-development` |
+| 8 | a debugging skill | `3-debugging-and-error-recovery` |
+| 9 | `source-evaluation`, `research-conduct`, the `source-scout` worker | those three |
+| 10 | `living-project`; `git-repo-structure` extended | `3-living-project`, `2-git-workflow-and-versioning`, `1-documentation-and-adrs`, `1-ci-cd-and-automation`, `1-shipping-and-launch` |
+| 11 | the design cluster `ux-designer` will stand on | `4-frontend-design`, `3-frontend-ui-engineering`, `3-impeccable`, `3-theme-factory`, `3-web-performance-auditor`, `2-web-artifacts-builder`, `1-canvas-design`, `1-algorithmic-art` |
+| 12 | nothing — the deferred pile declined, each with its reason | the remaining priority 0–1 folders, `2-security-and-hardening`, `1-security-auditor` |
+| 13 | whatever the two originals still hold; then they leave the root | `AI_INSTRUCTIONS (1).md`, `SKILL (1).md` |
+
+**Target size: roughly a dozen skills in force at the end, not forty.** A folder
+that yields nothing is resolved by saying so, in its pull request.
+
+**A processed folder leaves `to_review/`** once its content is resolved. Git keeps
+it, and a queue that never shrinks is not a queue.
+
+**Step 5 touches the constitution**, which the standing decisions reserve for an
+outside look. It is proposed from here, never merged from here.
+
+**The checkpoint after step 4** is the guard against the register's second-worst
+risk. A dozen skills nobody has used is meta-work wearing the costume of a
+library; if the first four are not obviously worth having in a real project, the
+rest of this table is wrong and gets rebuilt rather than executed.
 
 **Risks here:** a flood of pull requests (the cap holds); taste dilution (the
 absolute rule above); mining that produces volume rather than force — the
