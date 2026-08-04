@@ -79,7 +79,12 @@ mark states; there is no release ceremony before v1.0.
   `SIGNALS.md` exists at the root and holds the owner's corrections of the
   working session as its first five entries.
 - **Mining runs one review folder per exchange**, agreed in conversation before
-  anything is written. `4-verify-before-done` is the first.
+  anything is written.
+- **`verify-before-done` is in force**, 2026-08-04 — the first folder mined and
+  the first artifact to enter through this loop. Thirty-nine review folders and
+  six workers remain. The wiring check ran and returned nothing: `skill-creator`
+  does not read it, because it judges and writes rather than building things that
+  break, and `confidence-check` already covers how its claims are marked.
 
 ---
 

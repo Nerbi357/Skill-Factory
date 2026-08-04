@@ -27,8 +27,9 @@ Revisit when: `research-conduct` and `source-evaluation` are in force.
 What: a skill defining a phase, its boundary, and what happens there — the full
 technical pass, the review offer, the next branches.
 Why: the phase close is the factory's "meaning" trigger for reviews, currently
-declared by the owner with no method behind it; two drafts already point rules
-at this skill.
+declared by the owner with no method behind it. The technical pass now lives in
+`verify-before-done` §7; what remains unowned is the ceremony around it — the
+review offer, and the choice of what comes next.
 From: the owner, 2026-08-03 — "we will come back to it when we understand what
 else this skill is for."
 Revisit when: phase closes have happened a few times and the pattern is visible.

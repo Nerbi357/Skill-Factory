@@ -53,8 +53,9 @@ Paste this at the start of a session, with the library available to it:
 >
 > Skills are in `skills/`, agents in `agents/`. Each folder is self-contained —
 > read the whole folder, not just `SKILL.md`, before using it. **Ignore anything
-> under `to_review/`** unless I point you at it: that is raw material, not
-> approved for use.
+> under `to_review/` or `archive/`** unless I point you at it: the first is raw
+> material and the second is material already judged and finished with. Neither
+> is approved for use.
 >
 > While we work, keep a `SIGNALS.md` at the root of this project. Record anything
 > worth remembering about *how* we worked: a correction I made, friction that cost
@@ -77,6 +78,7 @@ carries everything it needs.
 | [`confidence-check`](skills/confidence-check/) | Marks every fact with how well it is actually known — verified, seen, recalled, or inferred — and forbids inventing a specific. |
 | [`git-repo-structure`](skills/git-repo-structure/) | Keeps a repository structured and named so it reads as a finished product rather than someone's working desk. |
 | [`signal-capture`](skills/signal-capture/) | Records observations about how the work is going into a SIGNALS.md file, so they can later improve the skill library instead of being forgotten. |
+| [`verify-before-done`](skills/verify-before-done/) | Forbids calling anything finished without evidence that it works, and requires a deliberate attempt to break it first. |
 
 
 ### Agents
