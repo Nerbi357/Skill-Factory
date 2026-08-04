@@ -128,9 +128,16 @@ overturned by closing the pull request that carries it.
   goes in close to verbatim from an Apache-2.0 source, its pull request says so
   and the licence file stays beside it in `to_review/`. The default avoids the
   case entirely, because borrowed wording also borrows assumptions.
-- **Drafts written for this library get a promotion interview, not a mining
-  pass** — `4-working-agreement`, `3-living-project` and their siblings enter
-  force whole or not at all, with their own open-questions section as the agenda.
+- ~~**Drafts written for this library get a promotion interview, not a mining
+  pass**~~ — **overturned 2026-08-04.** One pass for everything, ours and
+  borrowed alike. The interview shape asks "does this enter whole?", which cannot
+  see a defect inside the file; the mining pass found five in the first draft it
+  was run on, including a worked example that broke a rule already in force. The
+  only difference for our own drafts is that less gets left behind.
+- **Mining takes ideas, not wording.** A badly stated rule can carry a good idea;
+  restate it and judge the restatement. Grounds for leaving something behind are
+  that the idea is wrong, already held, or not worth its space — never that the
+  source says it clumsily.
 - **Cold runs** — a candidate subagent given only the skill folder and a task, a
   judge given the output and the skill's difference sentence, paired when the
   difference needs showing and with the metric declared first — are run when a
@@ -311,6 +318,15 @@ Decided by the owner on 2026-08-04, second pass:
   where the owner's taste is.
 - **All mining finishes before the library goes into a real project.** The
   checkpoint proposed after step 4 is dropped.
+- **The two layers split mechanism from manner, not "general" from "his".** An
+  idea the owner supplied is method, argued on its merits in the body; the
+  preferences layer is for how he wants to be worked with. Attributing a method
+  rule to him mid-body makes it unarguable; filing an idea of his under
+  preferences demotes it from reasoning to taste.
+- **The signal log is kept in English**, translating rather than paraphrasing.
+- **A MINE report is a list of inclusions to approve**, not a review of the
+  source's quality. Every surviving idea carries the wording proposed, the file
+  and section it goes to, and what already in force touches it.
 - **Overlap is about the question a skill answers, not the moment it fires.**
   `git-repo-structure` owns the repository's presentation and contents; the
   process skills own the work itself. Two skills triggered by the same event —

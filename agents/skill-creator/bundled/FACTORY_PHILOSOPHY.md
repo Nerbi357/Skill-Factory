@@ -326,6 +326,19 @@ can be handed to someone else without a rewrite, and the owner can see exactly
 which rules are his taste rather than engineering fact — which is what makes them
 reviewable.
 
+**The line runs between mechanism and manner, not between "general" and "his".**
+An idea the owner supplied is still method — it belongs in the body, argued on its
+merits, and it stays there when the skill travels. The preferences layer is for how
+he wants to be worked with: what to show him, what to ask before doing, how much
+detail, what he does not want to see. A rule that would still be true if someone
+else owned the library is method, however it arrived.
+
+Two failure modes follow. Attributing a method rule to the owner mid-body —
+"this is his explicit instruction" — smuggles a preference into the mechanism and
+makes the rule unarguable. And filing a genuine idea of his under preferences
+demotes it: it stops being reasoning anyone can check and becomes taste nobody may
+touch.
+
 ### Self-containment
 
 A skill or agent folder must work when sent alone into a chat that has nothing
