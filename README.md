@@ -87,7 +87,7 @@ archive/                отработанный материал — тольк
 
 | | What it does |
 | --- | --- |
-| [`skill-creator`](agents/skill-creator/) | Maintains the skill library — turns accumulated signals into proposed changes, drafts new skills and agents to the library's standard, mines borrowed work for usable parts, audits what exists for overlap and drift, and says which skills a given task should load. |
+| [`skill-creator`](agents/skill-creator/) | Ведёт библиотеку скиллов — превращает накопленные сигналы в предлагаемые изменения, пишет новые скиллы и агентов по стандарту библиотеки, добывает из заимствованной работы пригодные части, проводит аудит существующего на пересечения и дрейф и говорит, какие скиллы нужны данной задаче. |
 
 <!-- CATALOGUE:END -->
 
