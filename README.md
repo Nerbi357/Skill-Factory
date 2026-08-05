@@ -77,10 +77,10 @@ archive/                отработанный материал — тольк
 
 | | What it does |
 | --- | --- |
-| [`confidence-check`](skills/confidence-check/) | Marks every fact with how well it is actually known — verified, seen, recalled, or inferred — and forbids inventing a specific. |
-| [`git-repo-structure`](skills/git-repo-structure/) | Keeps a repository structured and named so it reads as a finished product rather than someone's working desk. |
-| [`signal-capture`](skills/signal-capture/) | Records observations about how the work is going into a SIGNALS.md file, so they can later improve the skill library instead of being forgotten. |
-| [`verify-before-done`](skills/verify-before-done/) | Forbids calling anything finished without evidence that it works, and requires a deliberate attempt to break it first. |
+| [`confidence-check`](skills/confidence-check/) | Помечает каждый факт тем, насколько он на самом деле известен — проверено, видел, помню или вывел — и запрещает выдумывать конкретику. |
+| [`git-repo-structure`](skills/git-repo-structure/) | Держит репозиторий структурированным и названным так, чтобы он читался как законченный продукт, а не как чей-то рабочий стол. |
+| [`signal-capture`](skills/signal-capture/) | Записывает наблюдения о том, как идёт работа, в файл SIGNALS.md, чтобы позже они улучшили библиотеку скиллов, а не забылись. |
+| [`verify-before-done`](skills/verify-before-done/) | Запрещает называть что-либо законченным без доказательства, что оно работает, и требует сначала намеренно попытаться это сломать. |
 
 
 ### Agents

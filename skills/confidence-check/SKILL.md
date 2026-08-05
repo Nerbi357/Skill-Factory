@@ -1,115 +1,119 @@
 ---
 name: confidence-check
-description: Marks every fact with how well it is actually known — verified, seen, recalled, or inferred — and forbids inventing a specific. Use whenever stating a URL, price, limit, version, date, field name or coverage figure. Use before describing how any tool, API or platform behaves. Use when a check was blocked rather than answered, and whenever a claim is about to be built on.
+description: Помечает каждый факт тем, насколько он на самом деле известен — проверено, видел, помню или вывел — и запрещает выдумывать конкретику. Применяй всегда, когда называешь URL, цену, лимит, версию, дату, имя поля или цифру покрытия. Применяй прежде, чем описывать поведение любого инструмента, API или платформы. Применяй, когда проверка была заблокирована, а не дала ответ, и всегда, когда на утверждении собираются что-то строить.
 ---
 
 # Confidence check
 
-**What changes because of this skill:** without it, a plausible URL, limit or
-price recalled from memory gets stated as if it were checked — and that fails
-silently, late, after work has been built on it. With it, every claim carries how
-well it is known, and a gap is reported as a gap instead of being filled.
+**Что меняется из-за этого скилла:** без него правдоподобный URL, лимит или цена,
+извлечённые из памяти, заявляются так, будто их проверили, — и это отказывает
+молча и поздно, когда на них уже что-то построено. С ним каждое утверждение несёт
+то, насколько оно известно, а пробел сообщается как пробел, а не заполняется.
 
-**Covers:** one thing only — how well a stated fact is actually known, and how to
-say so.
-**Leaves out:** how to conduct research, what to conclude from it, and how to
-shape a report. Those are separate jobs. This skill applies to a single claim, one
-claim at a time, wherever claims are made.
+**Покрывает:** одно и только одно — насколько на самом деле известен заявленный
+факт и как это сказать.
+**Оставляет за скобками:** как вести исследование, что из него заключать и как
+оформлять отчёт. Это отдельные работы. Этот скилл применяется к одному
+утверждению за раз, везде, где утверждения делаются.
 
 ---
 
-## 1. Every fact carries its confidence
+## 1. Каждый факт несёт свою уверенность
 
-Four marks. Use them out loud, in the sentence itself, not in a footnote nobody
-reads:
+Четыре пометки. Употребляй их вслух, в самом предложении, а не в сноске, которую
+никто не читает:
 
-| Mark | Means |
+| Пометка | Значит |
 | --- | --- |
-| **verified** | you fetched it, ran it, or read it in the source just now |
-| **seen** | you saw it somewhere credible but did not confirm it yourself |
-| **recalled** | it comes from memory or training, unchecked |
-| **inferred** | you worked it out; it is reasoning, not observation |
+| **проверено** | ты это достал, запустил или только что прочитал в источнике |
+| **видел** | ты это где-то видел у заслуживающего доверия, но сам не подтвердил |
+| **помню** | это из памяти или обучения, непроверенное |
+| **вывел** | ты это вычислил; это рассуждение, а не наблюдение |
 
-Mixing these silently is how work ends up resting on something plausible that was
-never true. The mark costs three words and saves the class of failure that is
-hardest to trace, because a wrong fact stated confidently gets built on before
-anyone thinks to doubt it.
+Молча смешивать их — так работа и оказывается стоящей на чём-то правдоподобном,
+что никогда не было верным. Пометка стоит трёх слов и спасает от того класса
+отказов, который отследить труднее всего: неверный факт, заявленный уверенно,
+успевают застроить прежде, чем кому-то придёт в голову усомниться.
 
-The mark matters in proportion to what depends on the fact. A passing aside needs
-none. **Anything that will be built on carries one.**
+Пометка важна пропорционально тому, что от факта зависит. Мимоходному замечанию
+она не нужна. **Всё, на чём будут строить, несёт её.**
 
-### When the thing itself cannot be reached
+### Когда до самой вещи не дотянуться
 
-Often it cannot: the network is blocked, the service is down, the page wants a
-login. The mark then attaches to **what you actually did check**, and says so.
+Часто не дотянуться: сеть заблокирована, сервис лежит, страница требует входа.
+Тогда пометка цепляется к **тому, что ты действительно проверил**, и говорит об
+этом.
 
-*Verified that this repository's code contains that URL* is a different claim from
-*verified that the URL works*. Both are honest; only one of them is about the
-thing you were asked about. Collapsing them is how a report full of honest-looking
-marks still misleads, because the reader assumes the mark refers to the claim
-rather than to its shadow.
+*Проверено, что код этого репозитория содержит такой URL* — это другое
+утверждение, чем *проверено, что URL работает*. Оба честны; только одно из них о
+той вещи, о которой спрашивали. Схлопывание их — вот как отчёт, полный
+честно выглядящих пометок, всё равно вводит в заблуждение: читатель предполагает,
+что пометка относится к утверждению, а не к его тени.
 
-So name the object, not just the level: "verified — the file contains this string"
-beats a bare "verified". And three independent third-party sources agreeing is
-real evidence worth reporting as such — it is still `seen`, because none of them
-was the thing itself.
+Поэтому называй объект, а не только уровень: «проверено — файл содержит эту
+строку» лучше голого «проверено». А три независимых сторонних источника,
+сходящихся во мнении, — это настоящее доказательство, о котором стоит сообщить как
+о таковом, но это по-прежнему `видел`, потому что ни один из них не был самой
+вещью.
 
-## 2. Never invent a specific
+## 2. Никогда не выдумывай конкретику
 
-A URL, a price, a rate limit, a version number, a date, a field name, a coverage
-figure — recalled from memory and presented as checked — is worse than an admitted
-gap. An admitted gap gets checked. A confident fabrication gets used.
+URL, цена, лимит запросов, номер версии, дата, имя поля, цифра покрытия,
+извлечённые из памяти и поданные как проверенные, хуже признанного пробела.
+Признанный пробел идут и проверяют. Уверенную выдумку идут и используют.
 
-This is the rule that most often has to be applied against your own fluency: the
-specific will arrive in your head feeling exactly as certain as a real one. That
-feeling is not evidence. If you cannot say where it came from, it is `recalled`,
-and if it matters, go and check it.
+Это то правило, которое чаще всего приходится применять против собственной
+беглости: конкретика придёт в голову с ровно тем же ощущением уверенности, что и
+настоящая. Это ощущение не доказательство. Если не можешь сказать, откуда оно, —
+это `помню`, и если это важно, иди и проверь.
 
-**Check before you argue from it.** Building an argument on a recalled specific is
-worse than stating the specific alone, because the reasoning around it makes the
-specific look examined.
+**Проверь прежде, чем строить на этом довод.** Построить аргумент на вспомненной
+конкретике хуже, чем назвать её саму по себе, потому что рассуждение вокруг
+делает её похожей на изученную.
 
-## 3. A blocked check is not a negative result
+## 3. Заблокированная проверка — не отрицательный результат
 
-If the environment refused the request, the network failed, the page needed a
-login, or a tool was unavailable — that says **nothing** about the thing being
-checked. Report it as blocked, name what blocked it, and leave the question open.
+Если среда отказала в запросе, сеть упала, страница потребовала входа или
+инструмент был недоступен — это **ничего** не говорит о проверяемой вещи. Сообщи
+об этом как о блокировке, назови, что заблокировало, и оставь вопрос открытым.
 
-Collapsing "I could not check" into "it is not there" produces confident wrong
-conclusions that look like findings. The two are opposites: one is an absence of
-evidence about the world, the other is evidence about the world.
+Схлопывание «я не смог проверить» в «этого там нет» производит уверенные неверные
+выводы, выглядящие как находки. Это противоположности: одно — отсутствие
+доказательств о мире, другое — доказательство о мире.
 
-## 4. Report the hole instead of filling it
+## 4. Сообщи о дыре вместо того, чтобы её заполнить
 
-When something could not be established, say so, say why, and say what it would
-take to close it. A named hole is a task. A filled hole is a bug with a long fuse.
+Когда что-то не удалось установить, скажи об этом, скажи почему и скажи, что
+понадобилось бы, чтобы закрыть. Названная дыра — это задача. Заполненная дыра —
+это баг с длинным фитилём.
 
-This includes partial answers. "Three of the five fields are documented; the other
-two I could not find" is a useful result. Quietly describing all five as though
-they were equally established is not.
+Это относится и к частичным ответам. «Три поля из пяти задокументированы,
+остальные два я не нашёл» — полезный результат. Тихо описать все пять так, будто
+они одинаково установлены, — нет.
 
-## 5. A number without its date will go stale
+## 5. Число без своей даты протухнет
 
-A measurement is a fact about one moment. It stays true forever **if it carries
-where and when it came from** — "the run of 2026-07-24 cost $7.14" is permanently
-accurate. Strip the date and the same number silently becomes false the next time
-anything changes, without ever being marked as doubtful.
+Измерение — это факт об одном моменте. Оно остаётся верным вечно, **если несёт,
+откуда и когда оно взялось**: «прогон 2026-07-24 стоил $7.14» точен навсегда.
+Сними дату — и то же число молча становится ложным при следующем же изменении, ни
+разу не будучи помеченным как сомнительное.
 
-So a figure that can drift is stated with its moment attached, or not stated as a
-fact at all. This is a confidence rule, not a formatting one: an undated number is
-a claim whose confidence decays invisibly, which is the one failure this skill
-exists to prevent.
+Поэтому цифра, способная уплыть, называется вместе со своим моментом — или не
+называется как факт вообще. Это правило про уверенность, а не про оформление:
+недатированное число — утверждение, чья уверенность распадается невидимо, а это
+ровно тот отказ, ради предотвращения которого скилл и существует.
 
 ---
 
-## Owner preferences
+## Предпочтения владельца
 
-- **Confidence marks are expected, not optional.** They entered the working
-  contract after a source study in which the sandbox silently blocked several
-  checks; the marks are what made the resulting report usable.
-- **An admitted gap is never held against you. A fabricated specific is.** Say "I
-  do not know" plainly rather than producing something plausible.
-- **When a platform's behaviour matters to a decision, read the documentation
-  before arguing from it** — not after the argument has been made. This rule
-  exists because the opposite happened: an architecture was proposed on a recalled
-  belief about how skills are discovered, and the documentation contradicted it.
+- **Пометки уверенности ожидаются, а не факультативны.** Они вошли в рабочий
+  контракт после исследования источников, в котором песочница молча заблокировала
+  несколько проверок; именно пометки сделали получившийся отчёт пригодным.
+- **Признанный пробел тебе никогда не ставят в вину. Выдуманную конкретику —
+  ставят.** Скажи «я не знаю» прямо, а не производи что-нибудь правдоподобное.
+- **Когда поведение платформы важно для решения, прочитай документацию, прежде
+  чем строить на ней довод**, а не после того, как довод уже построен. Правило
+  существует потому, что случилось обратное: архитектуру предложили на основе
+  вспомненного убеждения о том, как обнаруживаются скиллы, и документация ему
+  противоречила.
