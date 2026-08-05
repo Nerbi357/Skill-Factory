@@ -1,209 +1,208 @@
 # COMMANDS
 
-A command is an ordinary skill carrying `disable-model-invocation: true` — you can
-invoke it, the model cannot invoke it on its own. That restriction is the point:
-regenerating a catalogue, rewriting a skill or opening a review are all things
-whose timing should be yours, not a model's guess that the moment looks right.
+Команда — это обычный скилл, несущий `disable-model-invocation: true`: вызвать её
+можешь ты, модель сама — нет. В этом ограничении и смысл: перегенерировать
+каталог, переписать скилл или открыть разбор — это всё вещи, чей момент должен
+выбирать ты, а не догадка модели о том, что момент выглядит подходящим.
 
-**The factory has none, and is building none.** What follows is design, not work in
-progress. A command adds a deterministic handle; it never adds a capability, and
-every job described below is already reachable — a session reads
-`PROJECT_MEMORY.md`, delegates to `agents/skill-creator`, and opens a pull
-request. That is how this repository has actually been run. The question returns
-in the last phase of the plan, once the library maintains itself and the handle
-starts being worth its file; the reasoning is in `PROJECT_MEMORY.md` under the
-ruling of 2026-08-04.
+**У фабрики нет ни одной, и ни одна не строится.** Дальше идёт проект, а не работа
+в процессе. Команда добавляет детерминированную ручку; она никогда не добавляет
+способности, и каждая работа, описанная ниже, уже достижима: сессия читает
+`PROJECT_MEMORY.md`, делегирует `agents/skill-creator` и открывает pull request.
+Именно так этот репозиторий и вёлся на самом деле. Вопрос возвращается в последней
+фазе плана, когда библиотека начнёт обслуживать себя сама и ручка начнёт окупать
+свой файл; рассуждение — в `PROJECT_MEMORY.md` под решением от 2026-08-04.
 
-Read the rest as the specification each one would be built to.
+Читай остальное как спецификацию, по которой каждая была бы построена.
 
-| Command | Where it would run |
+| Команда | Где бы работала |
 | --- | --- |
-| `/factory-new` | the factory |
-| `/factory-review` | the factory |
-| `/factory-mine` | the factory |
-| `/factory-test` | the factory |
-| `/factory-loop` | the factory |
-| `/signal` | any project |
-| `/skills-for` | any project |
+| `/factory-new` | фабрика |
+| `/factory-review` | фабрика |
+| `/factory-mine` | фабрика |
+| `/factory-test` | фабрика |
+| `/factory-loop` | фабрика |
+| `/signal` | любой проект |
+| `/skills-for` | любой проект |
 
 ---
 
 ## `/factory-new`
 
-**Creates a new skill or agent.**
+**Создаёт новый скилл или агента.**
 
-Runs the interview first — what the thing is for, what changes in behaviour
-because of it, where its boundary sits against its neighbours — and only then
-writes a file. The interview is not ceremony: most bad skills are bad because they
-were written before anyone could say what they would change.
+Сначала проводит опрос — для чего эта вещь, что меняется в поведении из-за неё, где
+проходит её граница с соседями — и только потом пишет файл. Опрос не церемония:
+большинство плохих скиллов плохи потому, что их написали раньше, чем кто-то смог
+сказать, что они изменят.
 
-Before writing anything it checks whether an existing skill is the same job seen
-from a different angle, and says so if it is. One strong skill beats two that each
-half-cover the ground.
+Прежде чем что-то писать, проверяет, не является ли существующий скилл той же
+работой под другим углом, и говорит об этом, если является. Один сильный скилл
+лучше двух, каждый из которых покрывает половину.
 
-It also applies the skill-or-agent test rather than taking your word for which one
-you asked for. If you ask for an agent and the work needs none of context
-isolation, parallelism, adversarial independence, a different permission profile
-or its own trigger, it will say so and propose a skill instead — with the
-reasoning, so you can overrule it.
+Она также применяет тест «скилл или агент», а не верит тебе на слово в том, что́ ты
+попросил. Если ты просишь агента, а работе не нужны ни изоляция контекста, ни
+параллелизм, ни состязательная независимость, ни другой профиль прав, ни свой
+триггер, она скажет об этом и предложит скилл — с рассуждением, чтобы ты мог
+настоять на своём.
 
-Ends by regenerating the catalogue in `README.md`.
+Заканчивает перегенерацией каталога в `README.md`.
 
-**Reach for it when:** you have explained the same approach twice, a task arrived
-that nothing covers, or you want a rough placeholder now that will be reshaped
-later.
+**Тянись за ней, когда:** ты объяснил один и тот же подход дважды, пришла задача,
+которую ничто не покрывает, или тебе нужна грубая заготовка сейчас, которую
+переформуют потом.
 
 ---
 
 ## `/factory-review`
 
-**Turns accumulated observations into changes to the skills.**
+**Превращает накопленные наблюдения в изменения скиллов.**
 
-This is the loop the whole repository exists to run. Five steps:
+Это та петля, ради запуска которой существует весь репозиторий. Пять шагов:
 
-1. Reads the signals — from the `SIGNALS.md` of whatever project produced them.
-2. Groups them. The same observation arriving from three places is one strong
-   candidate, not three weak ones.
-3. Proposes: which skill, what changes, which signals it came from, how confident
-   the evidence makes it. A proposal with no signal behind it is labelled as an
-   opinion rather than dressed up as evidence.
-4. **Asks you.** Each proposal comes as options with a recommendation. This is the
-   survey — the point of the review, not a formality wrapped around it.
-5. Applies what you accepted. What you turned down is simply not applied — the
-   closed pull request keeps the discussion, and if the same idea ever returns
-   you say no again.
+1. Читает сигналы — из `SIGNALS.md` того проекта, который их произвёл.
+2. Группирует их. Одно наблюдение, пришедшее из трёх мест, — один сильный
+   кандидат, а не три слабых.
+3. Предлагает: какой скилл, что меняется, из каких сигналов пришло, насколько
+   уверенным делают доказательства. Предложение без сигнала за ним помечается как
+   мнение, а не наряжается в доказательство.
+4. **Спрашивает тебя.** Каждое предложение приходит вариантами с рекомендацией. Это
+   и есть опрос — смысл разбора, а не формальность, обёрнутая вокруг него.
+5. Применяет принятое тобой. Отклонённое просто не применяется: закрытый pull
+   request хранит обсуждение, и если та же идея когда-нибудь вернётся, ты скажешь
+   «нет» ещё раз.
 
-**Reach for it when:** a phase or a project closes, or when the signal count has
-been climbing and you want the pile turned into something.
+**Тянись за ней, когда:** закрывается фаза или проект, или когда счётчик сигналов
+рос и ты хочешь превратить эту кучу во что-то.
 
 ---
 
 ## `/factory-mine`
 
-**Gets the value out of borrowed work and into what is actually in force.**
+**Достаёт ценность из заимствованной работы и переносит в то, что реально в силе.**
 
-Point it at something in `to_review/skills/` or
-`to_review/agents/` — a skill written by someone else, a draft, a rule
-evicted from a file it did not belong in.
+Направь её на что-нибудь в `to_review/skills/` или `to_review/agents/` — скилл,
+написанный другим, черновик, правило, вынутое из файла, которому не принадлежало.
 
-It never promotes a file whole. Adopting someone else's artifact entire imports
-their assumptions along with their good ideas, and the assumptions are invisible
-precisely because they arrived bundled with something that works. Instead it takes
-the thing apart into its smallest usable pieces, checks each against what is
-already in force, and proposes only what survives — extending a named skill,
-merging two, or seeding a new one where nothing fits.
+Она никогда не вводит файл в силу целиком. Принять чужой артефакт целиком — значит
+импортировать его допущения вместе с хорошими идеями, а допущения невидимы именно
+потому, что прибыли упакованными вместе с чем-то работающим. Вместо этого она
+разбирает вещь на мельчайшие пригодные куски, сверяет каждый с тем, что уже в силе,
+и предлагает только выжившее — расширить названный скилл, слить два или засеять
+новый там, где ничто не подходит.
 
-It also reports what it left behind and why. A piece nobody ever claims is itself
-a result: the idea was weaker than it looked.
+Она также сообщает, что оставила за бортом и почему. Кусок, на который никто
+никогда не претендует, сам по себе результат: идея была слабее, чем выглядела.
 
-**Reach for it when:** you have dropped something into a review folder and want to
-know what in it is worth having.
+**Тянись за ней, когда:** ты положил что-то в папку разбора и хочешь знать, что в
+ней стоит иметь.
 
 ---
 
 ## `/factory-test`
 
-**Checks that a skill actually changes behaviour, using contexts that cannot
-cheat.**
+**Проверяет, что скилл действительно меняет поведение, в контекстах, которые не
+могут смухлевать.**
 
-Two clean subagents. The **candidate** receives only the skill folder and a task
-— none of the conversation that produced the skill, none of the rest of the
-library. The **judge** receives the candidate's output and the skill's own
-difference sentence, and rules on one question: did the behaviour the skill
-promises actually appear? When the difference needs demonstrating rather than
-asserting, the run is paired — the same task once with the folder and once
-without — and the comparison metric is declared before the run, not after.
+Два чистых субагента. **Кандидат** получает только папку скилла и задачу — ни
+разговора, который скилл породил, ни остальной библиотеки. **Судья** получает вывод
+кандидата и собственную фразу различия скилла и решает один вопрос: появилось ли
+поведение, которое скилл обещает? Когда различие надо показывать, а не утверждать,
+прогон парный — та же задача один раз с папкой и один раз без, — и метрика
+сравнения объявляется до прогона, а не после.
 
-Tasks come from two places, and are generated fresh at run time — nothing is
-stored in the skill folder:
+Задачи берутся из двух мест и генерируются заново в момент прогона: ничто не
+хранится в папке скилла.
 
-- **a real task** from a working project, past or pending — the strongest
-  evidence, because the task was not shaped to fit the skill;
-- **a task rebuilt from signals** — a recorded `gap`, `friction` or `caught`
-  moment replayed as a scenario the skill should now handle.
+- **настоящая задача** из рабочего проекта, прошлая или предстоящая, — сильнейшее
+  доказательство, потому что задачу не подгоняли под скилл;
+- **задача, восстановленная из сигналов**, — записанный момент `gap`, `friction`
+  или `caught`, проигранный как сценарий, с которым скилл теперь должен справиться.
 
-The result is a verdict report — what fired, what was ignored, what the paired
-run showed — and it rides in the pull request that proposes whatever follows
-from it.
+Результат — отчёт с вердиктом: что сработало, что было проигнорировано, что показал
+парный прогон, — и он едет в том pull request'е, который предлагает то, что из него
+следует.
 
-**Reach for it when:** a skill is freshly drafted, was heavily revised, or you
-doubt it is earning its place.
+**Тянись за ней, когда:** скилл только написан, был сильно переписан или ты
+сомневаешься, что он окупается.
 
 ---
 
 ## `/factory-loop`
 
-**Runs one full maintenance iteration of the factory — only when you start it.**
+**Прогоняет одну полную итерацию обслуживания фабрики — только когда ты её
+запустил.**
 
-One pass over the channels the factory is fed by, in priority order: unprocessed
-signals from the projects listed in `PROJECT_MEMORY.md` → mining the review zone
-→ the audit, freshness included → tests worth running → building what the plan
-promises next. It picks the single most valuable piece of work it finds, does it,
-and opens **at most one pull request**, with the survey in the description.
+Один проход по каналам, которыми фабрика питается, в порядке приоритета:
+неразобранные сигналы из проектов, перечисленных в `PROJECT_MEMORY.md` → майнинг
+зоны разбора → аудит, включая свежесть → тесты, которые стоит прогнать →
+строительство того, что план обещает следующим. Она выбирает один самый ценный
+кусок работы, который находит, делает его и открывает **не больше одного pull
+request'а**, с опросом в описании.
 
-Three rules keep it honest. It never runs on a schedule — you invoke it, from a
-session or a prompt, and that is the only trigger. It respects the open-PR cap
-in `PROJECT_MEMORY.md`: at the cap it improves what is already open instead of
-adding to the pile. And an empty iteration is a valid result — finding nothing
-worth changing is a finding, not a failure to be papered over.
+Честной её держат три правила. Она никогда не идёт по расписанию: ты вызываешь её,
+из сессии или промптом, и это единственный триггер. Она уважает потолок открытых PR
+из `PROJECT_MEMORY.md`: на потолке она улучшает уже открытое, а не добавляет в
+кучу. И пустая итерация — законный результат: не найти ничего, что стоит менять, —
+это находка, а не провал, который надо замазать.
 
-**Reach for it when:** you have time to review one pull request and want the
-factory to have spent the interval well.
+**Тянись за ней, когда:** у тебя есть время проверить один pull request и хочется,
+чтобы фабрика хорошо потратила промежуток.
 
 ---
 
 ## `/signal`
 
-**Records an observation of yours, in your words, right now.**
+**Записывает твоё наблюдение, твоими словами, прямо сейчас.**
 
-The companion skill records what the model notices. This command records what
-**you** notice — and those are the higher-quality signals, because the model
-cannot see its own blind spots. "That was worse than usual", "you started coding
-before asking again", "that table was exactly right" are all things only you can
-report.
+Скилл-компаньон записывает то, что заметила модель. Эта команда записывает то, что
+заметил **ты**, — и это сигналы более высокого качества, потому что модель не видит
+собственных слепых пятен. «Это было хуже обычного», «ты опять начал писать код, не
+спросив», «вот эта таблица была ровно тем, что нужно» — всё это может сообщить
+только ты.
 
 ```
-/signal you started implementing before asking what it was for
+/signal ты начал внедрять, не спросив, для чего это
 ```
 
-Writes a dated entry into `SIGNALS.md` at the project root, with your words quoted
-exactly, plus the surrounding context. The verbatim quote is not decoration: a
-month later a paraphrase will have drifted and the quote will not.
+Пишет датированную запись в `SIGNALS.md` в корне проекта, с твоими словами,
+процитированными точно, плюс окружающий контекст. Дословная цитата — не украшение:
+через месяц пересказ уплывёт, а цитата нет.
 
-**Reach for it when:** something lands well or badly and you do not want to stop
-and discuss it. One line, then carry on.
+**Тянись за ней, когда:** что-то легло хорошо или плохо, а останавливаться и
+обсуждать не хочется. Одна строка — и дальше.
 
 ---
 
 ## `/skills-for`
 
-**Says which skills to load for the task in front of you.**
+**Говорит, какие скиллы грузить под задачу, которая перед тобой.**
 
 ```
-/skills-for building a scraper for a source that keeps changing shape
+/skills-for написать скрапер для источника, который постоянно меняет форму
 ```
 
-Returns a prescription, not a list:
+Возвращает рецепт, а не список:
 
 ```
-Required:    <skills, in the order to read them>
-Optional:    <skills, with the condition that would make them worth loading>
-Do not load: <skills, with the reason>
+Обязательно:  <скиллы, в порядке чтения>
+По желанию:   <скиллы, с условием, при котором их стоит грузить>
+Не грузить:   <скиллы, с причиной>
 ```
 
-The last line does the most work. It keeps context free and stops two skills from
-imposing conflicting rules on the same task.
+Последняя строка делает больше всего работы. Она бережёт контекст и не даёт двум
+скиллам навязать одной задаче противоречащие правила.
 
-**Reach for it when:** you start work in a project and want the right subset
-loaded, rather than everything or whatever the model happens to notice. It matters
-more the larger the library gets — descriptions compete for a shared budget, so
-past a certain size the model stops reliably seeing what is available and explicit
-routing takes over.
+**Тянись за ней, когда:** начинаешь работу в проекте и хочешь загрузить правильное
+подмножество, а не всё подряд и не то, что модель случайно заметит. Это значит тем
+больше, чем больше библиотека: описания конкурируют за общий бюджет, поэтому за
+определённым размером модель перестаёт надёжно видеть, что доступно, и на смену
+приходит явная маршрутизация.
 
 ---
 
-## Naming
+## Именование
 
-Commands are lowercase-with-hyphens, like every artifact: a command is a skill,
-and a skill's folder, frontmatter `name` and invocation are the same string, so
-the register and the invocations match by construction.
+Команды пишутся в нижнем регистре через дефис, как любой артефакт: команда — это
+скилл, а папка скилла, `name` во frontmatter и способ вызова — одна и та же строка,
+так что реестр и вызовы совпадают по построению.

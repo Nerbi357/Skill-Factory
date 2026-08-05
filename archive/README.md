@@ -1,14 +1,14 @@
 # Archive
 
-Material that has been read, judged and finished with. Every folder here went
-through a mining pass; what survived is in `skills/` or `agents/`, and the pull
-request that emptied it records what was taken and what was not.
+Материал, который прочитан, осуждён и закрыт. Каждая папка здесь прошла майнинговый
+проход; то, что выжило, лежит в `skills/` или `agents/`, а pull request, её
+опустошивший, фиксирует, что было взято, а что нет.
 
-**Nothing reads this and nothing routes to it.** It is not a second review queue
-and not a source of methods — a rule found here is not in force, whatever it says.
-It exists so that judging a folder is never the same act as destroying it: the
-queue in `to_review/` shrinks, and the material stays where anyone can check what
-a decision was made from.
+**Это никто не читает и сюда ничто не маршрутизируется.** Это не вторая очередь
+разбора и не источник методов: правило, найденное здесь, не в силе, что бы в нём ни
+было написано. Папка существует, чтобы осудить материал никогда не означало
+уничтожить его: очередь в `to_review/` укорачивается, а материал остаётся там, где
+любой может проверить, из чего было принято решение.
 
-Folders keep the priority digit they carried in the queue. That digit is where
-they sat in the order of work, not a judgement about what came out of them.
+Папки сохраняют цифру приоритета, с которой стояли в очереди. Эта цифра — их место
+в порядке работы, а не суждение о том, что из них вышло.

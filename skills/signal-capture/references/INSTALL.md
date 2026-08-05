@@ -1,35 +1,35 @@
-# Installing signal capture into a project
+# Установка signal capture в проект
 
-The skill works on its own — a session that reads `SKILL.md` will keep the log.
-The hook makes it reliable rather than remembered, which matters because a skill
-is a request and a hook is a guarantee.
+Скилл работает и сам по себе: сессия, прочитавшая `SKILL.md`, будет вести журнал.
+Хук делает это надёжным вместо того, чтобы полагаться на память, — а это важно,
+потому что скилл — просьба, а хук — гарантия.
 
-Both steps are optional and independent. Do the first; do the second when the
-project is one you will come back to.
+Оба шага необязательны и независимы. Первый сделай; второй — когда проект из тех, к
+которым ты будешь возвращаться.
 
 ---
 
-## 1. The skill
+## 1. Скилл
 
-Copy this whole folder into the project:
+Скопируй всю эту папку в проект:
 
 ```
 <project>/.claude/skills/signal-capture/
 ```
 
-That is all. The session picks it up on its next start.
+Это всё. Сессия подхватит его при следующем старте.
 
-If the project is not a Claude Code project, or the session has no repository
-access, paste the contents of `SKILL.md` at the start of the conversation instead.
-The skill is written to work either way.
+Если проект не является проектом Claude Code или у сессии нет доступа к
+репозиторию, вместо этого вставь содержимое `SKILL.md` в начало разговора. Скилл
+написан так, чтобы работать и так, и так.
 
-## 2. The hook
+## 2. Хук
 
-The hook injects one short line at the start of every session: that this project
-keeps a signal log, how many entries are in it, and — once the count crosses a
-threshold — that a review is worth offering.
+Хук вбрасывает одну короткую строку в начале каждой сессии: что этот проект ведёт
+журнал сигналов, сколько в нём записей и — когда счётчик переходит порог — что стоит
+предложить разбор.
 
-Copy the script and make it executable:
+Скопируй скрипт и сделай его исполняемым:
 
 ```bash
 mkdir -p .claude/hooks
@@ -37,7 +37,7 @@ cp .claude/skills/signal-capture/scripts/signals_check.sh .claude/hooks/
 chmod +x .claude/hooks/signals_check.sh
 ```
 
-Then add this to `.claude/settings.json`, merging with anything already there:
+Затем добавь это в `.claude/settings.json`, слив с тем, что там уже есть:
 
 ```json
 {
@@ -53,52 +53,52 @@ Then add this to `.claude/settings.json`, merging with anything already there:
 }
 ```
 
-Commit both. The hook then travels with the repository, which matters for cloud
-and web sessions — those read the repository's own `.claude/`, never anything on
-a personal machine.
+Закоммить оба. Тогда хук путешествует вместе с репозиторием, а это важно для
+облачных и веб-сессий: они читают собственную `.claude/` репозитория и никогда
+ничего с личной машины.
 
-### Setting the threshold
+### Выставление порога
 
-Twenty entries by default, set high on purpose: a review earns its cost when there
-is enough material for patterns to show, and three signals produce three opinions
-rather than one finding.
+По умолчанию двадцать записей, и порог намеренно высокий: разбор окупается, когда
+материала хватает, чтобы проступили закономерности, а три сигнала дают три мнения
+вместо одной находки.
 
-Set `SIGNALS_THRESHOLD` in the environment to change it. Better still, decide it
-once with the owner when the skill is installed — a project doing heavy unfamiliar
-work generates signals fast and may want a lower number; a routine one may want no
-count-based offer at all, leaving only the phase and project boundaries.
+Задай `SIGNALS_THRESHOLD` в окружении, чтобы изменить. Ещё лучше — реши это с
+владельцем один раз при установке скилла: проект с тяжёлой незнакомой работой
+генерирует сигналы быстро и может захотеть число поменьше; рутинный может вообще не
+хотеть предложения по счётчику, оставив только границы фаз и проектов.
 
-### What the hook deliberately does not do
+### Чего хук намеренно не делает
 
-It does not prompt after every turn. That was considered and rejected: a reminder
-that fires after "fix that typo" as readily as after a real correction gets
-ignored within a day, and then the mechanism is worse than nothing because it
-looks like it is working.
-
----
-
-## 3. Checking it works
-
-Start a session and ask what it knows about signals in this project. It should
-mention the log and the count without being told. If it does not:
-
-- confirm the script is executable and the path in `settings.json` is right;
-- run `bash .claude/hooks/signals_check.sh` by hand — it should print one line of
-  JSON;
-- start Claude Code with `--debug` to see hook parse errors.
-
-The script is written to stay silent rather than fail: a missing file, a missing
-`jq`, or an unreadable log all produce a sensible line rather than an error. A
-session must never break because of a bookkeeping hook.
+Он не подсказывает после каждого хода. Это было рассмотрено и отвергнуто:
+напоминание, срабатывающее после «поправь эту опечатку» так же охотно, как после
+настоящей поправки, начинают игнорировать за день, и тогда механизм хуже, чем ничего,
+потому что выглядит работающим.
 
 ---
 
-## 4. Taking the signals to the library
+## 3. Проверка, что оно работает
 
-When a review is due, bring `SIGNALS.md` to a session that has the skill library
-available, and ask for a review pass. Processed entries can then be cleared from
-the project's file — the change each one produced is in the skill it touched, and
-the discussion is in the pull request that applied it.
+Запусти сессию и спроси, что она знает о сигналах в этом проекте. Она должна
+упомянуть журнал и счётчик, не будучи об этом попрошена. Если нет:
 
-Nothing in the project decides what changes. That judgement is the owner's, and it
-happens where the skills live.
+- убедись, что скрипт исполняемый и путь в `settings.json` верен;
+- запусти `bash .claude/hooks/signals_check.sh` руками — он должен напечатать одну
+  строку JSON;
+- запусти Claude Code с `--debug`, чтобы увидеть ошибки разбора хука.
+
+Скрипт написан так, чтобы молчать, а не падать: отсутствующий файл, отсутствующий
+`jq` или нечитаемый журнал — всё это даёт осмысленную строку, а не ошибку. Сессия
+никогда не должна ломаться из-за бухгалтерского хука.
+
+---
+
+## 4. Как отнести сигналы в библиотеку
+
+Когда разбор назрел, принеси `SIGNALS.md` в сессию, у которой есть доступ к
+библиотеке скиллов, и попроси проход разбора. Разобранные записи после этого можно
+вычистить из файла проекта: изменение, которое каждая породила, — в скилле, которого
+оно коснулось, а обсуждение — в pull request'е, который его применил.
+
+Ничто в проекте не решает, что меняется. Это суждение владельца, и происходит оно
+там, где живут скиллы.

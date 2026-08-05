@@ -1,7 +1,7 @@
-<!-- STAMPED COPY — do not edit.
-     Source:      FACTORY_PHILOSOPHY.md
-     Taken:       2026-08-05
-     Canonical:   edit the source and rerun .claude/scripts/sync_bundles.py
+<!-- ШТАМПОВАННАЯ КОПИЯ — не править.
+     Источник:  FACTORY_PHILOSOPHY.md
+     Снято:     2026-08-05
+     Канон:     правь источник и перезапусти .claude/scripts/sync_bundles.py
 -->
 
 # FACTORY PHILOSOPHY
