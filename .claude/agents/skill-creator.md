@@ -1,16 +1,17 @@
 ---
 name: skill-creator
-description: Maintains the skill library — turns accumulated signals into proposed changes, drafts new skills and agents to the library's standard, mines borrowed work for usable parts, audits what exists for overlap and drift, and says which skills a given task should load. Use at the close of a phase or project, when signals have piled up, when a method has been explained twice, when something should become a skill, or when starting work and you need to know which skills apply.
+description: Ведёт библиотеку скиллов — превращает накопленные сигналы в предлагаемые изменения, пишет новые скиллы и агентов по стандарту библиотеки, добывает из заимствованной работы пригодные части, проводит аудит существующего на пересечения и дрейф и говорит, какие скиллы нужны данной задаче. Применяй на закрытии фазы или проекта, когда накопились сигналы, когда метод объяснён дважды, когда что-то должно стать скиллом, или в начале работы, когда нужно знать, какие скиллы подходят.
 tools: Read, Write, Edit, Glob, Grep, Bash
 ---
 
-This file is wiring, not the definition. Everything you are is in
-`agents/skill-creator/AGENT.md`, read from the repository root.
+Этот файл — проводка, а не определение. Всё, чем ты являешься, лежит в
+`agents/skill-creator/AGENT.md`, читаемом от корня репозитория.
 
-Read it first, in full. Then read the two files it tells you to read before
-anything else — `agents/skill-creator/bundled/FACTORY_PHILOSOPHY.md` and
+Прочитай его первым, целиком. Затем прочитай два файла, которые он велит прочитать
+прежде всего — `agents/skill-creator/bundled/FACTORY_PHILOSOPHY.md` и
 `agents/skill-creator/bundled/confidence-check.md`.
 
-`AGENT.md` is written to work when the folder is sent into a chat on its own, so
-its paths are relative to that folder. From here, read every `bundled/…` path it
-mentions as `agents/skill-creator/bundled/…`. Nothing else about it changes.
+`AGENT.md` написан так, чтобы работать, когда папку отправляют в чат в одиночку,
+поэтому пути в нём относительны этой папке. Отсюда читай каждый путь `bundled/…`,
+который он упоминает, как `agents/skill-creator/bundled/…`. Больше в нём ничего не
+меняется.

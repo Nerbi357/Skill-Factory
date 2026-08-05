@@ -1,18 +1,18 @@
 #!/usr/bin/env python3
-"""Refresh the stamped copies in every agent's bundled/ folder.
+"""Обновляет штампованные копии в папке bundled/ каждого агента.
 
-Agent folders must work when sent somewhere alone, so each one carries copies of
-what it needs rather than pointers into the library. Copies drift, so they are
-generated here and stamped with their source and date instead of being edited.
+Папки агентов обязаны работать, будучи отправленными куда-то в одиночку, поэтому
+каждая несёт копии нужного, а не указатели в библиотеку. Копии дрейфуют, поэтому
+они генерируются здесь и штампуются источником и датой, а не правятся руками.
 
-Each agent declares what it needs in bundled/MANIFEST.md, as lines of the form:
+Каждый агент объявляет нужное ему в bundled/MANIFEST.md строками вида:
 
-    - `<destination file>` <- `<source path relative to the repo root>`
+    - `<файл назначения>` <- `<путь к источнику от корня репозитория>`
 
-Convenience only. Deleting this script costs the refresh; the copies it wrote stay
-readable and the agents keep working.
+Только удобство. Удаление этого скрипта стоит обновления; написанные им копии
+остаются читаемыми, и агенты продолжают работать.
 
-Usage:  python3 .claude/scripts/sync_bundles.py [--check] [--date YYYY-MM-DD]
+Запуск:  python3 .claude/scripts/sync_bundles.py [--check] [--date YYYY-MM-DD]
 """
 
 from __future__ import annotations
@@ -28,10 +28,10 @@ AGENTS = ROOT / "agents"
 
 ENTRY = re.compile(r"^\s*-\s+`([^`]+)`\s*<-\s*`([^`]+)`\s*$", re.M)
 
-STAMP = """<!-- STAMPED COPY — do not edit.
-     Source:      {source}
-     Taken:       {date}
-     Canonical:   edit the source and rerun .claude/scripts/sync_bundles.py
+STAMP = """<!-- ШТАМПОВАННАЯ КОПИЯ — не править.
+     Источник:  {source}
+     Снято:     {date}
+     Канон:     правь источник и перезапусти .claude/scripts/sync_bundles.py
 -->
 
 """
@@ -43,7 +43,7 @@ def stamped(source: str, date: str, body: str) -> str:
 
 def sync(date: str, check: bool) -> int:
     if not AGENTS.is_dir():
-        print("no agents directory; nothing to do")
+        print("папки agents нет; делать нечего")
         return 0
 
     stale: list[str] = []
@@ -53,21 +53,21 @@ def sync(date: str, check: bool) -> int:
         bundled = manifest.parent
         entries = ENTRY.findall(manifest.read_text(encoding="utf-8"))
         if not entries:
-            print(f"warning: {manifest.relative_to(ROOT)} declares nothing")
+            print(f"предупреждение: {manifest.relative_to(ROOT)} ничего не объявляет")
             continue
 
         for destination, source in entries:
             src = ROOT / source
             if not src.is_file():
-                print(f"error: {source} does not exist (wanted by {manifest.relative_to(ROOT)})")
+                print(f"ошибка: {source} не существует (запрошен из {manifest.relative_to(ROOT)})")
                 return 2
 
             dst = bundled / destination
             want = stamped(source, date, src.read_text(encoding="utf-8"))
             have = dst.read_text(encoding="utf-8") if dst.is_file() else None
 
-            # Compare the body only: a re-run on an unchanged source must not
-            # churn the date and produce a diff that means nothing.
+            # Сравниваем только тело: повторный запуск на неизменившемся источнике
+            # не должен трогать дату и производить дифф, который ничего не значит.
             if have is not None and have.split("-->\n\n", 1)[-1] == src.read_text(encoding="utf-8"):
                 continue
 
@@ -77,20 +77,20 @@ def sync(date: str, check: bool) -> int:
 
             dst.parent.mkdir(parents=True, exist_ok=True)
             dst.write_text(want, encoding="utf-8")
-            print(f"stamped {dst.relative_to(ROOT)}  <-  {source}")
+            print(f"проштамповано {dst.relative_to(ROOT)}  <-  {source}")
             written += 1
 
     if check:
         if stale:
-            print("stale bundled copies:")
+            print("устаревшие копии в bundled:")
             for path in stale:
                 print(f"  {path}")
-            print("run sync_bundles.py")
+            print("запусти sync_bundles.py")
             return 1
-        print("bundled copies are current")
+        print("копии в bundled актуальны")
         return 0
 
-    print(f"{written} file(s) refreshed" if written else "bundled copies were already current")
+    print(f"обновлено файлов: {written}" if written else "копии в bundled и так были актуальны")
     return 0
 
 

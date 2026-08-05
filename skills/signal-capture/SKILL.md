@@ -1,140 +1,141 @@
 ---
 name: signal-capture
-description: Records observations about how the work is going into a SIGNALS.md file, so they can later improve the skill library instead of being forgotten. Use in every project, continuously. Use the moment the owner corrects you, when something takes more exchanges than it should have, when something goes unusually well, when you explain the same thing twice, when a task arrives that no skill covers, or when a claim of yours turns out to be wrong. Use at the close of a phase to offer a short review.
+description: Записывает наблюдения о том, как идёт работа, в файл SIGNALS.md, чтобы позже они улучшили библиотеку скиллов, а не забылись. Применяй в каждом проекте, постоянно. Применяй в момент, когда владелец тебя поправил, когда что-то стоило больше сообщений, чем должно было, когда что-то прошло необычно хорошо, когда ты объясняешь одно и то же дважды, когда пришла задача, которую не покрывает ни один скилл, или когда твоё утверждение оказалось неверным. Применяй на закрытии фазы, чтобы предложить короткий разбор.
 ---
 
 # Signal capture
 
-**What changes because of this skill:** without it, everything learned about *how*
-to work with this owner evaporates when the session ends, and the same friction
-recurs in the next project. With it, those moments land in a file while they are
-still exact, and the skill library improves from evidence rather than from
-someone's memory of a bad afternoon.
+**Что меняется из-за этого скилла:** без него всё узнанное о том, *как* работать
+с этим владельцем, испаряется с концом сессии, и то же трение повторяется в
+следующем проекте. С ним эти моменты приземляются в файл, пока они ещё точны, и
+библиотека скиллов улучшается от доказательств, а не от чьей-то памяти о плохом
+дне.
 
-**Covers:** noticing and recording observations about the collaboration itself,
-and offering a review when enough have piled up.
-**Leaves out:** deciding what any of it should change. That judgement belongs to
-the review, where the owner rules — writing a signal is not proposing a fix.
+**Покрывает:** замечание и запись наблюдений о самом сотрудничестве и предложение
+разбора, когда их накопилось достаточно.
+**Оставляет за скобками:** решение о том, что из этого должно что-то изменить. Это
+суждение принадлежит разбору, где решает владелец, — написать сигнал не значит
+предложить починку.
 
 ---
 
-## 1. What a signal is
+## 1. Что такое сигнал
 
-A **raw observation about how the work went**, written when it happened.
+**Сырое наблюдение о том, как прошла работа**, записанное в момент, когда это
+случилось.
 
-Rawness is the point. A signal is not a decision, not a fix, and not a rule. If
-every remark became a rule immediately, the guidance would fill with noise and
-start contradicting itself within a month. A signal is material; it becomes a
-change later, if the owner says so.
+Сырость и есть суть. Сигнал — не решение, не починка и не правило. Если бы каждое
+замечание немедленно становилось правилом, руководство заполнилось бы шумом и
+начало противоречить себе в течение месяца. Сигнал — материал; изменением он
+становится позже, если владелец так скажет.
 
-This means you record things you disagree with, and things whose implication you
-cannot see yet. Judging on the way in defeats the mechanism.
+Это значит, что ты записываешь и то, с чем не согласен, и то, чьё следствие пока
+не видишь. Судить на входе — значит сломать механизм.
 
-## 2. The five kinds
+## 2. Пять видов
 
-| Kind | What it is |
+| Вид | Что это |
 | --- | --- |
-| `correction` | the owner corrected a behaviour of yours |
-| `friction` | something cost more than it should have — extra exchanges, a rediscovery, the same thing explained twice |
-| `worked` | something went unusually well — the kind most often lost |
-| `gap` | a task arrived that no available method covered |
-| `caught` | you asserted something and it turned out to be wrong |
+| `correction` | владелец поправил твоё поведение |
+| `friction` | что-то стоило дороже, чем должно было, — лишние сообщения, повторное открытие известного, одно и то же объяснённое дважды |
+| `worked` | что-то прошло необычно хорошо — вид, который теряется чаще всего |
+| `gap` | пришла задача, которую не покрыл ни один доступный метод |
+| `caught` | ты что-то утверждал, и это оказалось неверным |
 
-`worked` deserves attention because nobody thinks to write it down. Frustration
-announces itself; a thing that went smoothly just goes smoothly. But the library
-needs to know what to keep as much as what to change, and a method nobody recorded
-as working is a method that gets quietly dropped in the next revision.
+`worked` заслуживает внимания потому, что записать это никому не приходит в
+голову. Раздражение объявляет о себе само; то, что прошло гладко, просто проходит
+гладко. Но библиотеке надо знать, что сохранять, не меньше, чем что менять, а
+метод, который никто не записал как работающий, — это метод, который тихо выкинут
+при следующей правке.
 
-## 3. The record
+## 3. Запись
 
-Append to **`SIGNALS.md` at the root of the project**. It belongs in plain sight,
-not filed away in a service folder — the owner reads it and reviews it directly,
-and a log nobody stumbles over is a log nobody processes.
+Дописывай в **`SIGNALS.md` в корне проекта**. Ему место на виду, а не спрятанным в
+служебной папке: владелец читает и разбирает его напрямую, а журнал, на который
+никто не натыкается, — журнал, который никто не обрабатывает.
 
 ```markdown
-## <date> · <kind> · <target, or "none">
-What happened: one or two sentences.
-Verbatim: "<the owner's own words, quoted exactly>"
-Candidate: the rule this might become.
-Confidence: how strongly this is evidenced.
+## <дата> · <вид> · <цель, или "none">
+Что случилось: одно-два предложения.
+Дословно: "<собственные слова владельца, процитированные точно>"
+Кандидат: правило, которым это может стать.
+Уверенность: насколько сильно это доказано.
 ```
 
-**Quote, never paraphrase.** A month later your paraphrase will have drifted
-toward what you think he meant; the quote will still be what he said. This is the
-single most important line in the record, and the one most tempting to smooth
-over.
+**Цитируй, никогда не пересказывай.** Через месяц твой пересказ уплывёт в сторону
+того, что, по-твоему, он имел в виду; цитата останется тем, что он сказал. Это
+самая важная строка записи и та, которую больше всего тянет сгладить.
 
-**The log is kept in the language of the library, not of the conversation.** When
-the owner speaks another one, translate his sentence as closely as it allows and
-keep his structure — translating is not paraphrasing, and a log nobody can skim is
-a log nobody reviews. Where one word carries the ruling and does not survive the
-crossing, keep his word beside yours.
+**Журнал ведётся на языке библиотеки, а не разговора.** Когда владелец говорит на
+другом, переведи его предложение настолько близко, насколько оно позволяет, и
+сохрани его структуру: переводить — не значит пересказывать, а журнал, который
+нельзя пробежать глазами, — журнал, который никто не разбирает. Там, где одно
+слово несёт решение и не переживает перехода, сохрани его слово рядом со своим.
 
-Where the signal came from you rather than him — friction you noticed, a gap you
-hit — say so in place of the quote.
+Там, где сигнал пришёл от тебя, а не от него, — замеченное тобой трение, пробел, в
+который ты упёрся, — так и скажи вместо цитаты.
 
-Keep it to five lines and under a minute. A heavier format does not get used, and
-a signal that goes unwritten is worth nothing however well it would have been
-formatted.
+Держи в пяти строках и меньше минуты. Формат потяжелее не используется, а
+ненаписанный сигнал не стоит ничего, как бы хорошо он ни был оформлен.
 
-## 4. When to write
+## 4. Когда писать
 
-**In the moment, not in a batch at the end.** Detail decays fast, and the exact
-wording is most of the value. Writing the file is a side action — mention it in
-one clause and carry on; it is not worth interrupting the work to announce.
+**В момент, а не пачкой в конце.** Детали распадаются быстро, а точная
+формулировка и есть большая часть ценности. Запись файла — побочное действие:
+упомяни это одним придаточным и работай дальше, прерывать работу ради объявления
+не стоит.
 
-Do not record every exchange. The test is whether it says something about **how to
-work**, not about the task. "The API returned 403" is a fact about the task.
-"Three attempts went by before I said the check was blocked rather than negative"
-is a signal.
+Не записывай каждый обмен. Проверка в том, говорит ли это что-то о том, **как
+работать**, а не о задаче. «API вернул 403» — факт о задаче. «Прошло три попытки,
+прежде чем я сказал, что проверка заблокирована, а не отрицательна» — сигнал.
 
-## 5. Offering a review
+## 5. Предложение разбора
 
-Three moments, and no others:
+Три момента, и никаких других:
 
-- **the close of a phase**
-- **the end of a project**
-- **the count crossing the threshold** — twenty by default
+- **закрытие фазы**
+- **конец проекта**
+- **переход счётчика через порог** — по умолчанию двадцать
 
-Offer briefly, once, and take no for an answer:
+Предложи коротко, один раз, и прими «нет» за ответ:
 
-> There are N signals recorded since <date>: mostly about <theme>. Worth a review
-> pass, or keep going?
+> Записано N сигналов с <даты>: в основном про <тему>. Стоит провести разбор или
+> идём дальше?
 
-**Twenty is a default, not a law.** It is set high on purpose: a review is worth
-running when there is enough material for patterns to show, and three signals
-produce three opinions rather than one finding. When this skill is installed
-somewhere new, ask the owner once at the start what the number should be for that
-project, and use his answer. A project with heavy, unfamiliar work generates
-signals fast and may want a lower one; a routine project may want none at all
-until a phase closes.
+**Двадцать — умолчание, а не закон.** Порог намеренно высокий: разбор окупается,
+когда материала хватает, чтобы проступили закономерности, а три сигнала дают три
+мнения вместо одной находки. Когда этот скилл ставится в новое место, спроси
+владельца один раз в начале, каким число должно быть для этого проекта, и
+пользуйся его ответом. Проект с тяжёлой незнакомой работой генерирует сигналы
+быстро и может захотеть меньше; рутинный может не хотеть счётчика вовсе, оставив
+только границы фаз.
 
-If a review is wanted, it happens in the skill library, not here. Nothing in this
-file decides what changes.
+Если разбор нужен, он происходит в библиотеке скиллов, а не здесь. Ничто в этом
+файле не решает, что́ меняется.
 
-**Do not run a survey unprompted, and do not ask after every task.** The value of
-these questions collapses if they arrive often enough to become furniture. A phase
-boundary is a natural moment; the end of a small task is not.
+**Не проводи опрос без просьбы и не спрашивай после каждой задачи.** Ценность
+этих вопросов схлопывается, если они приходят достаточно часто, чтобы стать
+мебелью. Граница фазы — естественный момент; конец мелкой задачи — нет.
 
-## 6. After a review
+## 6. После разбора
 
-Signals that have been processed can be cleared from `SIGNALS.md` — the change
-they produced is in the skill it touched, and the discussion that produced it is
-in the pull request. Leave anything not yet processed exactly as it is.
+Разобранные сигналы можно вычистить из `SIGNALS.md`: изменение, которое они
+породили, — в скилле, которого оно коснулось, а обсуждение, которое его породило,
+— в pull request'е. Всё неразобранное оставь ровно как есть.
 
 ---
 
-## Owner preferences
+## Предпочтения владельца
 
-- **He explicitly asked for this mechanism**, and named the two functions he wants
-  from it: periodic extraction of what is worth keeping from ordinary work, and
-  being asked review questions *with options offered* rather than open-ended ones.
-  A survey that asks "what should I improve?" gets a worse answer than one that
-  proposes three candidates and asks which is right.
-- **He also wants proposals for entirely new skills and agents**, with the
-  reasoning: why it should exist, and what functions it should own. Record those
-  as `gap` signals rather than acting on them.
-- **His own observations outrank yours.** When he says something landed badly or
-  well, that is the highest-quality signal available — record it verbatim and
-  immediately.
-- **Do not attach the file to the conversation.** He reads it where it lives.
+- **Он явно попросил этот механизм** и назвал две функции, которые от него хочет:
+  периодическое извлечение того, что стоит сохранить, из обычной работы, и чтобы
+  вопросы разбора задавались *с предложенными вариантами*, а не открытыми. Опрос,
+  спрашивающий «что мне улучшить?», получает худший ответ, чем тот, что предлагает
+  трёх кандидатов и спрашивает, какой верен.
+- **Он также хочет предложений совершенно новых скиллов и агентов** с
+  рассуждением: почему это должно существовать и какими функциями владеть.
+  Записывай такое как сигналы вида `gap`, а не действуй по ним.
+- **Его собственные наблюдения старше твоих.** Когда он говорит, что что-то легло
+  плохо или хорошо, это сигнал наивысшего доступного качества — записывай его
+  дословно и немедленно.
+- **Не прикрепляй файл к разговору.** Он читает его там, где тот лежит.

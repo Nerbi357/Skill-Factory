@@ -1,21 +1,23 @@
 # Bundled
 
-Stamped copies of what this agent needs, so the folder works when sent somewhere
-on its own. **Do not edit anything in here.** Edit the source and run
-`.claude/scripts/sync_bundles.py`, which rewrites these from the canonical files
-and re-stamps them.
+Штампованные копии того, что нужно этому агенту, чтобы папка работала, будучи
+отправленной куда-то в одиночку. **Ничего здесь не правь.** Правь источник и
+запускай `.claude/scripts/sync_bundles.py`, который переписывает это из канонических
+файлов и заново их штампует.
 
-Declared as `` `destination` <- `source` ``; the sync script reads these lines.
+Объявляется как `` `назначение` <- `источник` ``; скрипт синхронизации читает эти
+строки.
 
 - `FACTORY_PHILOSOPHY.md` <- `FACTORY_PHILOSOPHY.md`
 - `confidence-check.md` <- `skills/confidence-check/SKILL.md`
 
-## Why these two
+## Почему именно эти два
 
-The philosophy holds every rule an artifact must obey — the anatomy, the maturity
-ladder, the gates, the review loop. Without it the agent can read the library but
-cannot judge it against anything.
+Философия держит каждое правило, которому обязан подчиняться артефакт: анатомию,
+ворота, петлю разбора. Без неё агент может прочитать библиотеку, но ему не с чем её
+сверять.
 
-`confidence-check` is here because the agent's core act is weighing how
-well a proposal is evidenced, and that skill is how this library separates a
-claim backed by three independent signals from one backed by an impression.
+`confidence-check` здесь потому, что основное действие агента — взвешивание того,
+насколько доказано предложение, и этот скилл — то, как библиотека отделяет
+утверждение, за которым стоят три независимых сигнала, от утверждения, за которым
+стоит впечатление.

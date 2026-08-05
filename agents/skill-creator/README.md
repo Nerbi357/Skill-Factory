@@ -1,83 +1,84 @@
 # skill-creator
 
-The agent that maintains the skill library: it turns accumulated observations into
-proposed changes, drafts new skills and agents to the library's standard, audits
-what is already there, and says which skills a given task should load.
+Агент, ведущий библиотеку скиллов: он превращает накопленные наблюдения в
+предлагаемые изменения, пишет новые скиллы и агентов по стандарту библиотеки,
+проводит аудит того, что уже есть, и говорит, какие скиллы нужны данной задаче.
 
-It reads, judges and writes. It does not talk to you — the session that calls it
-does that. The division is deliberate and explained in `AGENT.md`.
+Он читает, судит и пишет. Он не разговаривает с тобой — это делает та сессия,
+которая его вызвала. Разделение намеренное и объяснено в `AGENT.md`.
 
 ---
 
-## What it is for
+## Для чего он
 
-| Job | You ask for | You get back |
+| Работа | Ты просишь | Ты получаешь |
 | --- | --- | --- |
-| **Review** | signals turned into changes | proposals with their evidence, plus a survey drafted for you to answer |
-| **Route** | which skills fit this task | required, optional, and explicitly *do not load* |
-| **Create** | a new skill or agent from a settled brief | the artifact, after checking it does not already exist |
-| **Audit** | the state of the library | overlaps, drift, and a recommended move for anything that looks dead |
+| **Review** | сигналы, превращённые в изменения | предложения с доказательствами плюс составленный для тебя опрос |
+| **Route** | какие скиллы подходят этой задаче | обязательные, необязательные и явное *не грузить* |
+| **Create** | новый скилл или агент из согласованного задания | артефакт, после проверки, что такого ещё нет |
+| **Audit** | состояние библиотеки | пересечения, дрейф и рекомендованный ход по всему, что выглядит мёртвым |
 
 ---
 
-## Installing it
+## Как поставить
 
-### Into a Claude Code project
+### В проект Claude Code
 
 ```bash
 mkdir -p .claude/agents
 cp AGENT.md .claude/agents/skill-creator.md
 ```
 
-The agent expects `bundled/` beside it, so copy that too and keep the relative
-path intact — or point it at the library's own copy if the session can reach the
-repository.
+Агент ожидает `bundled/` рядом с собой, поэтому скопируй и её, сохранив
+относительный путь, — или направь его на собственную копию библиотеки, если сессия
+дотягивается до репозитория.
 
-### Into any other chat
+### В любой другой чат
 
-Send this whole folder. It carries everything it needs: the agent definition and
-stamped copies of the library rules it works from. Then say:
+Отправь эту папку целиком. Она несёт всё, что нужно: определение агента и
+штампованные копии правил библиотеки, из которых он работает. Затем скажи:
 
-> Act as the agent defined in `AGENT.md`. Read `bundled/FACTORY_PHILOSOPHY.md`
-> first. I want a <review / route / create / audit> pass; here is the material.
-
----
-
-## Running a review
-
-The loop this exists for. Five steps, and you are in the middle of three of them:
-
-1. Bring the `SIGNALS.md` from whatever project produced it.
-2. The agent groups the signals and drafts proposals with their evidence.
-3. **It hands you a survey.** Each proposal comes as options with a
-   recommendation, phrased to answer in a line.
-4. You rule.
-5. The agent applies what you accepted. What you rejected is closed with the
-   pull request — the files keep no record, and if the same idea ever returns
-   you simply say no again.
+> Действуй как агент, определённый в `AGENT.md`. Сначала прочитай
+> `bundled/FACTORY_PHILOSOPHY.md`. Мне нужен проход <review / route / create /
+> audit>; вот материал.
 
 ---
 
-## What it will not do
+## Как проводится разбор
 
-It will never delete anything. Retiring an artifact needs you to say so outright —
-the agent reports and recommends, and merging two weak skills into one strong one
-is what it will suggest first.
+Петля, ради которой всё это существует. Пять шагов, и в трёх из них ты в центре:
 
-It will not invent a signal to justify a proposal, or touch anything outside
-the library.
-
-If a review finds that nothing should change, it says so. That is a real result,
-and it is the outcome the agent is most likely to be tempted away from.
+1. Принеси `SIGNALS.md` из того проекта, который его произвёл.
+2. Агент группирует сигналы и составляет предложения с их доказательствами.
+3. **Он отдаёт тебе опрос.** Каждое предложение приходит вариантами с
+   рекомендацией, сформулированными так, чтобы ответить одной строкой.
+4. Ты решаешь.
+5. Агент применяет принятое. Отклонённое закрывается вместе с pull request'ом —
+   файлы не хранят записи, и если та же идея когда-нибудь вернётся, ты просто
+   скажешь «нет» ещё раз.
 
 ---
 
-## Its companion
+## Чего он делать не будет
 
-`skills/signal-capture/` is the other half. It travels into every project
-and records the observations this agent later reads.
+Он никогда ничего не удалит. Отправка артефакта на покой требует твоего прямого
+слова — агент сообщает и рекомендует, а первым он предложит слить два слабых
+скилла в один сильный.
 
-They are separate because an agent cannot watch a conversation it is not part of.
-A subagent is invoked, works in its own context, and returns; nothing about it
-observes you working. The skill is the ears and goes where the work happens, the
-agent is the judgement and stays with the library.
+Он не выдумает сигнал ради оправдания предложения и не тронет ничего вне
+библиотеки.
+
+Если разбор находит, что менять ничего не нужно, он так и говорит. Это настоящий
+результат, и именно от него агента сильнее всего тянет отклониться.
+
+---
+
+## Его компаньон
+
+`skills/signal-capture/` — вторая половина. Он путешествует в каждый проект и
+записывает наблюдения, которые этот агент потом читает.
+
+Они разделены потому, что агент не может наблюдать разговор, частью которого не
+является. Субагента вызывают, он работает в своём контексте и возвращается; ничто в
+нём не смотрит, как ты работаешь. Скилл — это уши, и он идёт туда, где происходит
+работа; агент — это суждение, и он остаётся при библиотеке.

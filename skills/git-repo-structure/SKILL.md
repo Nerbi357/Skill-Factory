@@ -1,191 +1,189 @@
 ---
 name: git-repo-structure
-description: Keeps a repository structured and named so it reads as a finished product rather than someone's working desk. Use continuously while creating or moving files, naming things, choosing branches, or writing commit messages — not only at the end. Use when deciding where a new file belongs, when the root is filling up, before pushing anything, and before calling a project done. Use when writing a README, a folder name, or any text a first-time visitor will meet.
+description: Держит репозиторий структурированным и названным так, чтобы он читался как законченный продукт, а не как чей-то рабочий стол. Применяй постоянно, пока создаёшь или переносишь файлы, даёшь имена, выбираешь ветки или пишешь сообщения коммитов, — не только в конце. Применяй, когда решаешь, куда положить новый файл, когда корень заполняется, перед любым пушем и прежде, чем назвать проект готовым. Применяй, когда пишешь README, имя папки или любой текст, который встретит впервые пришедший.
 ---
 
 # Git repository structure
 
-**What changes because of this skill:** without it, a repository reads as a
-workbench — drafts left lying about, clutter in the root, a commit column full of
-"wip" and "fix", numbers in the documentation that stopped being true two rebuilds
-ago. With it, the landing page, the file listing and the commit column read as a
-product someone built deliberately.
+**Что меняется из-за этого скилла:** без него репозиторий читается как верстак —
+брошенные черновики, хлам в корне, колонка коммитов из «wip» и «fix», числа в
+документации, переставшие быть правдой две пересборки назад. С ним титульная
+страница, список файлов и колонка коммитов читаются как продукт, который кто-то
+построил намеренно.
 
-**Covers:** everything a person sees when they arrive at a repository — layout,
-names, prose, commit subjects, and the hosting platform's own surface.
-**Leaves out:** the quality of the code inside, which is review; and being able to
-re-run the work, which is reproducibility. A web or product interface is a
-neighbouring surface with its own rules, added later.
-
----
-
-## 1. The standard
-
-> In the final phase the bar is not "it works" but **"nothing here looks like a
-> workbench."**
-
-Judge the repository the way a first-time visitor sees it: the landing page, the
-file listing, the README, the commit column beside each file. Whatever reads as
-noise gets fixed. "It is only for me" is never a reason to leave a rough edge —
-**every project is built to be a finished, professional product or solution**,
-whoever it turns out to be for.
-
-### Two stages, and the default is final
-
-A repository is in one of two states, and knowing which one you are in settles
-most arguments about whether a file belongs.
-
-**Final** — the repository contains only what the product it delivers actually
-needs. No working files, no scratch branches, no service artefacts, no drafts.
-Anything a visitor could mistake for leftovers is gone, because it is.
-
-**Working** — a temporary state where service files, working branches or
-provisional names are permitted **because they buy something specific**. Each one
-is justified, each one is minimal, and each one has a stated end.
-
-> **Build as though the project were already final.** The working stage is a
-> deliberate, bounded departure — not the normal condition that gets tidied up
-> later.
-
-That ordering matters because the alternative is what actually happens by default:
-clutter accumulates as a byproduct, nobody decides to add it, and by the end
-nobody can tell which files were meant. When a working-stage departure genuinely
-pays — a scratch branch for something risky, a provisional name while the shape is
-unsettled — say so out loud, say what ends it, and end it.
-
-Entering the final stage is a real step, not a mood: working branches deleted,
-service files removed, provisional names replaced, and the file listing read
-straight through as a stranger would read it.
-
-## 2. A minimal root
-
-The landing page shows blocks — folders — plus only the files that must be there:
-readme, dependency and packaging files, the entry point, licence, ignore rules.
-
-**A new file goes into a block, never into the root.** When it is not obvious
-where a file belongs, ask. A misplaced artefact is cheap to move now and expensive
-to find later.
-
-**Check platform constraints before moving anything.** Some paths are dictated —
-CI workflow directories, host configuration, the dependency file — and moving them
-silently breaks deployment.
-
-## 3. Names
-
-Names say what the thing is for, not what category it belongs to, and one thing
-keeps one name everywhere it appears — folder, configuration, invocation. Human
-names are lowercase-with-hyphens unless the platform pins a form (`README.md`,
-`LICENSE`); service folders stay lowercase or dot-prefixed.
-
-## 4. Commit subjects are part of the finished look
-
-The repository page prints the subject of the last commit that touched each file,
-next to that file, permanently. **Those lines are read far more often than the
-diffs beneath them.** Write for that column:
-
-- one short sentence in plain words, capitalised, no trailing period;
-- no ticket codes, no `wip:` or `T4.3:` prefixes, no file names;
-- ideally under about fifty characters;
-- the detail goes in the body, which the listing never shows.
-
-Machine-generated commits obey the same rule — a scheduled job's message is what a
-visitor sees next to the folder it writes to.
-
-Good: `Explain the world the data comes from` · `Drop the screenshots, tighten the
-honesty section`
-Bad: `wip` · `fix bug in app.py` · `T4.3: update`
-
-## 5. Prose that does not go stale
-
-**Keep drifting numbers out of descriptions.** A count that changes with every
-rebuild — rows, tests, file sizes — must not appear where the text says what the
-project *is*. It goes stale silently and ends up contradicting the other files.
-Say "several thousand" and let the running system report the exact figure.
-
-A **measurement keeps its number** as long as it carries the date or run it came
-from: that is a fact about one moment and stays true forever.
-
-**One document per job.** If two documents answer the same question, merge them. A
-second document that re-answers an existing question is worse than no document,
-because now they can disagree.
-
-### The showcase and the working file
-
-**The landing page shows the finished thing; working material lives in one
-separate file.** The plan, the open questions, the rulings already made, drafts
-waiting on a verdict, a queue of raw material — none of that belongs on the page
-a first-time visitor reads. Describing a pile of unapproved drafts on the
-showcase tells that visitor the project is unfinished, whatever the rest of the
-page claims.
-
-It is also the most reliable source of stale prose there is. A plan changes
-weekly and a landing page is edited monthly, so a roadmap on the README is wrong
-most of the time it is being read.
-
-Keep it to **one** working file at the root, named for what it holds. It carries
-what a person or a fresh session needs to resume the project — where things
-stand, the plan, what has been decided — and the README points at it once,
-for whoever maintains the project, rather than reproducing any of it.
-
-## 6. The platform's own surface
-
-A hosting platform adds tabs and panels the project never asked for — an empty
-wiki, an empty project board, unused packages or deployments panels — and they are
-part of what a first visitor sees. Switch off what the project does not use, fill
-in what it does: the description, the link to the live thing, the topics. Mark a
-finished state with a release, so the page reads as a product rather than a stream
-of commits.
-
-Some of this can only be done by the owner in the platform's interface. Hand over
-the exact clicks and the exact text to paste (see the working agreement on
-step-by-step instructions).
-
-## 7. Hygiene that is not negotiable
-
-- **Secrets never enter the repository** — not in code, not in notebooks, not in
-  examples.
-- **Deleting produced data needs a reason and the owner's word.** Dated outputs
-  are an archive by default, and throwing one away is not reversible. But an
-  archive of something that turned out useless is just clutter, and clutter is
-  what the final stage exists to remove — so deletion is available, either because
-  the owner approved it or because the necessity is plain and stated. What is not
-  available is deleting it quietly.
-- **Atomic commits**, each with tests and linters green, each explaining *why* in
-  its body.
-- **No commit mixes a mechanical reformat with a change of meaning** — the second
-  cannot be reviewed when it is buried in the first.
-- **A main branch that always equals what is deployed.** Whether a permanent
-  working branch sits beside it is the owner's call; when there is only one
-  branch, the checks carry the whole weight, and risky work gets a temporary
-  branch deleted after merge.
-
-## 8. Before calling anything finished
-
-Run the pass in `references/FINAL_PASS.md`. It is the concrete checklist; this
-file is the reasoning behind it.
+**Покрывает:** всё, что человек видит, придя в репозиторий, — раскладку, имена,
+прозу, заголовки коммитов и собственную поверхность хостинг-платформы.
+**Оставляет за скобками:** качество кода внутри — это ревью; и возможность
+повторить работу — это воспроизводимость. Веб- или продуктовый интерфейс —
+соседняя поверхность со своими правилами, она добавится позже.
 
 ---
 
-## Owner preferences
+## 1. Планка
 
-- **Every project is a finished, professional product or solution**, regardless of
-  who it is for. The universal success criteria: it does not break, it does what
-  it was meant to do, it looks good and the repository is polished, and the owner
-  has understood how it works and approved it.
-- **He would rather have no working stage at all.** Service files and scratch
-  branches are permitted when they earn their place, but the burden is on them —
-  "it is temporary" is not a justification, it is a promise, and promises about
-  cleaning up later are the ones least often kept.
-- **The commit column is something he actively reads.** This rule entered the
-  contract because he pointed out that the per-file commit subject on the
-  repository page is part of how the project looks — not metadata.
-- **One name everywhere** is his convention: a thing's folder, its configured
-  name and the way it is invoked are the same lowercase-with-hyphens string, so
-  nothing has an alias.
-- **Ask where a file belongs** rather than guessing. He would rather answer a
-  one-line question than find a stray file later.
-- **Draft material never appears on the showcase.** This rule entered the skill
-  when he found the review zone described on the README: raw material is working
-  material, and working material has its own file.
-- The finished state includes the platform surface — he considers an empty wiki
-  tab or a blank About panel part of the product.
+> В финальной фазе планка не «оно работает», а **«ничто здесь не выглядит
+> верстаком»**.
+
+Суди репозиторий так, как его видит впервые пришедший: титульная страница, список
+файлов, README, колонка коммитов рядом с каждым файлом. Всё, что читается как шум,
+чинится. «Это только для меня» никогда не причина оставить необработанный край —
+**каждый проект строится как законченный профессиональный продукт или решение**,
+для кого бы он в итоге ни оказался.
+
+### Две стадии, и по умолчанию — финальная
+
+Репозиторий находится в одном из двух состояний, и знание того, в каком именно,
+решает большинство споров о том, место ли здесь файлу.
+
+**Финальная** — репозиторий содержит только то, что нужно продукту, который он
+доставляет. Ни рабочих файлов, ни черновых веток, ни служебных артефактов, ни
+набросков. Всего, что посетитель мог бы принять за остатки, нет, потому что его
+нет.
+
+**Рабочая** — временное состояние, где служебные файлы, рабочие ветки или
+временные имена допустимы, **потому что покупают что-то конкретное**. Каждое
+оправдано, каждое минимально, и у каждого объявлен конец.
+
+> **Строй так, будто проект уже финален.** Рабочая стадия — намеренное
+> ограниченное отступление, а не обычное состояние, которое потом приберут.
+
+Этот порядок важен, потому что альтернатива — это то, что и происходит по
+умолчанию: хлам накапливается побочным продуктом, никто не решает его добавить, и
+к концу никто не может сказать, какие файлы были задуманы. Когда отступление в
+рабочую стадию действительно окупается — черновая ветка под что-то рискованное,
+временное имя, пока форма не устоялась, — скажи об этом вслух, скажи, что его
+завершает, и заверши.
+
+Вход в финальную стадию — настоящий шаг, а не настроение: рабочие ветки удалены,
+служебные файлы убраны, временные имена заменены, а список файлов прочитан подряд
+так, как его прочитал бы посторонний.
+
+## 2. Минимальный корень
+
+Титульная страница показывает блоки — папки — плюс только те файлы, которые обязаны
+там быть: readme, файлы зависимостей и упаковки, точка входа, лицензия, правила
+игнорирования.
+
+**Новый файл уезжает в блок, никогда в корень.** Когда неочевидно, куда файл
+принадлежит, спроси. Неверно положенный артефакт дёшево перенести сейчас и дорого
+искать потом.
+
+**Проверь ограничения платформы, прежде чем что-то переносить.** Некоторые пути
+продиктованы — директории CI-воркфлоу, конфигурация хостинга, файл зависимостей, —
+и их перенос молча ломает деплой.
+
+## 3. Имена
+
+Имена говорят, для чего вещь, а не к какой категории относится, и одна вещь
+сохраняет одно имя везде, где появляется, — папка, конфигурация, вызов.
+Человеческие имена пишутся в нижнем регистре через дефис, если платформа не
+закрепила форму (`README.md`, `LICENSE`); служебные папки остаются в нижнем
+регистре или с точкой в начале.
+
+## 4. Заголовки коммитов — часть законченного вида
+
+Страница репозитория печатает заголовок последнего коммита, коснувшегося каждого
+файла, рядом с этим файлом, навсегда. **Эти строки читают гораздо чаще, чем диффы
+под ними.** Пиши для этой колонки:
+
+- одно короткое предложение простыми словами, с заглавной, без точки в конце;
+- никаких кодов задач, никаких префиксов `wip:` или `T4.3:`, никаких имён файлов;
+- желательно короче примерно пятидесяти знаков;
+- подробности — в тело, которого список никогда не показывает.
+
+Машинные коммиты подчиняются тому же правилу: сообщение запланированной задачи —
+это то, что посетитель видит рядом с папкой, в которую она пишет.
+
+Хорошо: `Explain the world the data comes from` · `Drop the screenshots, tighten
+the honesty section`
+Плохо: `wip` · `fix bug in app.py` · `T4.3: update`
+
+## 5. Проза, которая не протухает
+
+**Держи плывущие числа вне описаний.** Счётчик, меняющийся при каждой пересборке —
+строки, тесты, размеры файлов, — не должен появляться там, где текст говорит, чем
+проект *является*. Он протухает молча и в итоге начинает противоречить остальным
+файлам. Скажи «несколько тысяч» и дай работающей системе сообщать точную цифру.
+
+**Измерение сохраняет своё число** до тех пор, пока несёт дату или прогон, из
+которого взялось: это факт об одном моменте, и он остаётся верным навсегда.
+
+**Один документ на одну работу.** Если два документа отвечают на один вопрос, слей
+их. Второй документ, переотвечающий на существующий вопрос, хуже, чем никакого,
+потому что теперь они могут расходиться.
+
+### Витрина и рабочий файл
+
+**Титульная страница показывает готовое; рабочий материал живёт в одном отдельном
+файле.** План, открытые вопросы, уже принятые решения, черновики, ждущие вердикта,
+очередь сырья — ничему из этого не место на странице, которую читает впервые
+пришедший. Описание кучи неодобренных черновиков на витрине сообщает этому
+посетителю, что проект не закончен, что бы ни утверждала остальная страница.
+
+Это же — самый надёжный источник протухшей прозы, какой существует. План меняется
+еженедельно, а титульная страница правится ежемесячно, так что дорожная карта в
+README неверна большую часть времени, пока её читают.
+
+Держи это в **одном** рабочем файле в корне, названном по тому, что он держит. Он
+несёт то, что нужно человеку или свежей сессии, чтобы подхватить проект: где стоит
+работа, план, что уже решено, — а README указывает на него один раз, для того, кто
+проект ведёт, вместо того чтобы что-либо оттуда воспроизводить.
+
+## 6. Собственная поверхность платформы
+
+Хостинг-платформа добавляет вкладки и панели, которых проект не просил, — пустую
+вики, пустую доску задач, неиспользуемые панели пакетов или деплоев, — и они часть
+того, что видит первый посетитель. Выключи то, чем проект не пользуется, заполни
+то, чем пользуется: описание, ссылку на живую вещь, темы. Пометь законченное
+состояние релизом, чтобы страница читалась как продукт, а не как поток коммитов.
+
+Часть этого может сделать только владелец в интерфейсе платформы. Передай точные
+клики и точный текст для вставки (см. рабочее соглашение о пошаговых инструкциях).
+
+## 7. Гигиена, которая не обсуждается
+
+- **Секреты никогда не попадают в репозиторий** — ни в код, ни в ноутбуки, ни в
+  примеры.
+- **Удаление произведённых данных требует причины и слова владельца.**
+  Датированные выгрузки по умолчанию являются архивом, и выбросить одну необратимо.
+  Но архив того, что оказалось бесполезным, — просто хлам, а хлам — то, ради
+  удаления чего существует финальная стадия, так что удаление доступно: либо
+  владелец его одобрил, либо необходимость очевидна и заявлена. Недоступно — удалять
+  молча.
+- **Атомарные коммиты**, каждый с зелёными тестами и линтерами, каждый объясняет
+  *почему* в своём теле.
+- **Ни один коммит не смешивает механическое переформатирование со сменой смысла**
+  — второе нельзя проверить, когда оно погребено под первым.
+- **Ветка main всегда равна тому, что задеплоено.** Стоит ли рядом постоянная
+  рабочая ветка — решает владелец; когда ветка одна, весь вес несут проверки, а
+  рискованная работа получает временную ветку, удаляемую после мержа.
+
+## 8. Прежде чем назвать что-либо законченным
+
+Прогони проход из `references/FINAL_PASS.md`. Это конкретный чек-лист; этот файл —
+рассуждение за ним.
+
+---
+
+## Предпочтения владельца
+
+- **Каждый проект — законченный профессиональный продукт или решение**, независимо
+  от того, для кого он. Универсальные критерии успеха: он не ломается, он делает
+  то, для чего был задуман, он хорошо выглядит и репозиторий вылизан, и владелец
+  понял, как он работает, и одобрил его.
+- **Он предпочёл бы вообще не иметь рабочей стадии.** Служебные файлы и черновые
+  ветки допустимы, когда окупаются, но бремя на них — «это временно» не
+  оправдание, а обещание, и обещания прибраться потом сдерживают реже всего.
+- **Колонку коммитов он активно читает.** Это правило вошло в контракт, потому что
+  он указал: заголовок коммита рядом с файлом на странице репозитория — часть того,
+  как проект выглядит, а не метаданные.
+- **Одно имя везде** — его соглашение: папка вещи, её сконфигурированное имя и
+  способ её вызова — одна и та же строка в нижнем регистре через дефис, так что ни
+  у чего нет псевдонима.
+- **Спрашивай, куда положить файл**, вместо того чтобы угадывать. Он предпочтёт
+  ответить на однострочный вопрос, чем найти потом лишний файл.
+- **Черновой материал никогда не появляется на витрине.** Это правило вошло в
+  скилл, когда он обнаружил описание зоны разбора в README: сырьё — это рабочий
+  материал, а у рабочего материала есть свой файл.
+- Законченное состояние включает поверхность платформы — он считает пустую вкладку
+  вики или незаполненную панель About частью продукта.

@@ -1,219 +1,233 @@
 # SIGNALS
 
-Raw observations about how the work goes, recorded when they happen. Material,
-not decisions — an entry becomes a change only at a review, and only if the owner
-says so. The format and the rules are in `skills/signal-capture/`.
+Сырые наблюдения о том, как идёт работа, записанные в момент, когда это случилось.
+Материал, а не решения: запись становится изменением только на разборе, и только
+если владелец так скажет. Формат и правила — в `skills/signal-capture/`.
 
-The owner speaks Russian; his words are translated as closely as the sentence
-allows, keeping his structure. Nothing here is paraphrased.
+Цитаты владельца приведены его собственными словами.
 
 ---
 
-## 2026-08-04 · correction · the mining method
+## 2026-08-04 · correction · метод майнинга
 
-What happened: the boundary between `verify-before-done` and `git-repo-structure`
-was argued as an overlap because both fire at a phase close, and a rule was nearly
-moved out of the skill that owns it.
-Verbatim: "git-repo-structure is responsible only for the presentation and
-contents of the repository, while verify-before-done and other skills are for the
-work process itself; they use phases differently, you cannot merge this, you are
-wrong."
-Candidate: overlap is about the question a skill answers, not the moment it fires.
-Two skills triggered by the same event are not neighbours unless they answer the
-same question.
-Confidence: strong — the owner's own correction, and the argument it overturned
-was mine, made without reading the bodies.
+Что случилось: границу между `verify-before-done` и `git-repo-structure` разобрали
+как пересечение на том основании, что оба срабатывают на закрытии фазы, и правило
+чуть не вынесли из скилла, который им владеет.
+Дословно: «git_repo_structure отвечает только за оформление и содержание
+репозитория, а verify_before_done и другие скиллы — за сам процесс работы,
+использование фаз у них разное, нельзя это мерджить, ты не прав».
+Кандидат: пересечение — про вопрос, на который скилл отвечает, а не про момент
+срабатывания. Два скилла, запускаемые одним событием, не соседи, если не отвечают
+на один вопрос.
+Уверенность: сильная — собственная поправка владельца, а опровергнутый ею довод был
+мой и сделан без чтения тел файлов.
 
-## 2026-08-04 · correction · the mining method
+## 2026-08-04 · correction · метод майнинга
 
-What happened: a skill was proposed for adoption after checking only the `Covers`
-and `Leaves out` declarations of what was already in force, not the file bodies.
-Verbatim: "did you check that the verify-before-done you are putting into force
-does not overlap other files, for example confidence-check? or will that be
-checked later by an audit?"
-Candidate: overlap is checked against the bodies of everything in force before a
-skill enters, never deferred to an audit — an audit catches drift that
-accumulated, not a collision present on day one.
-Confidence: strong — asking the question found four real collisions that the
-declaration check had missed.
+Что случилось: скилл предложили ввести в силу, проверив только декларации
+`Покрывает` и `Оставляет за скобками` у того, что уже в силе, а не тела файлов.
+Дословно: «проверил ли ты, что вводимый в работу verify_before_done не пересекается
+с другими файлами, например, с confidence_check? или это будет проверяться потом
+аудитом?»
+Кандидат: пересечение проверяется по телам всего, что в силе, до входа скилла, и
+никогда не откладывается на аудит — аудит ловит накопившийся дрейф, а не коллизию,
+существующую в первый же день.
+Уверенность: сильная — заданный вопрос нашёл четыре настоящие коллизии, которые
+проверка по декларациям пропустила.
 
-## 2026-08-04 · correction · the library using its own artifacts
+## 2026-08-04 · correction · библиотека, использующая свои артефакты
 
-What happened: mining was being done by hand while `skill-creator`, the agent
-whose job this is, sat unwired and unused.
-Verbatim: "since you cannot mine skills off the cuff, let us wire up the
-skill-creator agent, so that for each new skill it produces a summary — what to
-change, what to add, what to fix."
-Candidate: an artifact the library owns gets used on the library's own work. One
-that is only described is decoration, and the fastest evidence about whether it
-works is running it.
-Confidence: strong — and it exposed that nothing in `.claude/` wired the agent up
-at all.
+Что случилось: майнинг делался руками, пока `skill-creator` — агент, чья это
+работа, — сидел неподключённым и неиспользуемым.
+Дословно: «раз ты не можешь сходу майнить скиллы, давай подключим агента
+skill-creator, чтобы он по каждому новому скиллу выдавал резюме, что менять, что
+добавлять, что править».
+Кандидат: артефакт, которым владеет библиотека, применяется к её собственной
+работе. Тот, что только описан, — украшение, а самое быстрое доказательство того,
+работает ли он, — запустить его.
+Уверенность: сильная — и это вскрыло, что в `.claude/` агент не был подключён
+вообще.
 
-## 2026-08-04 · correction · the plan
+## 2026-08-04 · correction · план
 
-What happened: the mining plan proposed a target library size and a batch of
-folders to decline unmined because they had no current need.
-Verbatim: "target size — we have none, you must check each skill separately for
-whether there is anything useful in it" · "the deferred pile — no, I disagree, you
-must run each skill separately and try to extract something useful from each."
-Candidate: no target count, and no batch dismissal. Every candidate is read on its
-own, and "no current need" is a reason not to build on an idea yet, never a reason
-to skip reading for it.
-Confidence: strong — stated twice, in two forms, in one message.
+Что случилось: план майнинга предлагал целевой размер библиотеки и пачку папок,
+которые отклоняются без разбора, потому что сейчас не нужны.
+Дословно: «целевой размер — у нас нет его, ты должен каждый скилл проверять
+отдельно, есть ли в нем что-то полезное или нет» · «отложенная куча — нет, не
+согласен. ты должен будешь каждый скилл прогнать отдельно и из каждого постараться
+извлечь что-то полезное».
+Кандидат: ни целевого числа, ни отбраковки пачкой. Каждый кандидат читается сам по
+себе, а «сейчас не нужно» — причина пока не строить на идее, но никогда не причина
+не читать ради неё.
+Уверенность: сильная — сказано дважды, в двух формах, в одном сообщении.
 
-## 2026-08-04 · friction · the working session
+## 2026-08-04 · friction · рабочая сессия
 
-What happened: a plan was proposed grouping forty-six review folders into thirteen
-thematic pull requests; the owner replaced it with one folder per exchange,
-discussed before any file is written.
-Candidate: the owner buys judgement per artifact, not throughput. A plan that
-optimises for fewer pull requests optimises the wrong number.
-Confidence: medium — one observation, and it may belong to the base phase rather
-than being a standing preference.
+Что случилось: был предложен план, группирующий сорок шесть папок разбора в
+тринадцать тематических pull request'ов; владелец заменил его на одну папку за
+обмен, обсуждаемую до того, как написан хоть один файл.
+Кандидат: владелец покупает суждение по артефакту, а не пропускную способность.
+План, оптимизирующий число pull request'ов, оптимизирует не то число.
+Уверенность: средняя — одно наблюдение, и оно может относиться к базовой фазе, а не
+быть постоянным предпочтением.
 
 ## 2026-08-04 · correction · confidence-check
 
-What happened: a worked example inside a skill — "1.06 s → 0.40 s on the real
-dataset" — was reported as violating the rule that a drifting figure carries its
-date.
-Verbatim: "those are examples of phrasing, not examples; they can be reference
-data."
-Candidate: the dating rule governs facts being asserted, not illustrations of a
-sentence shape. Dating an invented example would itself be inventing a specific,
-which the same skill forbids more strongly.
-Confidence: strong — and it inverts the finding rather than softening it.
+Что случилось: рабочий пример внутри скилла — «1.06 s → 0.40 s на настоящем наборе
+данных» — был отмечен как нарушающий правило о том, что плывущая цифра несёт свою
+дату.
+Дословно: «это примеры формулировок, а не примеры, они могут быть справочных
+данных».
+Кандидат: правило о датах управляет фактами, которые заявляются, а не иллюстрациями
+формы предложения. Проставить дату выдуманному примеру означало бы выдумать
+конкретику, что тот же скилл запрещает сильнее.
+Уверенность: сильная — и это переворачивает находку, а не смягчает её.
 
-## 2026-08-04 · correction · the mining method
+## 2026-08-04 · correction · метод майнинга
 
-What happened: two claims in a draft were listed as things to drop because they
-overclaimed.
-Verbatim: "this is exactly the point of mining — not simply copying phrasings, but
-taking them apart into ideas and building them into existing skills, creating new
-skills with the right ideas, even if the original phrasings in the draft material
-were bad."
-Candidate: mining takes ideas, not wording. A badly stated rule can carry a good
-idea; restate it and judge the restatement. Only the idea being wrong, already
-held, or not worth its space is grounds for leaving it.
-Confidence: strong — it names the failure directly and it applies to every folder
-still queued.
+Что случилось: два утверждения из черновика были перечислены как то, что надо
+выбросить, потому что они преувеличивают.
+Дословно: «в этом и есть смысл майнинга — не просто копирование формулировок, а
+разбор их на идеи и внедрение в существующие скиллы, создание новых скиллов с
+правильными идеями, даже если исходные формулировки черновых материалов были
+плохими».
+Кандидат: майнинг берёт идеи, а не формулировки. Плохо сформулированное правило
+может нести хорошую идею; переформулируй и суди переформулированное. Основание
+оставить за бортом — только то, что идея неверна, уже есть или не стоит места.
+Уверенность: сильная — это называет отказ напрямую и применимо к каждой папке,
+оставшейся в очереди.
 
-## 2026-08-04 · correction · the two layers
+## 2026-08-04 · correction · два слоя
 
-What happened: a rule was proposed for the owner-preferences layer because it was
-phrased as his instruction, on the reasoning that restating it in the method's
-voice would soften it.
-Verbatim: "remove the exact phrase about tripling the time, keep the idea that it
-matters. we are not moving it to preferences, it stays in the method, it is its
-idea. my preferences are something else, more to do with the immediate style of
-interaction than with the idea or the mechanism."
-Candidate: the two layers split mechanism from manner, not "general" from "his".
-An idea the owner supplied is still method and is argued on its merits; the
-preferences layer is how he wants to be worked with.
-Confidence: strong — it settles a line that had been drawn by attribution rather
-than by subject.
+Что случилось: правило предложили отправить в слой предпочтений владельца, потому
+что оно сформулировано как его указание, на том рассуждении, что пересказ в голосе
+метода его смягчит.
+Дословно: «убери четкую формулировку про „утроит время“, оставь идею, что это
+важно. не переносим в preferences, оставляем в методе, это его идея. мои
+предпочтения — это что-то другое, больше связано с непосредственным стилем
+взаимодействия, чем идеей и механизмом».
+Кандидат: два слоя делят механизм и манеру, а не «общее» и «его». Идея, поданная
+владельцем, — всё равно метод и защищается по существу; слой предпочтений — про то,
+как он хочет, чтобы с ним работали.
+Уверенность: сильная — это закрывает линию, которая до сих пор проводилась по
+атрибуции, а не по предмету.
 
 ## 2026-08-04 · correction · signal-capture
 
-What happened: signals were recorded with the owner's Russian quoted verbatim and
-an English rendering beneath.
-Verbatim: "write them straight in English."
-Candidate: the log is kept in the language of the library. Translating is not
-paraphrasing, and a log the owner cannot skim is a log nobody reviews.
-Confidence: strong — direct instruction about the mechanism's own format.
+Что случилось: сигналы записывались с дословной русской цитатой владельца и
+английским переводом под ней.
+Дословно: «делай их сразу на английском».
+Кандидат: журнал ведётся на языке библиотеки. Перевод — не пересказ, а журнал,
+который владелец не может пробежать глазами, — журнал, который никто не разбирает.
+Уверенность: сильная — прямое указание о формате самого механизма.
 
 ## 2026-08-04 · correction · skill-creator
 
-What happened: the MINE report came back as an analysis of the source's defects
-and a routing verdict, without the text being proposed for adoption.
-Verbatim: "it should not be a silent breakdown of what we do with the skill and
-what its errors are; it should be a detailed breakdown of every idea and phrasing,
-what in them is useful and how we can use it — so that I can look over all the
-useful blocks and ideas and give approval to include them in one file or another."
-Candidate: a MINE report is a list of inclusions to approve, not a review of
-someone else's work. Every surviving idea carries the actual wording proposed, its
-destination file and section, and what already exists that touches it.
-Confidence: strong — the report was accurate and still not usable for the decision
-it was written for.
+Что случилось: отчёт MINE вернулся как анализ дефектов источника и вердикт о
+маршрутизации, без текста, предлагаемого к принятию.
+Дословно: «это должен быть не молчаливый разбор что мы делаем со скиллов, в чем его
+ошибки; это должен быть подробный разбор по каждой идее/формулировке, что из них
+полезно и как мы это можем использовать — и чтобы я мог отсмотреть все полезные
+блоки/идеи и дать одобрение на включение в тот или иной файл».
+Кандидат: отчёт MINE — это список включений на одобрение, а не рецензия на чужую
+работу. Каждая выжившая идея несёт саму предлагаемую формулировку, её файл и раздел
+назначения и то, что уже существует и её трогает.
+Уверенность: сильная — отчёт был точен и всё равно непригоден для решения, ради
+которого писался.
 
 ## 2026-08-04 · caught · skill-creator
 
-What happened: the agent reported that `git-repo-structure` line 24 hands off "it
-works" to a skill that does not exist, and recommended naming `verify-before-done`
-there. The line is a contrast — the bar in the final phase rises above "it works"
-— not a hand-off. The owner caught it: "what skill was it handing off to? it looks
-clean to me."
-Candidate: a cross-reference recommendation needs the sentence quoted and its
-grammar stated, not just its subject. The agent's other findings were checked
-against line numbers; this one was inferred from a paraphrase.
-Confidence: strong — the first false positive from the agent, and it survived my
-own reading of the report before the owner stopped it.
+Что случилось: агент сообщил, что `git-repo-structure` строкой 24 передаёт «оно
+работает» скиллу, которого не существует, и порекомендовал назвать там
+`verify-before-done`. Эта строка — противопоставление: планка в финальной фазе
+поднимается выше «оно работает», — а не передача. Владелец это поймал: «какому
+скиллу оно передавалось? вроде, все чисто».
+Кандидат: рекомендация перекрёстной ссылки требует процитированного предложения и
+названной грамматики, а не только предмета. Остальные находки агента сверялись с
+номерами строк; эта была выведена из пересказа.
+Уверенность: сильная — первая ложная находка агента, и она пережила моё собственное
+чтение отчёта, прежде чем её остановил владелец.
 
-## 2026-08-04 · correction · the working session
+## 2026-08-04 · correction · рабочая сессия
 
-What happened: a question was put to the owner as "should §7 reference
-FINAL_PASS.md" without naming which file §7 belonged to or where that checklist
-lives.
-Verbatim: "when you write §7 referencing FINAL_PASS.md, say section 7 of which
-file and which final_pass."
-Candidate: a cross-reference names its file, every time, in reports as much as in
-the artifacts. A bare section number is readable only by someone already holding
-both texts — and the reader who needs the pointer is the one who is not.
-Confidence: strong — it cost an exchange, which is the cheapest possible
-demonstration of the cost.
+Что случилось: вопрос был положен владельцу как «должен ли §7 ссылаться на
+FINAL_PASS.md» без указания, какому файлу принадлежит §7 и где лежит этот чек-лист.
+Дословно: «когда ты пишешь §7 ссылаться на FINAL_PASS.md, поясняй секция 7 какого
+файла и какой final_pass».
+Кандидат: перекрёстная ссылка называет свой файл, каждый раз, и в отчётах не меньше,
+чем в артефактах. Голый номер раздела читается только тем, кто уже держит оба
+текста, — а нужен указатель тому, кто их не держит.
+Уверенность: сильная — это стоило одного обмена, что и есть самая дешёвая
+демонстрация цены.
 
-## 2026-08-04 · correction · the overlap rule
+## 2026-08-04 · correction · правило пересечений
 
-What happened: one checklist item appearing in `git-repo-structure`'s final pass
-and again in the new skill's boundary section was reported as the one genuine
-textual duplicate, with a pointer offered as the alternative.
-Verbatim: "no link, we keep the repeated item. each checklist is unique if it is
-attached to a separate skill, so these are not repeats but different
-manifestations of one logic."
-Candidate: repetition across checklists belonging to different skills is not
-duplication — each checklist is complete for its own skill's question, and a
-pointer would invite exactly the merge the overlap rule refuses.
-Confidence: strong — it extends the earlier overlap ruling to a case that ruling
-did not obviously cover.
+Что случилось: один пункт чек-листа, появляющийся в финальном проходе
+`git-repo-structure` и снова в разделе границ нового скилла, был отмечен как
+единственный настоящий текстовый дубликат, с указателем в качестве альтернативы.
+Дословно: «не делаем ссылку, делаем повторы пункта. каждый чек-лист уникален, если
+прикреплен к отдельному скиллу, поэтому это не повторы, а разные проявления одной
+логики».
+Кандидат: повтор между чек-листами, принадлежащими разным скиллам, — не
+дублирование: каждый чек-лист полон для вопроса своего скилла, а указатель пригласил
+бы ровно то слияние, которое правило пересечений отвергает.
+Уверенность: сильная — это расширяет более раннее решение о пересечениях на случай,
+который оно очевидно не покрывало.
 
 ## 2026-08-04 · gap · skill-creator
 
-What happened: nothing in the library re-checks which skills an agent should read
-when a skill enters, changes, merges or splits. The agent proposed destinations
-for every idea and never asked whether any agent in force should now consume the
-result.
-Verbatim: "I also want that when the agent adds a new skill, substantially changes
-a current one, merges two, splits one into two, or does mining, it does not only
-say which idea goes into which skill and section — but also checks whether a new
-skill can be added to or removed from some existing agent (asking my opinion), or
-if a new agent is being added, which skills to give it."
-Candidate: agents consume skills, so every change to the library's shape leaves
-some reading list possibly wrong, and nobody looks by default.
-Confidence: strong — the gap is structural, and the first mining run walked
-straight past it.
+Что случилось: ничто в библиотеке не перепроверяет, какие скиллы должен читать
+агент, когда скилл входит, меняется, сливается или разделяется. Агент предложил дом
+каждой идее и ни разу не спросил, должен ли какой-нибудь агент в силе теперь
+потреблять результат.
+Дословно: «также я хочу, чтобы когда agent добавлял новый скилл, существенно менял
+текущий, мерджил два, разделял один скилл на два или делал mining, то он не только
+говорил, какая идея в какой скилл пойдет, в какую секцию, но чтобы также он
+проверял, можно ли добавить или убрать новый скилл какому-то существующему агенту
+(запросил мое мнение) или если добавляется новый агент, то какие скиллы ему
+добавить».
+Кандидат: агенты потребляют скиллы, поэтому любое изменение формы библиотеки
+оставляет чей-то список чтения возможно неверным, а по умолчанию никто не смотрит.
+Уверенность: сильная — дыра структурная, и первый майнинговый прогон прошёл мимо неё
+не заметив.
 
 ## 2026-08-04 · correction · skill-creator
 
-What happened: the MINE report was accurate and complete but written as prose
-blocks, so the owner had to reassemble the decision from it.
-Verbatim: "I also do not like the form the mine report is presented in now: I want
-it presented more structurally, and the questions about changes too."
-Candidate: the report's shape is fixed rather than left to the agent — numbered
-sections, ideas in one table, proposed text keyed to it, and questions carrying
-options and a recommendation instead of being asked bare.
-Confidence: strong — the second correction of this report in two runs, both about
-usability rather than accuracy.
+Что случилось: отчёт MINE был точен и полон, но написан блоками прозы, так что
+владельцу пришлось пересобирать решение из него.
+Дословно: «также мне не нравится в каком виде сейчас представляется отчет mine: я
+хочу, чтобы он представлялся более структурно, вопросы про изменения тоже».
+Кандидат: форма отчёта задаётся жёстко, а не оставляется агенту — пронумерованные
+разделы, идеи одной таблицей, предлагаемый текст с ключами на неё и вопросы,
+несущие варианты и рекомендацию, вместо заданных голыми.
+Уверенность: сильная — вторая поправка к этому отчёту за два прогона, и обе про
+пригодность, а не про точность.
 
-## 2026-08-04 · correction · the mining method
+## 2026-08-04 · correction · метод майнинга
 
-What happened: moving two rules out of a draft's owner-preferences section into
-its method body was raised as a flag at the end of the report, on the reading that
-the standing rule forbids mining from touching preferences.
-Verbatim: "about the transfer between layers: this is the section on correcting a
-working skill and skill-creator has that option, but it must explain them on equal
-terms with the other ideas in the mine run."
-Candidate: relocating a rule between layers is a correction, and the rule
-protecting preferences protects their content, not their address. Every move is a
-numbered row like any other idea — a change explained in a footnote is one the
-owner did not review.
-Confidence: strong.
+Что случилось: перенос двух правил из раздела предпочтений владельца в тело метода
+черновика был поднят пометкой в конце отчёта, на том чтении, что стоячее правило
+запрещает майнингу трогать предпочтения.
+Дословно: «про перенос между слоями: это раздел исправления рабочего скилла и у
+skill-creator есть такая опция, но он должен наравне с другими идеями в прогоне mine
+пояснить их».
+Кандидат: перенос правила между слоями — исправление, а правило, защищающее
+предпочтения, защищает их содержание, а не адрес. Каждый перенос — пронумерованная
+строка, как любая другая идея; изменение, объяснённое в сноске, владелец не
+проверял.
+Уверенность: сильная.
+
+## 2026-08-04 · correction · рабочая сессия
+
+Что случилось: агент вернул отчёт по майнингу в заданной ему форме из девяти
+разделов, а рабочая сессия пересказала его владельцу сплошной прозой — потеряв
+таблицу по идеям, назначения и варианты, приложенные к каждому вопросу.
+Дословно: «мне не нравится формат твоего ответа: я просил, чтобы он был структурный,
+четкий, чтобы каждая используемая идея помечалась в какой скилл в какой формулировке
+она пойдет, какие скиллы заденет и так далее, а получился просто большой текст без
+структуры и с непонятными вопросами».
+Кандидат: структура и есть поставляемое, а не личный рабочий формат агента. Отчёт,
+пересказанный прозой, разобран обратно, и владелец снова пересобирает решение сам —
+а это тот самый отказ, ради предотвращения которого форма отчёта и существует.
+Уверенность: сильная — тот же отказ дважды записан против агента и теперь совершён
+той сессией, которая его записывала.

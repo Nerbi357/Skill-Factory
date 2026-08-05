@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
-"""Rewrite the catalogue block in README.md from the artifact files themselves.
+"""Переписывает блок каталога в README.md по самим файлам артефактов.
 
-Convenience only. Deleting this script costs the automation and nothing else:
-the catalogue it writes is plain prose that stays readable and editable in the
-README, and the artifacts it reads are the source of truth either way.
+Только удобство. Удаление этого скрипта стоит автоматики и больше ничего:
+каталог, который он пишет, — обычная проза, остающаяся читаемой и правимой в
+README, а артефакты, которые он читает, и так являются источником истины.
 
-Usage:  python3 .claude/scripts/build_catalogue.py [--check]
+Запуск:  python3 .claude/scripts/build_catalogue.py [--check]
 
---check exits 1 if the README is out of date instead of rewriting it.
+--check выходит с кодом 1, если README устарел, вместо того чтобы переписывать его.
 """
 
 from __future__ import annotations
@@ -24,7 +24,7 @@ START = "<!-- CATALOGUE:START"
 END = "<!-- CATALOGUE:END -->"
 
 def frontmatter_description(text: str) -> str:
-    """First sentence of the description field, or '' if there is none."""
+    """Первое предложение поля description, или '', если его нет."""
     if not text.startswith("---"):
         return ""
     _, _, rest = text.partition("---")
@@ -38,8 +38,8 @@ def frontmatter_description(text: str) -> str:
 
 
 def collect(folder: str, entrypoint: str) -> list[tuple[str, str]]:
-    """One row per artifact folder: its name and the first sentence of its
-    description, read from the entrypoint's frontmatter."""
+    """Строка на каждую папку артефакта: её имя и первое предложение описания,
+    прочитанное из frontmatter точки входа."""
     directory = ROOT / folder
     if not directory.is_dir():
         return []
@@ -56,21 +56,21 @@ def collect(folder: str, entrypoint: str) -> list[tuple[str, str]]:
 def table(rows: list[tuple[str, str]], folder: str, empty: str) -> str:
     if not rows:
         return f"*{empty}*\n"
-    lines = ["| | What it does |", "| --- | --- |"]
+    lines = ["| | Что делает |", "| --- | --- |"]
     for name, description in rows:
         lines.append(f"| [`{name}`]({folder}/{name}/) | {description} |")
     return "\n".join(lines) + "\n"
 
 
 def build() -> str:
-    """Only what is in force. The review zone is working material and belongs in
-    PROJECT_MEMORY.md, not on the landing page — a queue of unapproved drafts on a
-    showcase tells a visitor the work is unfinished."""
+    """Только то, что в силе. Зона разбора — рабочий материал, и её место в
+    PROJECT_MEMORY.md, а не на титульной странице: очередь неодобренных черновиков
+    на витрине сообщает посетителю, что работа не закончена."""
     return "\n" + "\n".join([
-        "### Skills\n",
-        table(collect("skills", "SKILL.md"), "skills", "No skills yet."),
-        "\n### Agents\n",
-        table(collect("agents", "AGENT.md"), "agents", "No agents yet."),
+        "### Скиллы\n",
+        table(collect("skills", "SKILL.md"), "skills", "Скиллов пока нет."),
+        "\n### Агенты\n",
+        table(collect("agents", "AGENT.md"), "agents", "Агентов пока нет."),
     ])
 
 
@@ -78,7 +78,7 @@ def splice(readme: str, catalogue: str) -> str:
     start = readme.find(START)
     end = readme.find(END)
     if start == -1 or end == -1:
-        sys.exit(f"error: catalogue markers not found in {README}")
+        sys.exit(f"ошибка: маркеры каталога не найдены в {README}")
     head_end = readme.find("-->", start) + len("-->")
     return readme[:head_end] + catalogue + "\n" + readme[end:]
 
@@ -92,13 +92,13 @@ def main() -> int:
     updated = splice(current, build())
 
     if current == updated:
-        print("catalogue is current")
+        print("каталог актуален")
         return 0
     if args.check:
-        print("catalogue is out of date: run build_catalogue.py")
+        print("каталог устарел: запусти build_catalogue.py")
         return 1
     README.write_text(updated, encoding="utf-8")
-    print("catalogue rewritten")
+    print("каталог переписан")
     return 0
 
 

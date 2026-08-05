@@ -1,153 +1,156 @@
 # IDEAS
 
-Ideas for future skills, agents, and the connections between them. This is the
-menu of what the library could grow next — not a roadmap (`PROJECT_MEMORY.md`
-holds the plan) and not raw material (`to_review/` holds that). An entry leaves
-this file by becoming a draft the owner rules on, or by being dropped when he
-says no.
+Идеи будущих скиллов, агентов и связей между ними. Это меню того, чем библиотека
+могла бы прирасти дальше, — не дорожная карта (план держит `PROJECT_MEMORY.md`) и
+не сырьё (его держит `to_review/`). Запись уходит из этого файла, становясь
+черновиком, по которому решает владелец, или будучи выброшенной, когда он говорит
+«нет».
 
-Five lines each: what it is, why it would earn its place, where it came from,
-and what would make it worth picking up.
+По пять строк на каждую: что это, чем бы оно окупило своё место, откуда взялось и
+что сделало бы его стоящим того, чтобы взяться.
 
 ---
 
-## researcher — a general research agent
+## researcher — общий агент-исследователь
 
-What: `source-scout` generalised. Consumes `research-conduct` +
-`source-evaluation` + `confidence-check`; modes: evaluate a source, find a
-fact, survey the options.
-Why: research is noisy (context isolation) and parallelises across sources —
-two of the five agent tests.
-From: the owner, 2026-08-03 — "variant (a) now, and we will definitely return
-to (b) once more relevant skills exist."
-Revisit when: `research-conduct` and `source-evaluation` are in force.
+Что: обобщённый `source-scout`. Потребляет `research-conduct` +
+`source-evaluation` + `confidence-check`; режимы: оценить источник, найти факт,
+обозреть варианты.
+Зачем: исследование шумно (изоляция контекста) и параллелится по источникам — два
+из пяти тестов на агента.
+Откуда: владелец, 2026-08-03 — «вариант (a) сейчас, и мы обязательно вернёмся к
+(b), когда появятся более подходящие скиллы».
+Вернуться, когда: `research-conduct` и `source-evaluation` будут в силе.
 
-## phase-discipline — what a phase is and when it is closed
+## phase-discipline — что такое фаза и когда она закрыта
 
-What: a skill defining a phase, its boundary, and what happens there — the full
-technical pass, the review offer, the next branches.
-Why: the phase close is the factory's "meaning" trigger for reviews, currently
-declared by the owner with no method behind it. The technical pass now lives in
-`verify-before-done` §7; what remains unowned is the ceremony around it — the
-review offer, and the choice of what comes next.
-From: the owner, 2026-08-03 — "we will come back to it when we understand what
-else this skill is for."
-Revisit when: phase closes have happened a few times and the pattern is visible.
+Что: скилл, определяющий фазу, её границу и то, что на ней происходит — полный
+технический прогон, предложение разбора, следующие ветви.
+Зачем: закрытие фазы — «смысловой» триггер разборов у фабрики, сейчас объявляемый
+владельцем без метода за ним. Технический прогон теперь живёт в
+`verify-before-done` §7; бесхозной остаётся церемония вокруг него — предложение
+разбора и выбор того, что дальше.
+Откуда: владелец, 2026-08-03 — «вернёмся к этому, когда поймём, для чего ещё нужен
+этот скилл».
+Вернуться, когда: закрытий фаз наберётся несколько и станет виден рисунок.
 
-## agent-orchestration — the catalogue of multi-agent shapes
+## agent-orchestration — каталог форм многоагентной работы
 
-What: fan-out, adversarial panel, judge panel, loop-until-dry, completeness
-critic, clean-room replication — when each pays and when it wastes money.
-Why: the strongest unmined material in the repository; `living-project` cut its
-agent catalogue down and promised it a skill of its own.
-From: `SKILL (1).md` §9, flagged during the Phase 0 survey.
-Revisit when: the sources are mined (Phase 3).
+Что: веерный запуск, состязательная панель, панель судей, петля до исчерпания,
+критик полноты, репликация в чистой комнате — когда каждая окупается и когда жжёт
+деньги.
+Зачем: сильнейший непромайненный материал в репозитории; `living-project` урезал
+свой каталог агентов и пообещал ему отдельный скилл.
+Откуда: `SKILL (1).md` §9, помечено при обзоре Фазы 0.
+Вернуться, когда: источники промайнены (Фаза 3).
 
-## idea-funnel — how a proposal is shaped before it is decided
+## idea-funnel — как предложение формуется, прежде чем по нему решают
 
-What: the funnel from raw idea to decidable options — what to expand, what to
-kill, how to present the choice.
-Why: `working-agreement` explicitly leaves this to a named skill that does not
-exist yet.
-From: `AI_INSTRUCTIONS (1).md`, via the `working-agreement` scope line.
-Revisit when: the sources are mined (Phase 3).
+Что: воронка от сырой идеи к решаемым вариантам — что развернуть, что убить, как
+подать выбор.
+Зачем: `working-agreement` явно оставляет это названному скиллу, которого ещё не
+существует.
+Откуда: `AI_INSTRUCTIONS (1).md`, через строку границ в `working-agreement`.
+Вернуться, когда: источники промайнены (Фаза 3).
 
-## ux-designer — the agent that judges what a person meets first
+## ux-designer — агент, судящий о том, с чем человек встречается первым
 
-What: checks the repository page, the README, a site, an error message, an
-empty state against the skills that define what finished looks like;
-accumulates the owner's taste rather than guessing it.
-Why: the visible surface is part of every deliverable, and no artifact owns it.
-From: the owner's original roadmap.
-Revisit when: `git-repo-structure` has survived real use and a web surface
-exists to judge.
+Что: проверяет страницу репозитория, README, сайт, сообщение об ошибке, пустое
+состояние против скиллов, определяющих, как выглядит законченное; накапливает вкус
+владельца, а не угадывает его.
+Зачем: видимая поверхность — часть каждой поставки, и ею не владеет ни один
+артефакт.
+Откуда: изначальная дорожная карта владельца.
+Вернуться, когда: `git-repo-structure` переживёт настоящее использование и появится
+веб-поверхность, о которой можно судить.
 
-## critic — the agent that argues against the project
+## critic — агент, который спорит против проекта
 
-What: called at a phase close or whenever the owner wants it, it reads the
-constitution, the plan and what is in force, and reports what is at risk — what
-could break, what is quietly rotting, which decision looks worse now than when
-it was made. It rules on nothing and changes nothing; it hands back a list.
-Why: adversarial independence is the one agent test a working session cannot
-pass on its own work (philosophy §2, test 3). That job exists today as a queue
-in `PROJECT_MEMORY.md` that the owner carries to a fresh chat by hand.
-From: the owner, 2026-08-04 — "an agent called from time to time that
-criticises the project: where the risks are, what the problems are, what could
-break."
-Revisit when: enough is built to criticise. A critic pointed at plans reports on
-plans, which is the cheapest criticism there is — so after Phase 2, or the first
-time the outside-look queue has more lines than the owner wants to carry.
+Что: вызывается на закрытии фазы или когда владелец захочет, читает конституцию,
+план и то, что в силе, и сообщает, что под угрозой: что может сломаться, что тихо
+гниёт, какое решение выглядит хуже сейчас, чем когда его принимали. Он ничего не
+решает и ничего не меняет; он отдаёт список.
+Зачем: состязательная независимость — единственный тест на агента, который рабочая
+сессия не может пройти на собственной работе (философия §2, тест 3). Сегодня эта
+работа существует как очередь в `PROJECT_MEMORY.md`, которую владелец руками несёт
+в свежий чат.
+Откуда: владелец, 2026-08-04 — «агент, который время от времени вызывается и
+критикует проект: в чём риски, в чём проблемы, что может сломаться».
+Вернуться, когда: построено достаточно, чтобы критиковать. Критик, направленный на
+планы, отчитывается о планах, а это самая дешёвая критика, какая бывает, — значит
+после Фазы 2 или в первый раз, когда в очереди для взгляда со стороны окажется
+больше строк, чем владелец захочет нести.
 
-## idea-generator — the agent that argues for what is missing
+## idea-generator — агент, который спорит за то, чего не хватает
 
-What: the critic's mirror. Same material, opposite question — what could be done
-differently, where the library could extend, which skills are missing and which
-connections between them are unbuilt. Its output lands in this file as
-candidates with a revisit condition each, never as drafts.
-Why: divergent generation is a different job from building, and a session deep
-in a phase generates near the work in front of it. The risk is the reason for
-the constraint: an idea generator produces plausible volume, and volume is what
-this repository is built to resist — so nothing it emits reaches `skills/`
-without going the ordinary way, through a draft and a pull request.
-From: the owner, 2026-08-04 — "and another one, the reverse: it advises what
-could be done differently, how the project could be extended."
-Revisit when: this file stops growing on its own. Every entry here came out of a
-real conversation, which is better fuel than generation — the day new entries
-stop arriving is the day generation is worth paying for.
+Что: зеркало критика. Тот же материал, обратный вопрос — что можно было бы сделать
+иначе, куда библиотека могла бы расшириться, каких скиллов нет и какие связи между
+ними не построены. Его вывод приземляется в этот файл кандидатами, у каждого своё
+условие возврата, и никогда черновиками.
+Зачем: расходящаяся генерация — работа другого рода, чем строительство, а сессия,
+ушедшая вглубь фазы, генерирует рядом с той работой, что перед ней. Риск и есть
+причина ограничения: генератор идей производит правдоподобный объём, а объём — то,
+против чего этот репозиторий и построен, поэтому ничто из выдаваемого им не попадает
+в `skills/`, минуя обычный путь через черновик и pull request.
+Откуда: владелец, 2026-08-04 — «и другого, наоборот: он советует, что можно сделать
+по-другому, как можно расширить проект».
+Вернуться, когда: этот файл перестанет расти сам. Каждая запись здесь вышла из
+настоящего разговора, а это топливо лучше генерации, — день, когда новые записи
+перестанут приходить, и есть день, когда за генерацию стоит платить.
 
-## fact-checker — freshness split out of the audit
+## fact-checker — свежесть, выделенная из аудита
 
-What: a dedicated skill or command for re-verifying dated facts, if they ever
-multiply.
-Why: today the in-force zones hold roughly a dozen perishable facts, so
-freshness is one audit sub-pass; a data-heavy library would outgrow that.
-From: the owner, 2026-08-03, asking where fact upkeep should live.
-Revisit when: an audit reports the freshness pass taking longer than the rest
-of the audit combined.
+Что: отдельный скилл или команда для перепроверки датированных фактов, если они
+когда-нибудь размножатся.
+Зачем: сегодня зоны в силе держат примерно дюжину скоропортящихся фактов, поэтому
+свежесть — один подпроход аудита; библиотека, насыщенная данными, это переросла бы.
+Откуда: владелец, 2026-08-03, спросивший, где должен жить уход за фактами.
+Вернуться, когда: аудит сообщит, что проход на свежесть занимает больше, чем весь
+остальной аудит вместе.
 
-## synthetic test rigs — deliberately broken fixtures for factory-test
+## synthetic test rigs — намеренно сломанные стенды для factory-test
 
-What: purpose-built traps (a cluttered repository for `git-repo-structure`, a
-conversation with planted signals for `signal-capture`) as a third source of
-test tasks.
-Why: cheap and reproducible where real tasks are expensive — but weaker
-evidence, so parked rather than adopted.
-From: the owner, 2026-08-03 — "let's leave synthetic runs to think about."
-Revisit when: `factory-test` exists and real-task supply becomes the
-bottleneck.
+Что: специально построенные ловушки (захламлённый репозиторий для
+`git-repo-structure`, разговор с подложенными сигналами для `signal-capture`) как
+третий источник тестовых задач.
+Зачем: дёшево и воспроизводимо там, где настоящие задачи дороги, — но доказательство
+слабее, поэтому припарковано, а не принято.
+Откуда: владелец, 2026-08-03 — «синтетические прогоны давай оставим подумать».
+Вернуться, когда: `factory-test` будет существовать, а поставка настоящих задач
+станет узким местом.
 
-## the commands — deterministic handles for what already works
+## the commands — детерминированные ручки к тому, что уже работает
 
-What: the seven designs in `COMMANDS.md` built as skills carrying
-`disable-model-invocation: true` — five factory jobs, plus `/signal` and
-`/skills-for`, which travel into working projects.
-Why: a command buys a trigger nobody can forget and nobody can fire by accident.
-`/signal` in particular has to be manual by nature — its whole job is recording
-the owner's words at the moment he chooses. What a command does not buy is
-capability: every job below is already reachable through `agents/skill-creator`
-and a sentence, which is how this repository has actually been run.
-From: the owner, 2026-08-04 — "let's not write commands for now; mark it as a
-development point and we will come back to it."
-Revisit when: the base is built and the library begins maintaining itself — or
-earlier, if the same job gets described in words three times and the description
-drifts on each telling.
+Что: семь проектов из `COMMANDS.md`, построенные как скиллы с
+`disable-model-invocation: true` — пять фабричных работ плюс `/signal` и
+`/skills-for`, которые путешествуют в рабочие проекты.
+Зачем: команда покупает триггер, который никто не может забыть и никто не может
+запустить случайно. `/signal` в особенности обязана быть ручной по своей природе:
+вся её работа — записать слова владельца в момент, который он выбирает. Чего команда
+не покупает — способности: каждая работа ниже уже достижима через
+`agents/skill-creator` и одно предложение, и именно так этот репозиторий и вёлся.
+Откуда: владелец, 2026-08-04 — «давай пока что не будем писать команды, пометь это
+как точку развития на будущее, вернёмся потом».
+Вернуться, когда: база построена и библиотека начинает обслуживать себя сама — или
+раньше, если одну и ту же работу трижды опишут словами и описание каждый раз
+уплывёт.
 
-## scheduled loop — automation of the maintenance iteration
+## scheduled loop — автоматизация итерации обслуживания
 
-What: the loop on a schedule (a cloud routine or cron) instead of by hand, with
-push notification of each result.
-Why: removes the owner as the bottleneck for upkeep — but only worth it once
-the manual loop has proven the iteration shape.
-From: the owner, 2026-08-03 — "a good idea, keep it, but for the future; for
-now only on my request."
-Revisit when: manual `/factory-loop` runs feel routine and the owner tires of
-starting them.
+Что: петля по расписанию (облачная рутина или cron) вместо ручного запуска, с
+push-уведомлением о каждом результате.
+Зачем: убирает владельца из узкого места обслуживания — но окупается только после
+того, как ручная петля докажет форму итерации.
+Откуда: владелец, 2026-08-03 — «хорошая идея, сохрани, но на будущее; пока только
+по моей просьбе».
+Вернуться, когда: ручные прогоны `/factory-loop` станут рутиной и владельцу надоест
+их запускать.
 
-## workflow-dispatch entry — starting the loop from the repository page
+## workflow-dispatch entry — запуск петли со страницы репозитория
 
-What: a GitHub Actions button that runs one loop iteration in CI and opens the
-pull request.
-Why: a manual trigger that needs no session at all; shares infrastructure with
-Phase 2's checks.
-From: the Phase 0 survey of loop-trigger options.
-Revisit when: Phase 2 sets up CI.
+Что: кнопка GitHub Actions, прогоняющая одну итерацию петли в CI и открывающая pull
+request.
+Зачем: ручной триггер, которому не нужна сессия вообще; делит инфраструктуру с
+проверками Фазы 2.
+Откуда: обзор вариантов запуска петли на Фазе 0.
+Вернуться, когда: Фаза 2 настроит CI.
