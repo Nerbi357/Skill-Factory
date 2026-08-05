@@ -593,9 +593,6 @@ by whether it holds `SKILL.md` or `AGENT.md`. Root files and platform-pinned
 names (`README.md`, `LICENSE`, `SKILL.md`, `AGENT.md`) keep their conventional
 forms.
 
-**Language.** Everything in the repository is English. Conversation with the owner
-is in the language he is using.
-
 **Generated versus written.** Exactly one thing is generated: the catalogue block
 inside `README.md`, between its markers. Everything else in the repository is
 written and reviewed by hand. Generated regions say so and are never edited

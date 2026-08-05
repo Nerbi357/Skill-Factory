@@ -475,7 +475,6 @@ criticises, all in one:
 > any new rulings) in `PROJECT_MEMORY.md` inside the same PR as the work;
 > push; then report: what changed, what you verified, what you need from me.
 >
-> Talk to me in the language I use. Everything committed is English.
 
 ### The outside-look prompt
 
@@ -495,7 +494,6 @@ queue has lines in it or a fresh audit is wanted:
 > judgement, recorded in `PROJECT_MEMORY.md` through a pull request like
 > everything else.
 >
-> Talk to me in the language I use. Everything committed is English.
 
 ---
 
