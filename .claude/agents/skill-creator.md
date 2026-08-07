@@ -8,7 +8,7 @@ tools: Read, Write, Edit, Glob, Grep, Bash
 `agents/skill-creator/AGENT.md`, читаемом от корня репозитория.
 
 Прочитай его первым, целиком. Затем прочитай два файла, которые он велит прочитать
-прежде всего — `agents/skill-creator/bundled/FACTORY_PHILOSOPHY.md` и
+прежде всего — `agents/skill-creator/bundled/PROJECT_PHILOSOPHY.md` и
 `agents/skill-creator/bundled/confidence-check.md`.
 
 `AGENT.md` написан так, чтобы работать, когда папку отправляют в чат в одиночку,
