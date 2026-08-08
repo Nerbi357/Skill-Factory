@@ -1,4 +1,4 @@
-# skill-creator
+# skill-master
 
 Агент, ведущий библиотеку скиллов: он превращает накопленные наблюдения в
 предлагаемые изменения, пишет новые скиллы и агентов по стандарту библиотеки,
@@ -26,7 +26,7 @@
 
 ```bash
 mkdir -p .claude/agents
-cp AGENT.md .claude/agents/skill-creator.md
+cp AGENT.md .claude/agents/skill-master.md
 ```
 
 Агент ожидает `bundled/` рядом с собой, поэтому скопируй и её, сохранив
