@@ -1,4 +1,4 @@
-# skill-creator
+# skill-master
 
 Агент, ведущий библиотеку скиллов: он превращает накопленные наблюдения в
 предлагаемые изменения, пишет новые скиллы и агентов по стандарту библиотеки,
@@ -26,7 +26,7 @@
 
 ```bash
 mkdir -p .claude/agents
-cp AGENT.md .claude/agents/skill-creator.md
+cp AGENT.md .claude/agents/skill-master.md
 ```
 
 Агент ожидает `bundled/` рядом с собой, поэтому скопируй и её, сохранив
@@ -39,7 +39,7 @@ cp AGENT.md .claude/agents/skill-creator.md
 штампованные копии правил библиотеки, из которых он работает. Затем скажи:
 
 > Действуй как агент, определённый в `AGENT.md`. Сначала прочитай
-> `bundled/FACTORY_PHILOSOPHY.md`. Мне нужен проход <review / route / create /
+> `bundled/PROJECT_PHILOSOPHY.md`. Мне нужен проход <review / route / create /
 > audit>; вот материал.
 
 ---
