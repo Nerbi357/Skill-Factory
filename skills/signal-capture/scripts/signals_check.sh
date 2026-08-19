@@ -8,7 +8,7 @@
 # Установка: см. ../references/INSTALL.md
 set -uo pipefail
 
-THRESHOLD="${SIGNALS_THRESHOLD:-20}"
+THRESHOLD="${SIGNALS_THRESHOLD:-50}"
 
 # Журнал лежит в корне проекта, на виду.
 if [ -f "SIGNALS.md" ]; then
