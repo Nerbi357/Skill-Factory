@@ -12,7 +12,7 @@
 
 ## What we already have
 
-`FACTORY_PHILOSOPHY.md` §2 says adversarial independence justifies an agent and stops there. `skill-creator` was written without any orchestration method behind it.
+The five tests in `PROJECT_PHILOSOPHY.md` say adversarial independence justifies an agent and stop there. `skill-creator` was written without any orchestration method behind it.
 
 ## What is worth taking
 

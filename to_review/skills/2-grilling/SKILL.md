@@ -5,7 +5,7 @@ description: Grill the user relentlessly about a plan, decision, or idea. Use wh
 
 > **In the review zone — not in force.** This is borrowed material, kept for the
 > ideas in it, not adopted as it stands. Nothing loads it during real work. See
-> `FACTORY_PHILOSOPHY.md` §1 on the two zones, and the notes at the bottom of this
+> the two zones in `PROJECT_PHILOSOPHY.md`, and the notes at the bottom of this
 > file for what is worth taking from it.
 
 # Grilling

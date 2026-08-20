@@ -150,7 +150,7 @@ of software-engineering practice, not a model for what we are building.
 Recorded here rather than acted on. Each needs the owner's verdict.
 
 1. **Take Common Rationalizations / Red Flags / Verification into our skill
-   anatomy.** The largest single idea in the set. Would change `FACTORY_PHILOSOPHY.md`
+   anatomy.** The largest single idea in the set. Would change `PROJECT_PHILOSOPHY.md`
    §3 and every existing skill. Priority: high.
 2. **Add a "never do" tier** to the decision rights in `working-agreement`.
 3. **Write an untrusted-content rule** before the next project ingests outside

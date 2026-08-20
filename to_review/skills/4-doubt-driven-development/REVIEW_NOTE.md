@@ -10,7 +10,7 @@
 
 ## What we already have
 
-`FACTORY_PHILOSOPHY.md` §2 says adversarial independence justifies an agent, and stops there. We have the principle and no procedure.
+The five tests in `PROJECT_PHILOSOPHY.md` say adversarial independence justifies an agent, and stop there. We have the principle and no procedure.
 
 ## What is worth taking
 
