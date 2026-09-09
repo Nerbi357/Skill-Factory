@@ -1,0 +1,20 @@
+name: checks
+
+on:
+  push:
+    branches: [better_look, main]
+  pull_request:
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Каталог собран из артефактов
+        run: python3 .claude/scripts/build_catalogue.py --check
+      - name: Копии в bundled совпадают с каноном
+        run: python3 .claude/scripts/sync_bundles.py --check
+      - name: Названные пути существуют
+        run: python3 .claude/scripts/check_links.py
+      - name: Счётчик сигналов сходится с журналом
+        run: bash .claude/scripts/check_signals.sh
