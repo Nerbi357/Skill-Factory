@@ -18,7 +18,7 @@ jobs:
         run: python3 .claude/scripts/check_links.py
       - name: Каждый скилл подключён ссылкой
         run: bash .claude/scripts/check_skill_links.sh
-      - name: Редакции правил с несколькими адресатами не разошлись
+      - name: Редакции правил и копии frontmatter не разошлись
         run: python3 .claude/scripts/check_pairs.py
       - name: Счётчик сигналов сходится с журналом
         run: bash .claude/scripts/check_signals.sh
