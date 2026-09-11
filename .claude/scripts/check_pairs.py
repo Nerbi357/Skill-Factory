@@ -12,7 +12,13 @@
 одному пробелу. Новая пара объявляется здесь же, когда решение о двух адресатах
 принято владельцем.
 
-Выход: список файлов и фраз, которых больше нет; код 1, если список не пуст.
+Второй вид дубля — не фраза, а frontmatter: заглушка агента в `.claude/agents/`
+несёт копию полей из его `AGENT.md`, и реестр агентов показывает устаревшее
+описание молча. Такие пары сравниваются целиком, поле в поле, и объявлять текст
+здесь не нужно.
+
+Выход: список файлов и фраз, которых больше нет, и разошедшихся полей; код 1,
+если список не пуст.
 """
 import os
 import re
@@ -49,8 +55,40 @@ PAIRS = {
 }
 
 
+COPIES = [
+    (".claude/agents/skill-master.md", "agents/skill-master/AGENT.md",
+     ("name", "description", "tools")),
+]
+
+
 def squash(text):
     return re.sub(r"\s+", " ", text)
+
+
+def field(text, key):
+    """Значение поля frontmatter — или None, если поля нет."""
+    if not text.startswith("---"):
+        return None
+    block = text.partition("---")[2].partition("\n---")[0]
+    match = re.search(rf"^{key}:\s*(.+?)(?=^\w[\w-]*:|\Z)", block, re.S | re.M)
+    return squash(match.group(1)).strip() if match else None
+
+
+def copies():
+    """Расхождения frontmatter между заглушкой и её источником."""
+    diverged = []
+    for stub, source, keys in COPIES:
+        texts = {}
+        for rel in (stub, source):
+            path = os.path.join(ROOT, rel)
+            texts[rel] = open(path, encoding="utf-8").read() if os.path.exists(path) else None
+        if texts[stub] is None or texts[source] is None:
+            diverged.append((stub, "файла нет"))
+            continue
+        for key in keys:
+            if field(texts[stub], key) != field(texts[source], key):
+                diverged.append((stub, f"поле {key} разошлось с {source}"))
+    return diverged
 
 
 def main():
@@ -66,12 +104,17 @@ def main():
                 missing.append((name, rel, "файла нет"))
             elif squash(phrase) not in text:
                 missing.append((name, rel, phrase))
-    if missing:
+    diverged = copies()
+    if missing or diverged:
         for name, rel, phrase in missing:
             print(f"{name}: {rel} больше не несёт «{phrase}»")
-        print(f"разошедшихся редакций: {len(missing)}")
+        for rel, what in diverged:
+            print(f"копия frontmatter: {rel} — {what}")
+        print(f"разошедшихся редакций: {len(missing) + len(diverged)}")
         return 1
-    print(f"объявленные редакции на месте: {sum(len(v) for v in PAIRS.values())} фраз в {len(PAIRS)} правилах")
+    fields = sum(len(keys) for _, _, keys in COPIES)
+    print(f"объявленные редакции на месте: {sum(len(v) for v in PAIRS.values())} фраз в "
+          f"{len(PAIRS)} правилах; копии frontmatter сходятся: {fields} поля")
     return 0
 
 
