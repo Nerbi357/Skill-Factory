@@ -12,7 +12,7 @@
 
 ## What we already have
 
-`FACTORY_PHILOSOPHY.md` §3 and §5 are our answer to the same question: anatomy, the gates, the maturity ladder. We wrote ours from first principles and one cold-read test.
+The anatomy and the gates in `PROJECT_PHILOSOPHY.md` are our answer to the same question. We wrote ours from first principles and one cold-read test.
 
 ## What is worth taking
 

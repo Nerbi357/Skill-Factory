@@ -8,7 +8,7 @@
 # Установка: см. ../references/INSTALL.md
 set -uo pipefail
 
-THRESHOLD="${SIGNALS_THRESHOLD:-20}"
+THRESHOLD="${SIGNALS_THRESHOLD:-50}"
 
 # Журнал лежит в корне проекта, на виду.
 if [ -f "SIGNALS.md" ]; then
@@ -20,7 +20,7 @@ if [ -z "${SIGNALS_FILE:-}" ]; then
 else
   # grep -c печатает счётчик даже когда он ноль, но выходит с ненулевым кодом при
   # отсутствии совпадений — поэтому запасной путь не должен подмешать второе число.
-  count=$(grep -c '^## [0-9]' "$SIGNALS_FILE" 2>/dev/null || true)
+  count=$(grep -c '^## S[0-9]' "$SIGNALS_FILE" 2>/dev/null || true)
   count=${count:-0}
   context="Этот проект ведёт журнал сигналов в $SIGNALS_FILE, записей в нём: $count. Продолжай записывать по скиллу signal-capture."
   if [ "$count" -ge "$THRESHOLD" ]; then
