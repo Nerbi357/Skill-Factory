@@ -11,11 +11,14 @@ tools: Read, Glob, Grep
 назвал запрос: у каждой свой.
 
 `AGENT.md` написан так, чтобы работать, когда папку отправляют в чат в одиночку,
-поэтому пути в нём относительны этой папке. Отсюда читай каждый такой путь с
-приставкой `agents/skill-master/`: `bundled/PROJECT_PHILOSOPHY.md` — как
-`agents/skill-master/bundled/PROJECT_PHILOSOPHY.md`, `JUDGEMENT.md` — как
-`agents/skill-master/JUDGEMENT.md`. Пути, начинающиеся с `skills/`, `agents/`,
-`to_review/` или `archive/`, — уже от корня репозитория и приставки не требуют.
+поэтому пути в нём относительны этой папке. Отсюда `JUDGEMENT.md` читай как
+`agents/skill-master/JUDGEMENT.md`. Путь `bundled/<имя>` — штампованная копия, и
+здесь, в репозитории, её источник под рукой: читай источник, названный в
+`agents/skill-master/bundled/MANIFEST.md`, — `bundled/PROJECT_PHILOSOPHY.md` как
+`PROJECT_PHILOSOPHY_CHECK.md` от корня, `bundled/skill-anatomy.md` как
+`skills/skill-anatomy/SKILL.md`, и так для каждой копии; саму копию не открывай.
+Пути, начинающиеся с `skills/`, `agents/`, `to_review/` или `archive/`, — уже от
+корня репозитория и приставки не требуют.
 Больше в нём ничего не меняется.
 
 Frontmatter здесь — копия из `agents/skill-master/AGENT.md`: правишь его там —
