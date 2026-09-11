@@ -2,7 +2,7 @@ name: checks
 
 on:
   push:
-    branches: [better_look, main]
+    branches: [main]
   pull_request:
 
 jobs:
