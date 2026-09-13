@@ -10,8 +10,12 @@ set -uo pipefail
 
 THRESHOLD="${SIGNALS_THRESHOLD:-50}"
 
-# Журнал лежит в корне проекта, на виду.
-if [ -f "SIGNALS.md" ]; then
+# Журнал лежит в корне проекта, на виду. Хук запускается не обязательно из корня,
+# поэтому корень берётся из окружения, а относительный путь остаётся запасным:
+# ненайденный журнал печатает «SIGNALS.md пока нет» и зовёт завести второй.
+if [ -n "${CLAUDE_PROJECT_DIR:-}" ] && [ -f "$CLAUDE_PROJECT_DIR/SIGNALS.md" ]; then
+  SIGNALS_FILE="$CLAUDE_PROJECT_DIR/SIGNALS.md"
+elif [ -f "SIGNALS.md" ]; then
   SIGNALS_FILE="SIGNALS.md"
 fi
 
