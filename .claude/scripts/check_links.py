@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Проверяет, что пути, названные в файлах в силе, существуют.
 
-Сканирует README.md, PROJECT_PHILOSOPHY_CHECK.md, skills/**/*.md,
+Сканирует README.md, PROJECT_PHILOSOPHY.md, skills/**/*.md,
 agents/**/*.md и .claude/**/*.md. Память, идеи и журнал сигналов не
 сканируются: это история и личные заметки — они цитируют пути на момент
 события, и красный прогон требовал бы править цитату. Временный план
@@ -27,7 +27,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)
 REPO_PREFIXES = ("skills/", "agents/", ".claude/", ".github/")
 ARTIFACT_PREFIXES = ("references/", "bundled/", "scripts/", "assets/")
 SKIP_PREFIXES = ("to_review/", "archive/")
-ROOT_FILES = {"README.md", "PROJECT_PHILOSOPHY_CHECK.md"}
+ROOT_FILES = {"README.md", "PROJECT_PHILOSOPHY.md"}
 
 BACKTICK = re.compile(r"`([^`\n]+)`")
 MDLINK = re.compile(r"\]\(([^)\s]+)\)")

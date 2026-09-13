@@ -8,7 +8,7 @@
 Объявляется как `` `назначение` <- `источник` ``; скрипт синхронизации читает эти
 строки.
 
-- `PROJECT_PHILOSOPHY.md` <- `PROJECT_PHILOSOPHY_CHECK.md`
+- `PROJECT_PHILOSOPHY.md` <- `PROJECT_PHILOSOPHY.md`
 - `confidence-check.md` <- `skills/confidence-check/SKILL.md`
 - `skill-anatomy.md` <- `skills/skill-anatomy/SKILL.md`
 - `agent-readable.md` <- `skills/agent-readable/SKILL.md`
